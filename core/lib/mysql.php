@@ -8,7 +8,7 @@
  * @author     Milad Abooali <m.abooali@hotmail.com>
  * @copyright  2012 - 2020 Codebox
  * @license    http://codebox.ir/license/1_0.txt  Codebox License 1.0
- * @version    1.4.2
+ * @version    1.4.5 Costume
  */
     namespace App\Core;
 
@@ -241,7 +241,7 @@
          * @param string $start
          * @return bool
          */
-        public function deleteAny($table = null, $where = null, $end = null, $start = '0000-00-00')
+        public function deleteAny($where = null, $end = null, $start = '0000-00-00', $table = null)
         {
             (!$table) ?: $this->setTable($table);
             $end = $this->escape($end);
@@ -279,7 +279,7 @@
          * @param array $data
          * @return string
          */
-        private function _updateSQL($table=null, $data)
+        private function _updateSQL($data, $table=null)
         {
             (!$table) ?: $this->setTable($table);
             $sql = "UPDATE `$this->TABLE` SET";
@@ -317,7 +317,7 @@
          * @param string|null $start
          * @return bool
          */
-        public function updateAny($data, $table = null, $where = null, $end = null, $start = '0000-00-00')
+        public function updateAny($data, $where = null, $end = null, $start = '0000-00-00',$table = null)
         {
             $end = $this->escape($end);
             $start = $this->escape($start);
@@ -462,7 +462,7 @@
          * @param string $start
          * @return array|bool
          */
-        public function select($table = null, $where = null, $column = '*', $limit = null, $order = null, $group = null, $end = null, $start = '000-00-00')
+        public function select($where = null, $column = '*', $limit = null, $order = null, $group = null, $end = null, $start = '000-00-00', $table = null)
         {
             (!$table) ?: $this->setTable($table);
             $column = $this->escape($column);

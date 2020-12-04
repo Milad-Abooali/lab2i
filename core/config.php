@@ -34,7 +34,7 @@
  */
     define("APP_POR", "http://");
     define("APP_URL", APP_POR."b2i/");
-    define("APP_ROOT", $_SERVER['DOCUMENT_ROOT'].'b2i/lab2i/');
+    define("APP_ROOT", $_SERVER['DOCUMENT_ROOT'].'lab2i/');
 
 /**
  * Static files - CDN
