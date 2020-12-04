@@ -59,10 +59,10 @@
     define("DB_INFO", [
       "hostname"  => "localhost",
       "port"      => 3306,
-      "name"      => "mahan_m4",
+      "name"      => "bid2enjoy",
       "prefix"    => '',
       "username"  => "root",
-      "password"  => "root"
+      "password"  => ""
     ]);
 
 /**
