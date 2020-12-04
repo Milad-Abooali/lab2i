@@ -28,7 +28,7 @@
             $page['cache']  = false;        // Page Cache Overwrite
             $page['vid']    = 'login';
             $page['upon']   = 'login';
-            $page['inc']    = false;
+            $page['inc']    = null;
             $page['view']   = "login";
             break;
         case null:
