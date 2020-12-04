@@ -52,8 +52,6 @@ class SimpleUser
         return $this->db->insert($insert_data);
     }
 
-
-
     /**
      * Get All users
      * @return array
@@ -63,16 +61,6 @@ class SimpleUser
         return $this->db->select() ?? array();
     }
 
-    /**
-     * Get user Groups
-     * @param int $id
-     * @return array|bool
-     */
-    public function getGroups($id) {
-        $id = $this->db->escape($id);
-        $groups = $this->db->select('extra',"id=$id")[0] ?? array();
-        return $this->db->select('user_groups',"id=$id")[0] ?? array();
-    }
 
 
     /**
