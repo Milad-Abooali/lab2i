@@ -40,7 +40,7 @@
  * Static files - CDN
  */
     define("SITE", [
-      "lang"      => "FA", // null (IP Base) - Lang 2 char
+      "lang"      => "EN",
       "them"      => "termeh"
     ]);
 
