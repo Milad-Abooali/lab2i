@@ -6,9 +6,7 @@
             <div class="card">
                 <div class="card-header">Register</div>
                 <div class="card-body">
-
                     <form class="form-horizontal" method="post" action="#">
-
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Your Name</label>
                             <div class="cols-sm-10">
@@ -62,7 +60,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
