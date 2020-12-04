@@ -78,7 +78,7 @@ class SimpleUser
      * @return bool
      */
     public function getUser($username) {
-        $this->db->setTable('user_list');
+        $this->db->setTable('users');
         $username = $this->db->escape($username);
         $this->user = $this->db->selectRow("username='$username'");
         return ($this->user) ? true : false;
@@ -87,15 +87,14 @@ class SimpleUser
     /**
      * Check Password
      * @param string $password
-     * @param string $username
      * @return bool
      */
     public function checkPass($password) {
-        return (password_verify($password,$this->user['password'])) ? true : false;
+        return (password_verify($password, $this->user['password'])) ? true : false;
     }
 
     /**
-     * Login user
+     * Login
      * @param string $password
      * @param string $username
      * @return bool
@@ -119,7 +118,7 @@ class SimpleUser
     }
 
     /**
-     * Logout user
+     * Logout
      * @return bool
      */
     public function logout() {
@@ -129,28 +128,10 @@ class SimpleUser
     }
 
     /**
-     * Register user
-     * @param array $data
-     * @return bool|int|\mysqli_result|string
-     */
-    public function add($data) {
-        $this->db->setTable('user_list');
-        if ($this->getUser($data['username'])) {
-            $this->ERROR = 'Username already in use !';
-            return false;
-        }
-        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT, ["cost" => 8]);
-        $data['data']     = json_encode($data['data'] ?? array());
-        $result = $this->db->insert($data);
-        (!$result) ?: $this->db->insert(array('user_id'=>$result),'user_groups');
-        return ($result) ? $result : false;
-    }
-
-    /**
      * Upate User Password.
      * @param int $id
      * @param string $password
-     * @return bool|int|\mysqli_result|string|null
+     * @return bool|int|string|null
      */
     public function updatePass($id, $password) {
         $this->db->setTable('user_list');
