@@ -146,7 +146,7 @@ class SimpleUser
      * @return bool|int|\mysqli_result|string|null
      */
     public function update($id, $data) {
-        $this->db->setTable('user_list');
+        $this->db->setTable('users');
         return $this->db->updateId($id, $data);
     }
 
