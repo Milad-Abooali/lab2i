@@ -128,13 +128,13 @@ class SimpleUser
     }
 
     /**
-     * Upate User Password.
+     * Update User Password.
      * @param int $id
      * @param string $password
      * @return bool|int|string|null
      */
     public function updatePass($id, $password) {
-        $this->db->setTable('user_list');
+        $this->db->setTable('users');
         $data['password'] = password_hash($password, PASSWORD_BCRYPT, ["cost" => 8]);
         return $this->db->updateId($id, $data);
     }
