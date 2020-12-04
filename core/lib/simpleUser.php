@@ -86,8 +86,8 @@ class SimpleUser
 
     /**
      * Check Password
-     * @param $password
-     * @param $username
+     * @param string $password
+     * @param string $username
      * @return bool
      */
     public function checkPass($password) {
@@ -96,20 +96,21 @@ class SimpleUser
 
     /**
      * Login user
-     * @param $password
-     * @param $username
+     * @param string $password
+     * @param string $username
      * @return bool
      */
     public function login($username, $password) {
         if ($this->getUser($username)) {
             if ($this->user['status']==0) {
+                $_SESSION['M']['user'] = false;
                 return false;
             }
             if ($this->checkPass($password)) {
                 $_SESSION['M']['user'] = $this->user;
                 return true;
             } else {
-                $_SESSION['M']['user'] = array();
+                $_SESSION['M']['user'] = false;
                 return false;
             }
         } else {
@@ -124,7 +125,6 @@ class SimpleUser
     public function logout() {
         $_SESSION['M']['user'] = false;
         session_unset();
-        //session_destroy();
         return true;
     }
 
