@@ -1,4 +1,4 @@
-<?= CDN.'test.jpg'; ?>
+<img src="<?= CDN.'test.jpg'; ?>" >
 
 <div class="container">
     <div class="row justify-content-center">

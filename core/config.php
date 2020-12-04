@@ -47,7 +47,7 @@
 /**
  * Static files - CDN
  */
-    define("CDN", APP_ROOT."cdn/");
+    define("CDN", APP_POR."cdnb2i/");
     define("CSS", CDN."css/");
     define("IMG", CDN."img/");
     define("JS", CDN."js/");
