@@ -61,29 +61,15 @@ class SimpleUser
         return $this->db->select() ?? array();
     }
 
-
-
     /**
-     * Set User Groups
-     * @param array $id
-     * @param array $data
-     * @return array|bool
-     */
-    public function setGroups($id,$data) {
-        $id = intval($id);
-        return $this->db->updateAny($data,"user_groups","user_id=$id") ?? false;
-    }
-
-    /**
-     * Get username by ID
+     * Get user by ID
      * @param int $id
      * @return bool
      */
-    public function getUserbyID($id) {
-        $this->db->setTable('user_list');
-        $username = $this->db->escape($id);
-        $result = $this->db->selectId($id);
-        return ($result) ? $result : array();
+    public function getId($id) {
+        $this->db->setTable('users');
+        $id = intval($id);
+        return ($id) ? $this->db->selectId($id) : false;
     }
 
     /**
