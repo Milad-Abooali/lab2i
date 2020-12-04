@@ -22,6 +22,8 @@
     <meta name="application-name" content="Codebox.ir" />
     <link rel="icon" type="image/ico" sizes="32x32" href="<?= ICO ?>favicon.ico" />
     <!--- CSS -->
+    <link href="<?= CSS ?>bootstrap.4.2.1.min.css" rel="stylesheet" />
+    <link href="<?= CSS ?>dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="<?= CSS ?>style.css" rel="stylesheet" />
     <!--- Script -->
     <script defer src="<?= JS ?>jquery-3.5.1.min.js"></script>
@@ -30,7 +32,7 @@
     <script defer src="<?= JS ?>pace.min.js"></script>
     <script defer src="<?= JS ?>jquery.dataTables.min.js"></script>
     <script defer src="<?= JS ?>dataTables.bootstrap4.min.js"></script>
-    <script defer src="<?= JS ?>ex.js"></script>
+    <script defer src="<?= JS ?>script.js"></script>
     <!--- Head -->
     <?= $this->data['PAGE']['head'] ?>
 </head>
