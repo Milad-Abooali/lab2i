@@ -19,12 +19,18 @@
     switch ($page['vid']) {
 
         case "blog":
-            $page['vid']    = 'ffff';
+            $page['vid']    = 'blog Home';
             $page['upon']   = 'blog/home';
             $page['inc']    = 'home';
             $page['view']   = "blog/home";
             break;
-
+        case "login":
+            $page['cache']  = false;        // Page Cache Overwrite
+            $page['vid']    = 'login';
+            $page['upon']   = 'login';
+            $page['inc']    = false;
+            $page['view']   = "login";
+            break;
         case null:
         case "":    // Site Index/root
             $page['cache']  = false;

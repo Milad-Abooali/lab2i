@@ -132,7 +132,7 @@
          */
         public static function aLog($type, $text=null, $error=null, $sub=null, $id=null) {
             global $app_logs;
-            $error = ($error) ? ' <b style="color:red">Error</b> ' : ' <b style="color:darkolivegreen">OK</b> ';
+            $error = ($error) ? ' <b style="color:red">😭</b> ' : ' <b style="color:darkolivegreen">✓</b> ';
             if ($id) {
                 if ($sub) {
                     (!LOG[$type]) ?: $app_logs[$type][$sub][$id] = '[<b style="color: darkslateblue">'.M::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
