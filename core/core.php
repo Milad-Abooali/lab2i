@@ -44,8 +44,8 @@
     include_once ('autoload.php');
     spl_autoload_register('App\Core\Loader::lib');
 
-    //    $LANG = new Language('EN');
-    //    define("_L", parse_ini_file($LANG->PATH.'core.ini',true));
+    $LANG = new Language('EN');
+    define("_L", parse_ini_file($LANG->PATH.'core.ini',true));
 
     $page = array();
     $page['data'] = explode("/", $_GET["rout"]??null) ;
