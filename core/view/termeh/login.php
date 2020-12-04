@@ -15,6 +15,7 @@
 
     $this->data['PAGE']['head'] = ' ';
 
+    include_once $this->PATH."global/head.php";
     include_once $this->PATH."global/header.php";
 
 ?>
