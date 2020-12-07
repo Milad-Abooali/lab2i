@@ -31,6 +31,13 @@
             $page['inc']    = null;
             $page['view']   = "login";
             break;
+        case "register":
+            $page['cache']  = false;        // Page Cache Overwrite
+            $page['vid']    = 'register';
+            $page['upon']   = null;
+            $page['inc']    = null;
+            $page['view']   = "register";
+            break;
         case null:
         case "":    // Site Index/root
             $page['cache']  = false;
