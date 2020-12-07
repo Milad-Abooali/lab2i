@@ -25,14 +25,14 @@
             $page['view']   = "blog/home";
             break;
         case "login":
-            $page['cache']  = false;        // Page Cache Overwrite
+            $page['cache']  = false;
             $page['vid']    = 'login';
             $page['upon']   = 'login';
             $page['inc']    = null;
             $page['view']   = "login";
             break;
         case "register":
-            $page['cache']  = false;        // Page Cache Overwrite
+            $page['cache']  = true;
             $page['vid']    = 'register';
             $page['upon']   = null;
             $page['inc']    = null;

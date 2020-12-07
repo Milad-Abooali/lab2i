@@ -3,7 +3,7 @@
 
     $this->data['PAGE']['demo']=0;
 
-    $this->data['PAGE']['title'] = 'Register';
+    $this->data['PAGE']['title'] = 'Login';
     $this->data['PAGE']['keywords'] = 'test';
     $this->data['PAGE']['description'] = 'test';
     $this->data['PAGE']['robots'] = 1; // Null = Follow

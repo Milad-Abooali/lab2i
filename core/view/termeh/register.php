@@ -3,7 +3,7 @@
 
     $this->data['PAGE']['demo']=0;
 
-    $this->data['PAGE']['title'] = 'Login';
+    $this->data['PAGE']['title'] = 'Register';
     $this->data['PAGE']['keywords'] = 'test';
     $this->data['PAGE']['description'] = 'test';
     $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -93,7 +93,7 @@
                                 <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                             </div>
                             <div class="login-register">
-                                <a href="login.php">Login</a>
+                                <a href="login">Login</a>
                             </div>
                         </form>
                     </div>
