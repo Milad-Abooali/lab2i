@@ -22,6 +22,7 @@
     <meta name="application-name" content="Codebox.ir" />
     <link rel="icon" type="image/ico" sizes="32x32" href="<?= ICO ?>favicon.ico" />
     <!--- CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="<?= CSS ?>bootstrap.4.2.1.min.css" rel="stylesheet" />
     <link href="<?= CSS ?>dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="<?= CSS ?>style.css" rel="stylesheet" />
