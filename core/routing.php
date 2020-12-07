@@ -25,31 +25,27 @@
             $page['view']   = "blog/home";
             break;
         case "login":
-            $page['cache']  = true;
             $page['vid']    = 'login';
-            $page['upon']   = null;
-            $page['inc']    = null;
             $page['view']   = "login";
+            $page['cache']  = true;
             break;
         case "register":
-            $page['cache']  = true;
             $page['vid']    = 'register';
-            $page['upon']   = null;
-            $page['inc']    = null;
             $page['view']   = "register";
+            $page['cache']  = true;
             break;
         case null:
         case "":    // Site Index/root
-            $page['cache']  = false;
             $page['vid']    = 'home';
             $page['inc']    = 'home';
             $page['view']   = 'home';
-            break;
+            $page['cache']  = false;
+        break;
 
         default:    // Not Found
-            $page['cache']      = false;        // Page Cache Overwrite
             $page['vid']        = false;        // Page View ID/Name
             $page['upon']       = null;         // Page Upon File
             $page['inc']        = null;         // Page Inc File
             $page['view']       = 'error/404';  // Page View File
+            $page['cache']      = false;        // Page Cache Overwrite
     }
