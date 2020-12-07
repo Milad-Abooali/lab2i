@@ -7,19 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!--- CODEBOX -->
-    <meta name="codebox-url" content="<?= APP_URL ?>" />
-    <meta name="codebox-cdn" content="<?= CDN ?>" />
-    <meta name="codebox-img" content="<?= IMG ?>" />
-    <meta name="codebox-js" content="<?= JS ?>" />
+    <!--- APP -->
+    <meta name="app-url" content="<?= APP_URL ?>" />
+    <meta name="app-cdn" content="<?= CDN ?>" />
+    <meta name="app-img" content="<?= IMG ?>" />
+    <meta name="app-js" content="<?= JS ?>" />
     <!--- Prefetch
     <link rel='dns-prefetch' href="<?= CDN ?>" />
   -->
     <!--- SEO -->
-    <title><?= $this->data['PAGE']['title']; ?> &bull; Codebox</title>
+    <title><?= $this->data['PAGE']['title']; ?> &bull; Bid 2 Enjoy</title>
     <meta name="robots" content="noindex, nofollow" />
     <!--- ICO -->
-    <meta name="application-name" content="Codebox.ir" />
+    <meta name="application-name" content="Bid 2 Enjoy" />
     <link rel="icon" type="image/ico" sizes="32x32" href="<?= ICO ?>favicon.ico" />
     <!--- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />

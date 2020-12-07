@@ -25,9 +25,9 @@
             $page['view']   = "blog/home";
             break;
         case "login":
-            $page['cache']  = false;
+            $page['cache']  = true;
             $page['vid']    = 'login';
-            $page['upon']   = 'login';
+            $page['upon']   = null;
             $page['inc']    = null;
             $page['view']   = "login";
             break;
