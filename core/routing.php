@@ -32,6 +32,8 @@
         case "recoverPassword":
             $page['vid']    = 'recoverPassword';
             $page['view']   = "recover_password";
+            $page['inc']    = "recover_password";
+
             $page['cache']  = false;
             break;
         case "register":

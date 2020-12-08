@@ -64,9 +64,6 @@
         echo json_encode($output);
     }
 
-
-
-
     // Register
     function register() {
         $output = new stdClass();

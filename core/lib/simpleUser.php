@@ -159,7 +159,7 @@ class SimpleUser
 //            $this->db->updateId($this->user['id'], $data);
 
             $hash = md5($this->user['email']).md5($this->user['id']);
-            $link = APP_URL.'recoverPassword&h='.$hash;
+            $link = APP_URL.'recoverPassword&i='.$this->user['id'].'h='.$hash;
 
             // send email
             /**
@@ -171,5 +171,28 @@ class SimpleUser
            return false;
        }
     }
+
+
+    public function recoverCheck($id,$hash)
+    {
+        if ($this->getUser($username)) {
+            $this->db->setTable('users');
+            $data['status'] = 2;
+//            $this->db->updateId($this->user['id'], $data);
+
+            $hash = md5($this->user['email']).md5($this->user['id']);
+            $link = APP_URL.'recoverPassword&h='.$hash;
+
+            // send email
+            /**
+             * @todo Email Class
+             */
+
+            return $link;
+        } else {
+            return false;
+        }
+    }
+
 
 }
