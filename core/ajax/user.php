@@ -50,6 +50,23 @@
         echo json_encode($output);
     }
 
+
+    // Password Recovery
+    function recoverPass() {
+        $output = new stdClass();
+
+        $output->e = !(($_POST['email']) ?? false);
+
+        if ($output->e == false) {
+            $user = new SimpleUser();
+            $output->res = $user->recoverPass($_POST['email']);
+        }
+        echo json_encode($output);
+    }
+
+
+
+
     // Register
     function register() {
         $output = new stdClass();

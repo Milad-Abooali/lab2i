@@ -283,7 +283,7 @@
         {
             (!$table) ?: $this->setTable($table);
             $sql = "UPDATE `$this->TABLE` SET";
-            foreach ($data as $k => $v) {
+            if($data) foreach ($data as $k => $v) {
                 $column = $this->escape($k);
                 $value = $this->escape($v);
                 $sql .= " $column='$value'";

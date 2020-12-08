@@ -32,9 +32,6 @@
                 <div class="card">
                     <div class="card-header">Password Recovery</div>
                     <div class="card-body">
-                        <?php if($_GET['error'] ?? false) { ?>
-                            <div class="alert alert-danger">Email / Password is not match!</div>
-                        <?php } ?>
                         <form id="recover-pass" class="form-horizontal" method="post" action="user/recoverPass">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -46,9 +43,7 @@
                                 <button type="submit" class="btn btn-warning btn-block login-button">Recover Password</button>
                             </div>
                             <div class="form-group">
-                                <p class="small text-muted">
-                                   * Check your mail for a link to rest your password.</a>.
-                                </p>
+
                             </div>
                         </form>
                     </div>
@@ -63,17 +58,21 @@
 
 $( document ).ready(function() {
 
-    //  Login
+    //  Recover Password
     $('body').on('submit','form#recover-pass', function(event){
         event.preventDefault();
         const data = $(this).serialize();
         const classA = $(this).attr('action');
         ajaxCall (classA, data,function(response) {
             let obj = JSON.parse(response);
-            (obj.res) || notify('Email or Password is not true!','error',false);
-            (obj.res) || $(location).attr('href', 'login&error=1')
-            (obj.res) && notify('Welcome back ....','success',false);
-            (obj.res) && location.reload();
+            if (obj.res) {
+                notify('Email Sent ...','success',false);
+                $('form#recover-pass').fadeOut();
+                $('form#recover-pass').html('<p class="small text-muted">Email sent,<br> Now check your mail (also spam box) for a link to rest your password.</p>');
+                $('form#recover-pass').fadeIn();
+            } else {
+                 notify('User  not found!','error',false);
+            }
         });
     });
 

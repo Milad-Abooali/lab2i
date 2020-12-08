@@ -36,7 +36,7 @@ class SimpleUser
      * @param string $l_name
      * @param int $phone
      * @param array $extra
-     * @return bool|int|\mysqli_result|string|null
+     * @return bool|int|mysqli_result|string|null
      */
     public function register($email,$password,$f_name,$l_name,$phone,$extra=null)
     {
@@ -144,11 +144,32 @@ class SimpleUser
      * Upate User.
      * @param int $id
      * @param array $data
-     * @return bool|int|\mysqli_result|string|null
+     * @return bool|int|string|null
      */
     public function update($id, $data) {
         $this->db->setTable('users');
         return $this->db->updateId($id, $data);
+    }
+
+    public function recoverPass($username)
+    {
+        if ($this->getUser($username)) {
+            $this->db->setTable('users');
+            $data['status'] = 2;
+//            $this->db->updateId($this->user['id'], $data);
+
+            $hash = md5($this->user['email']).md5($this->user['id']);
+            $link = APP_URL.'recoverPassword&h='.$hash;
+
+            // send email
+            /**
+             * @todo Email Class
+             */
+
+            return $link;
+       } else {
+           return false;
+       }
     }
 
 }
