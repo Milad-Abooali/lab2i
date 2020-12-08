@@ -8,7 +8,7 @@
  * @author     Milad Abooali <m.abooali@hotmail.com>
  * @copyright  2012 - 2020 Codebox
  * @license    http://codebox.ir/license/1_0.txt  Codebox License 1.0
- * @version    1.0.0
+ * @version    1.1.4
  */
 
 namespace App\Core;
@@ -17,7 +17,7 @@ if (!defined('START')) die('__ You just find me! 😹 . . . <a href="javascript:
 
 class View
 {
-    public $THEME, $INFO, $PATH, $LANG;
+    public $THEME, $INFO, $PATH, $LANG, $HEADER=null, $FOOTER=null;
     private $page, $page_path, $data=array(), $cache;
 
     /**
@@ -228,6 +228,32 @@ class View
         $make = './cache/'.$theme.'_'.$lang.'_'.$vid.'.php';
         array_map('unlink', glob($make));
         M::aLog('view',"Clear Cache: <b style='color:red'>$make</b>.");
+    }
+
+
+    // Load Static Files
+    public function loadJS($pos,$path,$defer=true){
+        if (in_array($pos, array('h','head','header'))) $this->HEADER .= '<script src="'.$path.'"'.(($defer) ? ' defer' : null) .'></script>';
+        if (in_array($pos, array('f','foot','footer'))) $this->FOOTER .= '<script src="'.$path.'"'.(($defer) ? ' defer' : null) .'></script>';
+        return true;
+    }
+    public function loadCSS($pos,$path){
+        if (in_array($pos, array('h','head','header'))) $this->HEADER .= '<link href="'.$path.'" rel="stylesheet" type="text/css">';
+        if (in_array($pos, array('f','foot','footer'))) $this->FOOTER .= '<link href="'.$path.'" rel="stylesheet" type="text/css">';
+        return true;
+    }
+
+    // Make content
+    public function makeJS($pos,$content,$onload=true){
+        if ($onload) $content = '$(document).ready(function(){'.$content.'});';
+        if (in_array($pos, array('h','head','header'))) $this->HEADER .= "<script>$content</script>";
+        if (in_array($pos, array('f','foot','footer'))) $this->FOOTER .= "<script>$content</script>";
+        return true;
+    }
+    public function makeCSS($pos,$content){
+        if (in_array($pos, array('h','head','header'))) $this->HEADER .= "<style>$content</style>";
+        if (in_array($pos, array('f','foot','footer'))) $this->FOOTER .= "<style>$content</style>";
+        return true;
     }
 
 }

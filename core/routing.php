@@ -27,17 +27,22 @@
         case "login":
             $page['vid']    = 'login';
             $page['view']   = "login";
-            $page['cache']  = true;
+            $page['cache']  = false;
+            break;
+        case "recoverPassword":
+            $page['vid']    = 'recoverPassword';
+            $page['view']   = "recover_password";
+            $page['cache']  = false;
             break;
         case "register":
             $page['vid']    = 'register';
             $page['view']   = "register";
-            $page['cache']  = true;
+            $page['cache']  = false;
             break;
         case null:
+        case "home":    // Site Index/root
         case "":    // Site Index/root
             $page['vid']    = 'home';
-            $page['inc']    = 'home';
             $page['view']   = 'home';
             $page['cache']  = false;
         break;

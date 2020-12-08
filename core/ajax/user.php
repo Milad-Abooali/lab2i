@@ -24,6 +24,33 @@
         echo json_encode($output);
     }
 
+    // Logout
+    function logout() {
+        $output = new stdClass();
+
+        $output->e = false;
+
+        $user = new SimpleUser();
+        $output->res = $user->logout();
+
+        echo json_encode($output);
+    }
+
+    // Login
+    function login() {
+        $output = new stdClass();
+
+        $output->e = !(($_POST['email']) ?? false);
+        $output->e = !(($_POST['password']) ?? false);
+
+        if ($output->e == false) {
+            $user = new SimpleUser();
+            $output->res = $user->login($_POST['email'],$_POST['password']);
+        }
+        echo json_encode($output);
+    }
+
+    // Register
     function register() {
         $output = new stdClass();
 
@@ -31,7 +58,6 @@
         $output->e = ( (($_POST['lname']) ?? false) && (strlen($_POST['lname']) > 2) ) ? false : 'Last name';
         $output->e = ( (($_POST['phone']) ?? false) && (strlen($_POST['phone']) > 9) ) ? false : 'Phone Number';
         $output->e = ( (($_POST['email']) ?? false) && (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) ) ? false : 'Email';
-
         $output->e = ( (($_POST['password']) ?? false) && (strlen($_POST['password']) > 5) ) ? false : 'Password';
 
         if ($output->e == false) {

@@ -27,13 +27,13 @@
       "language"      => false,
       "view"          => true
     ]);
-    define("LOG_FORCE", true);  // 1 Force to Show Log - 0: Need add '&mLog' to URL
+    define("LOG_FORCE", false);  // 1 Force to Show Log - 0: Need add '&mLog' to URL
 
 /**
  * App Settings
  */
     define("APP_POR", "http://");
-    define("APP_URL", APP_POR."b2i/");
+    define("APP_URL", APP_POR."b2i/lab2i/");
     define("APP_ROOT", $_SERVER['DOCUMENT_ROOT'].'lab2i/');
 
 /**

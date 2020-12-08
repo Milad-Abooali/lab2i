@@ -198,33 +198,4 @@
             return $output;
         }
 
-        // Load Static Files
-        public static function loadJS($pos,$path,$defer=true){
-            global $_sys_header,$_sys_footer;
-            if (in_array($pos, array('h','head','header'))) $_sys_header .= '<script src="'.$path.'"'.(($defer) ? ' defer' : null) .'></script>';
-            if (in_array($pos, array('f','foot','footer'))) $_sys_footer .= '<script src="'.$path.'"'.(($defer) ? ' defer' : null) .'></script>';
-            return true;
-        }
-        public static function loadCSS($pos,$path){
-            global $_sys_header,$_sys_footer;
-            if (in_array($pos, array('h','head','header'))) $_sys_header .= '<link href="'.$path.'" rel="stylesheet" type="text/css">';
-            if (in_array($pos, array('f','foot','footer'))) $_sys_footer .= '<link href="'.$path.'" rel="stylesheet" type="text/css">';
-            return true;
-        }
-
-        // Make content
-        public static function makeJS($pos,$content,$onload=true){
-            global $_sys_header,$_sys_footer;
-            if ($onload) $content = '$(document).ready(function(){'.$content.'});';
-            if (in_array($pos, array('h','head','header'))) $_sys_header .= "<script>$content</script>";
-            if (in_array($pos, array('f','foot','footer'))) $_sys_footer .= "<script>$content</script>";
-            return true;
-        }
-        public static function makeCSS($pos,$content){
-            global $_sys_header,$_sys_footer;
-            if (in_array($pos, array('h','head','header'))) $_sys_header .= "<style>$content</style>";
-            if (in_array($pos, array('f','foot','footer'))) $_sys_footer .= "<style>$content</style>";
-            return true;
-        }
-
     }

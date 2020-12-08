@@ -24,9 +24,21 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <?php if (!in_array($this->page['vid'],array('login','register'))) { ?>
+        <section>
+            <?php if($_SESSION['M']['user'] ?? false) { ?>
+            <button class="btn btn-danger my-2 my-sm-0 doA-logout">Logout</button>
+            <?php  } else { ?>
+            <form id="login" action="user/login" class="form-inline my-2 my-lg-0 small">
+                <input class="form-control input-sm mr-sm-2" type="email" name="email"placeholder="Email" required>
+                <input class="form-control input-sm mr-sm-2" type="password" name="password"placeholder="Password" required>
+
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+                 <small class="mx-3 text-light border border-secondary rounded-circle p-1">OR</small>
+                <a class="btn btn-primary my-2 my-sm-0" href="register">Register</a>
+            </form>
+            <?php  } ?>
+        </section>
+        <?php  } ?>
     </div>
 </nav>

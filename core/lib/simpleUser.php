@@ -80,7 +80,7 @@ class SimpleUser
     public function getUser($username) {
         $this->db->setTable('users');
         $username = $this->db->escape($username);
-        $this->user = $this->db->selectRow("username='$username'");
+        $this->user = $this->db->selectRow("email='$username'");
         return ($this->user) ? true : false;
     }
 
@@ -107,6 +107,7 @@ class SimpleUser
             }
             if ($this->checkPass($password)) {
                 $_SESSION['M']['user'] = $this->user;
+                $_SESSION['M']['user']['extra'] = json_decode($this->user['extra']);
                 return true;
             } else {
                 $_SESSION['M']['user'] = false;
@@ -123,7 +124,7 @@ class SimpleUser
      */
     public function logout() {
         $_SESSION['M']['user'] = false;
-        session_unset();
+//        session_unset();
         return true;
     }
 

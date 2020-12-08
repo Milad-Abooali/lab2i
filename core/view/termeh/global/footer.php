@@ -15,4 +15,6 @@
         </div>
     </div>
 </div>
+<script defer src="<?= JS ?>script.js"></script>
+<?= $this->FOOTER; ?>
 </body></html>

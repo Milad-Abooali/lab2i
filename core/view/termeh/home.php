@@ -1,22 +1,38 @@
 <?php
-/**
- * home
- *
- * Mahan | View File
- *
- * @package    App
- * @author     Milad Abooali <m.abooali@hotmail.com>
- * @copyright  2012 - 2020 Codebox
- * @license    http://codebox.ir/license/1_0.txt  Codebox License 1.0
- * @version    1.0.0
- */
+
+
+$this->data['PAGE']['demo']=0;
+
+$this->data['PAGE']['title'] = 'Home';
+$this->data['PAGE']['keywords'] = 'test';
+$this->data['PAGE']['description'] = 'test';
+$this->data['PAGE']['robots'] = 1; // Null = Follow
+$this->data['PAGE']['image'] = 'test';
+$this->data['PAGE']['canonical'] = APP_URL;
+$this->data['PAGE']['path'] = $this->page_path;
+$this->data['PAGE']['amphtml'] = NULL;
+$this->data['PAGE']['feed'] = NULL;
+
+$this->data['PAGE']['head'] = ' ';
+
+
+include_once $this->PATH."global/head.php";
+include_once $this->PATH."global/header.php";
 ?>
 
-<?php
-    App\Core\M::print($this->page['data']);
-?>
+    <main role="main" class="container">
 
-<br> ------ <br>
-Home
-<br> ------ <br>
-<a href="http://localhost/git/mahan/blog" >BLOG</a>
+
+
+    </main>
+
+    <script>
+
+        $( document ).ready(function() {
+
+
+        });
+
+    </script>
+
+<?php include_once $this->PATH."global/footer.php"; ?>
