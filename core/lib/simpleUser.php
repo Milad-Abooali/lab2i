@@ -25,7 +25,7 @@ class SimpleUser
      * SimpleUser constructor.
      */
     function __construct() {
-        $this->db = new MySQL(DB_INFO);
+        $this->db = new iSQL(DB_INFO);
     }
 
     /**
@@ -40,7 +40,6 @@ class SimpleUser
      */
     public function register($email,$password,$f_name,$l_name,$phone,$extra=null)
     {
-        $this->db->setTable('users');
         $insert_data = array();
         $insert_data['email'] = $email;
         $insert_data['password'] = password_hash($password, PASSWORD_BCRYPT, ["cost" => 8]);
@@ -49,7 +48,36 @@ class SimpleUser
         $insert_data['phone'] = $phone;
         $insert_data['extra'] = json_encode($extra);
         $insert_data['status'] = 0;
-        return $this->db->insert($insert_data);
+        $insert_id = $this->db->insert('users',$insert_data);
+        if ($insert_id) {
+            $hash_reg = $insert_id.md5($insert_id);
+            $link_reg = APP_URL.'register&i='.$insert_data['email'].'&h='.$hash_reg;
+            /**
+             * @todo Email Class - Account Activation.
+             */
+
+            return $link_reg;
+        }
+        return false;
+    }
+
+    /**
+     * Activate
+     * @param string $username
+     * @param string $hash
+     * @return bool
+     */
+    public function activate($username, $hash) {
+        if ($this->getUser($username)) {
+            $hash_reg = $this->user['id'].md5($this->user['id']);
+            if (($hash == $hash_reg) && ($this->user['status']==0)) {
+                $data['status'] = 1;
+                $this->update($this->user['id'], $data);
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -57,8 +85,7 @@ class SimpleUser
      * @return array
      */
     public function getAll() {
-        $this->db->setTable('users');
-        return $this->db->select() ?? array();
+        return $this->db->select('users') ?? array();
     }
 
     /**
@@ -67,9 +94,8 @@ class SimpleUser
      * @return bool
      */
     public function getId($id) {
-        $this->db->setTable('users');
         $id = intval($id);
-        return ($id) ? $this->db->selectId($id) : false;
+        return ($id) ? $this->db->selectId('users',$id) : false;
     }
 
     /**
@@ -78,9 +104,8 @@ class SimpleUser
      * @return bool
      */
     public function getUser($username) {
-        $this->db->setTable('users');
         $username = $this->db->escape($username);
-        $this->user = $this->db->selectRow("email='$username'");
+        $this->user = $this->db->selectRow('users',"email='$username'");
         return ($this->user) ? true : false;
     }
 
@@ -135,9 +160,8 @@ class SimpleUser
      * @return bool|int|string|null
      */
     public function updatePass($id, $password) {
-        $this->db->setTable('users');
         $data['password'] = password_hash($password, PASSWORD_BCRYPT, ["cost" => 8]);
-        return $this->db->updateId($id, $data);
+        return $this->db->updateId('users',$id, $data);
     }
 
     /**
@@ -147,52 +171,50 @@ class SimpleUser
      * @return bool|int|string|null
      */
     public function update($id, $data) {
-        $this->db->setTable('users');
-        return $this->db->updateId($id, $data);
+        return $this->db->updateId('users', $id, $data);
     }
 
     public function recoverPass($username)
     {
         if ($this->getUser($username)) {
-            $this->db->setTable('users');
             $data['status'] = 2;
-//            $this->db->updateId($this->user['id'], $data);
-
+            $this->update($this->user['id'], $data);
             $hash = md5($this->user['email']).md5($this->user['id']);
-            $link = APP_URL.'recoverPassword&i='.$this->user['id'].'h='.$hash;
-
-            // send email
+            $link = APP_URL.'recoverPassword&i='.$this->user['email'].'&h='.$hash;
             /**
-             * @todo Email Class
+             * @todo Email Class -  - Password recovery link.
              */
-
             return $link;
        } else {
            return false;
        }
     }
 
-
-    public function recoverCheck($id,$hash)
+    public function recoverCheck($username,$hash)
     {
         if ($this->getUser($username)) {
-            $this->db->setTable('users');
-            $data['status'] = 2;
-//            $this->db->updateId($this->user['id'], $data);
-
-            $hash = md5($this->user['email']).md5($this->user['id']);
-            $link = APP_URL.'recoverPassword&h='.$hash;
-
-            // send email
-            /**
-             * @todo Email Class
-             */
-
-            return $link;
+            if (($hash == (md5($this->user['email']).md5($this->user['id']))) && ($this->user['status']==2)) {
+                $data['status'] = 1;
+                $this->update($this->user['id'], $data);
+                return true;
+            }
         } else {
             return false;
         }
     }
 
+    public function changePass($username,$new_pass)
+    {
+        if ($this->getUser($username)) {
+            if ($this->updatePass($this->user['id'], $new_pass)) {
+                /**
+                 * @todo Email Class - Password changed.
+                 */
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
 }

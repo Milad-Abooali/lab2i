@@ -32,6 +32,30 @@
                 <div class="card">
                     <div class="card-header">Password Recovery</div>
                     <div class="card-body">
+                        <?php if($this->data['rec_pass'] ?? false) { ?>
+                            <?php if($this->data['reset_pass'] ?? false) { ?>
+                            <form id="reset-pass" class="form-horizontal" method="post" action="user/restPass">
+                                <input type="hidden" name="i" value="<?= $_GET['i']; ?>" required>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" id="password" placeholder="Enter your Password" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" required>
+                                </div>
+                                <div class="form-group ">
+                                    <button type="submit" class="btn btn-primary btn-block login-button">Change Password</button>
+                                </div>
+                            </form>
+                            <?php } else { ?>
+                            <p class="alert alert-danger">This link was expired/wrong.</p>
+                            <?php } ?>
+                        <?php } else { ?>
                         <form id="recover-pass" class="form-horizontal" method="post" action="user/recoverPass">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -42,10 +66,8 @@
                             <div class="form-group ">
                                 <button type="submit" class="btn btn-warning btn-block login-button">Recover Password</button>
                             </div>
-                            <div class="form-group">
-
-                            </div>
                         </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -55,6 +77,15 @@
 </main>
 
 <script>
+
+    //  Register
+    $('#password, #confirm').on('keyup', function () {
+        $('#confirm').removeClass('border-success border-danger');
+        if ($('#password').val() == $('#confirm').val()) {
+            $('#confirm').addClass('border border-success');
+        } else
+            $('#confirm').addClass('border border-danger');
+    });
 
 $( document ).ready(function() {
 
@@ -72,6 +103,30 @@ $( document ).ready(function() {
                 $('form#recover-pass').fadeIn();
             } else {
                  notify('User  not found!','error',false);
+            }
+        });
+    });
+
+
+    //  Rest Password
+    $('body').on('submit','form#reset-pass', function(event){
+        event.preventDefault();
+        const data = $(this).serialize();
+        const classA = $(this).attr('action');
+        ajaxCall (classA, data,function(response) {
+            let obj = JSON.parse(response);
+            if (obj.res) {
+                notify('New password has been set.','success',false);
+                $('form#reset-pass').fadeOut();
+                $('form#reset-pass').html('<p class="small text-muted">Your Password changed,<br> Now you can login with your new password. <a href="login">Try Login</a></p>');
+                $('form#reset-pass').fadeIn();
+                setTimeout(
+                    function()
+                    {
+                        $(location).attr('href', 'login')
+                    }, 10000);
+            } else {
+                notify('Error on saving new password!','error',false);
             }
         });
     });

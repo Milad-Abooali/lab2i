@@ -31,6 +31,16 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
+                        <?php if ($this->data['activate']) { ?>
+                            <?php if($this->data['active']) { ?>
+                                <div class="alert alert-success">Your Account has been active, Now you can enjoy it...
+                                <br>
+                                <a href="login">Try Login</a>
+                                </div>
+                            <?php } else { ?>
+                                <div class="alert alert-danger">Your Account has been not active, this link is expired/wrong!</div>
+                            <?php } ?>
+                        <?php } else { ?>
                         <form id="register" class="form-horizontal" method="post" action="user/register">
 
                             <div class="input-group mb-3">
@@ -75,6 +85,8 @@
                                 <a class="btn btn-success my-2 my-sm-0" href="login">Login</a>
                             </div>
                         </form>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>

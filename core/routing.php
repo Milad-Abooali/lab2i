@@ -39,6 +39,7 @@
         case "register":
             $page['vid']    = 'register';
             $page['view']   = "register";
+            $page['inc']    = "register";
             $page['cache']  = false;
             break;
         case null:
