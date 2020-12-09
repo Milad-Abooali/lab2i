@@ -53,12 +53,16 @@ class SimpleUser
             $hash_reg = $insert_id.md5($insert_id);
             $link_reg = APP_URL.'register&i='.$insert_data['email'].'&h='.$hash_reg;
             $mail = new mEmail();
-            $mail->send();
-            /**
-             * @todo Email Class - Account Activation.
-             */
-
-            return $link_reg;
+            $receivers[] = array(
+                'id' => $insert_id,
+                'email' => $insert_data['email'],
+                'data' => array(
+                    'LINK' => $link_reg
+                )
+            );
+            $subject = 'Registration on '.SITE['name'];
+            $mail->send($receivers, $subject, 'register-activate');
+            return true;
         }
         return false;
     }
@@ -75,6 +79,17 @@ class SimpleUser
             if (($hash == $hash_reg) && ($this->user['status']==0)) {
                 $data['status'] = 1;
                 $this->update($this->user['id'], $data);
+                $mail = new mEmail();
+                $receivers[] = array(
+                    'id' => $this->user['id'],
+                    'email' => $this->user['email'],
+                    'data' => array(
+                        'LINK' => APP_URL.'login',
+                        'NAME' => $this->user['f_name']
+                    )
+                );
+                $subject = 'Welcome to '.SITE['name'];
+                $mail->send($receivers, $subject, 'register-welcome');
                 return true;
             }
         } else {
@@ -183,10 +198,18 @@ class SimpleUser
             $this->update($this->user['id'], $data);
             $hash = md5($this->user['email']).md5($this->user['id']);
             $link = APP_URL.'recoverPassword&i='.$this->user['email'].'&h='.$hash;
-            /**
-             * @todo Email Class -  - Password recovery link.
-             */
-            return $link;
+            $mail = new mEmail();
+            $receivers[] = array(
+                'id' => $this->user['id'],
+                'email' => $this->user['email'],
+                'data' => array(
+                    'LINK' => $link,
+                    'NAME' => $this->user['f_name']
+                )
+            );
+            $subject = 'Password Recovery Request on '.SITE['name'];
+            $mail->send($receivers, $subject, 'recovery-pass-link');
+            return true;
        } else {
            return false;
        }
@@ -209,9 +232,17 @@ class SimpleUser
     {
         if ($this->getUser($username)) {
             if ($this->updatePass($this->user['id'], $new_pass)) {
-                /**
-                 * @todo Email Class - Password changed.
-                 */
+                $mail = new mEmail();
+                $receivers[] = array(
+                    'id' => $this->user['id'],
+                    'email' => $this->user['email'],
+                    'data' => array(
+                        'LINK' => APP_URL.'login',
+                        'NAME' => $this->user['f_name']
+                    )
+                );
+                $subject = 'Password Changed - '.SITE['name'];
+                $mail->send($receivers, $subject, 'recovery-pass-done');
                 return true;
             }
         } else {

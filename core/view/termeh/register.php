@@ -14,7 +14,7 @@
 
     $this->data['PAGE']['head'] = ' ';
 
-    if ($_SESSION['M']['user']) {
+    if ($_SESSION['M']['user'] ?? false) {
         header('Location: home');
         return 0;
     }
@@ -96,7 +96,7 @@
 </main>
 
 <script>
-    //  Register
+    //  Confirm password check
     $('#password, #confirm').on('keyup', function () {
         $('#confirm').removeClass('border-success border-danger');
         if ($('#password').val() == $('#confirm').val()) {
@@ -115,7 +115,9 @@
             const classA = $(this).attr('action');
             ajaxCall (classA, data,function(response) {
                 let obj = JSON.parse(response);
-                console.log(obj);
+                $('form#register').fadeOut();
+                $('form#register').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Account created,<br> Now check your mail (also spam box) for a link to activate your password.</p>');
+                $('form#register').fadeIn();
             });
         } else {
             notify('Confirm password is not same as password','error',false);

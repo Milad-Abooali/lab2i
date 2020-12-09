@@ -31,12 +31,12 @@
         /**
          * Send Email
          * @param array $receivers
-         * @param int $theme
          * @param string $subject
          * @param string $message
+         * @param bool|string $theme
          * @return bool
          */
-        public function send($receivers, $subject, $message, $theme=0) {
+        public function send($receivers, $subject, $theme=false, $message=null) {
             foreach ($receivers as $receiver) {
                 $headers = "MIME-Version: 1.0" . "\r\n";
                 if ($theme) {
@@ -51,7 +51,6 @@
             }
             return true;
         }
-
 
         /**
          * Send Email

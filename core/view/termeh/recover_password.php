@@ -99,7 +99,7 @@ $( document ).ready(function() {
             if (obj.res) {
                 notify('Email Sent ...','success',false);
                 $('form#recover-pass').fadeOut();
-                $('form#recover-pass').html('<p class="small text-muted">Email sent,<br> Now check your mail (also spam box) for a link to rest your password.</p>');
+                $('form#recover-pass').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Email sent,<br> Now check your mail (also spam box) for a link to rest your password.</p>');
                 $('form#recover-pass').fadeIn();
             } else {
                  notify('User  not found!','error',false);
@@ -118,7 +118,7 @@ $( document ).ready(function() {
             if (obj.res) {
                 notify('New password has been set.','success',false);
                 $('form#reset-pass').fadeOut();
-                $('form#reset-pass').html('<p class="small text-muted">Your Password changed,<br> Now you can login with your new password. <a href="login">Try Login</a></p>');
+                $('form#reset-pass').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Your Password changed,<br> Now you can login with your new password. <a href="login">Try Login</a></p>');
                 $('form#reset-pass').fadeIn();
                 setTimeout(
                     function()

@@ -40,6 +40,7 @@
  * Static files - CDN
  */
     define("SITE", [
+      "name"      => "Bid 2 Enjoy",
       "lang"      => "EN",
       "them"      => "termeh",
       "email"      => "info@bid2enjoy.com"

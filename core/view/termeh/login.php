@@ -48,7 +48,6 @@
                                 </div>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" required>
                             </div>
-
                             <div class="form-group ">
                                 <button type="submit" class="btn btn-success btn-lg col-8 login-button">Login</button>
                                 <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>

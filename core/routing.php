@@ -18,12 +18,6 @@
     /** @var array $page */
     switch ($page['vid']) {
 
-        case "blog":
-            $page['vid']    = 'blog Home';
-            $page['upon']   = 'blog/home';
-            $page['inc']    = 'home';
-            $page['view']   = "blog/home";
-            break;
         case "login":
             $page['vid']    = 'login';
             $page['view']   = "login";
