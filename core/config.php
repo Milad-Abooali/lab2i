@@ -41,7 +41,8 @@
  */
     define("SITE", [
       "lang"      => "EN",
-      "them"      => "termeh"
+      "them"      => "termeh",
+      "email"      => "info@bid2enjoy.com"
     ]);
 
 /**

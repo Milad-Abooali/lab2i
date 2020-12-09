@@ -52,6 +52,8 @@ class SimpleUser
         if ($insert_id) {
             $hash_reg = $insert_id.md5($insert_id);
             $link_reg = APP_URL.'register&i='.$insert_data['email'].'&h='.$hash_reg;
+            $mail = new mEmail();
+            $mail->send();
             /**
              * @todo Email Class - Account Activation.
              */
