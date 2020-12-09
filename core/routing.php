@@ -36,6 +36,12 @@
             $page['inc']    = "register";
             $page['cache']  = false;
             break;
+        case "v-signup":
+            $page['vid']    = 'v-signup';
+            $page['view']   = "v-signup";
+            $page['inc']    = "v-signup";
+            $page['cache']  = false;
+            break;
         case null:
         case "home":    // Site Index/root
         case "":    // Site Index/root

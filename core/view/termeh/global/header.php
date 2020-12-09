@@ -1,31 +1,30 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Bid 2 Enjoy</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <section>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?= APP_URL ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="<?= APP_URL ?>requests">Requests (Auctions)</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendors</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Hotels</a>
+                    <a class="dropdown-item" href="#">blabla</a>
+                    <a class="dropdown-item" href="#">Foo Bar</a>
                 </div>
             </li>
         </ul>
+        </section>
         <?php if (!in_array($this->page['vid'],array('login','register'))) { ?>
-        <section>
+        <section class="ml-auto">
             <?php if($_SESSION['M']['user'] ?? false) { ?>
             <button class="btn btn-danger my-2 my-sm-0 doA-logout">Logout</button>
             <?php  } else { ?>
