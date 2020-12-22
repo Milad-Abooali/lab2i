@@ -38,6 +38,7 @@
     <!--- Head -->
     <?= $this->HEADER; ?>
     <?= $this->data['PAGE']['head'] ?>
+
 </head>
 <!--- Page Body -->
 <body><div id="app-body" data-g="user" data-token="<uponE>$_SESSION['M']['TOKEN']</uponE>">

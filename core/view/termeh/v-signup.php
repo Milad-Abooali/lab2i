@@ -2,7 +2,7 @@
 
     $this->data['PAGE']['demo']=0;
 
-    $this->data['PAGE']['title'] = 'Register';
+    $this->data['PAGE']['title'] = 'Vendor SignUp';
     $this->data['PAGE']['keywords'] = 'test';
     $this->data['PAGE']['description'] = 'test';
     $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -29,19 +29,19 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Register</div>
+                    <div class="card-header">SignUp</div>
                     <div class="card-body">
                         <?php if ($this->data['activate']) { ?>
                             <?php if($this->data['active']) { ?>
                                 <div class="alert alert-success">Your Account has been active, Now you can enjoy it...
                                 <br>
-                                <a href="login">Try Login</a>
+                                <a href="v-signin">Try SignIn</a>
                                 </div>
                             <?php } else { ?>
                                 <div class="alert alert-danger">Your Account has been not active, this link is expired/wrong!</div>
                             <?php } ?>
                         <?php } else { ?>
-                        <form id="register" class="form-horizontal" method="post" action="user/register">
+                        <form id="signup" class="form-horizontal" method="post" action="vendor/signup">
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -79,17 +79,18 @@
                                 </div>
                                 <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" required>
                             </div>
-                            <div class="form-group ">
-                                <button type="submit" class="btn btn-primary btn-lg col-8 login-button">Register</button>
-                                <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
-                                <a class="btn btn-success my-2 my-sm-0" href="login">Login</a>
+                            <h6 class="">Location</h6>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" name="lat" id="lat" value="41.0566498">
+                                <input type="hidden" class="form-control" name="lng" id="lng" value="28.9877828">
+                                <div id="map" style="width:100%;height:400px;"></div>
+                                <textarea class="form-control" name="address" id="address" readonly></textarea><br>
+                                <textarea class="form-control" name="address2" id="address2" placeholder="Address 2"></textarea>
                             </div>
-                            <hr>
-                            <div class="form-group small text-center">
-                                <p>
-                                  You can signup as <span class="text-danger">vendor</span> to provide service and products, also create your own shop:
-                                </p>
-                                <a class="btn btn-sm btn-outline-info mx-auto" href="v-signup">SignUp As Vendor</a>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info btn-lg col-8 login-button">SignUp</button>
+                                <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
+                                <a class="btn btn-sm btn-outline-info mx-auto" href="v-signin">SignIn</a>
                             </div>
                         </form>
                         <?php } ?>
@@ -102,6 +103,70 @@
 
 </main>
 
+    <script>
+        function myMap() {
+            var mapProp= {
+                center:new google.maps.LatLng(41.0566498,28,28.9877828),
+                zoom:5,
+            };
+
+            var map = new google.maps.Map(document.getElementById("map"),mapProp);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChzvw9Iuai1856CHREmNvHAIwnHSHo5iM&callback=myMap"></script>
+
+
+<script>
+
+    var gurl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=41.0566498,28.9877828&key=AIzaSyChzvw9Iuai1856CHREmNvHAIwnHSHo5iM&callback';
+    $.getJSON( gurl, function( data ) {
+        let address = data.results[0].formatted_address;
+        console.log(address);
+        $('#address').val(address);
+    });
+
+    // function initMap() {
+    //     const initialPosition = { lat: 59.325, lng: 18.069 };
+    //     const map = new google.maps.Map(document.getElementById('map'), {
+    //         center: initialPosition,
+    //         zoom: 15
+    //     });
+    //     const marker = new google.maps.Marker({ map, position: initialPosition });
+    //     // Get user's location
+    //     if ('geolocation' in navigator) {
+    //         navigator.geolocation.getCurrentPosition(
+    //             position => {
+    //                 console.log(`Lat: ${position.coords.latitude} Lng: ${position.coords.longitude}`);
+    //                 $('#lat').val(position.coords.latitude);
+    //                 $('#lon').val(position.coords.longitude);
+    //                 // var gurl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords.latitude+','+position.coords.longitude+'&key=AIzaSyChzvw9Iuai1856CHREmNvHAIwnHSHo5iM&callback';
+    //                 // $.getJSON( gurl, function( data ) {
+    //                 //     let resp = JSON.parse(data);
+    //                 //     console.log(resp);
+    //                 // });
+    //
+    //
+    //                 // Set marker's position.
+    //                 marker.setPosition({
+    //                     lat: position.coords.latitude,
+    //                     lng: position.coords.longitude
+    //                 });
+    //                 // Center map to user's position.
+    //                 map.panTo({
+    //                     lat: position.coords.latitude,
+    //                     lng: position.coords.longitude
+    //                 });
+    //             },
+    //             err => alert(`Error (${err.code}): ${getPositionErrorMessage(err.code)}`)
+    //         );
+    //     } else {
+    //         alert('Geolocation is not supported by your browser.');
+    //     }
+    // }
+
+</script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChzvw9Iuai1856CHREmNvHAIwnHSHo5iM&callback=initMap&libraries=places"></script>-->
+
 <script>
     //  Confirm password check
     $('#password, #confirm').on('keyup', function () {
@@ -112,19 +177,17 @@
             $('#confirm').addClass('border border-danger');
     });
 
-    //  Register
-    $('body').on('submit','form#register', function(event){
+    //  signUp
+    $('body').on('submit','form#signup', function(event){
         event.preventDefault();
         if (($('#password').val() == $('#confirm').val()) && ($('#password').val().length > 5) ) {
-            const id = $(this).attr('id');
-            const reload = $(this).data('reload');
             const data = $(this).serialize();
             const classA = $(this).attr('action');
             ajaxCall (classA, data,function(response) {
                 let obj = JSON.parse(response);
-                $('form#register').fadeOut();
-                $('form#register').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Account created,<br> Now check your mail (also spam box) for a link to activate your password.</p>');
-                $('form#register').fadeIn();
+                $('form#signup').fadeOut();
+                $('form#signup').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Account created,<br> Now check your mail (also spam box) for a link to activate your password.</p>');
+                $('form#signup').fadeIn();
             });
         } else {
             notify('Confirm password is not same as password','error',false);

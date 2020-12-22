@@ -3,7 +3,7 @@
 
     $this->data['PAGE']['demo']=0;
 
-    $this->data['PAGE']['title'] = 'Login';
+    $this->data['PAGE']['title'] = 'Recover Vendor Password';
     $this->data['PAGE']['keywords'] = 'test';
     $this->data['PAGE']['description'] = 'test';
     $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <?php if($this->data['rec_pass'] ?? false) { ?>
                             <?php if($this->data['reset_pass'] ?? false) { ?>
-                            <form id="reset-pass" class="form-horizontal" method="post" action="user/restPass">
+                            <form id="reset-pass" class="form-horizontal" method="post" action="vendor/restPass">
                                 <input type="hidden" name="i" value="<?= $_GET['i']; ?>" required>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -49,14 +49,14 @@
                                     <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" required>
                                 </div>
                                 <div class="form-group ">
-                                    <button type="submit" class="btn btn-primary btn-block login-button">Change Password</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Change Password</button>
                                 </div>
                             </form>
                             <?php } else { ?>
                             <p class="alert alert-danger">This link was expired/wrong.</p>
                             <?php } ?>
                         <?php } else { ?>
-                        <form id="recover-pass" class="form-horizontal" method="post" action="user/recoverPass">
+                        <form id="recover-pass" class="form-horizontal" method="post" action="vendor/recoverPass">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
@@ -64,7 +64,7 @@
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" required>
                             </div>
                             <div class="form-group ">
-                                <button type="submit" class="btn btn-warning btn-block">Recover Password</button>
+                                <button type="submit" class="btn btn-warning btn-block login-button">Recover Password</button>
                             </div>
                         </form>
                         <?php } ?>

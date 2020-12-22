@@ -27,13 +27,24 @@
             $page['vid']    = 'recoverPassword';
             $page['view']   = "recover_password";
             $page['inc']    = "recover_password";
-
             $page['cache']  = false;
             break;
         case "register":
             $page['vid']    = 'register';
             $page['view']   = "register";
             $page['inc']    = "register";
+            $page['cache']  = false;
+            break;
+        case "v-signin":
+            $page['vid']    = 'v-signin';
+            $page['view']   = "v-signin";
+            $page['inc']    = "v-signin";
+            $page['cache']  = false;
+            break;
+        case "v-recoverPassword":
+            $page['vid']    = 'v-recoverPassword';
+            $page['view']   = "v-recover_password";
+            $page['inc']    = "v-recover_password";
             $page['cache']  = false;
             break;
         case "v-signup":
