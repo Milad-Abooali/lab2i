@@ -25,19 +25,19 @@
     }
 
     // Logout
-    function logout() {
+    function signout() {
         $output = new stdClass();
 
         $output->e = false;
 
         $vendor = new SimpleVendor();
-        $output->res = $vendor->logout();
+        $output->res = $vendor->signout();
 
         echo json_encode($output);
     }
 
     // Login
-    function login() {
+    function signin() {
         $output = new stdClass();
 
         $output->e = !(($_POST['email']) ?? false);
@@ -45,7 +45,7 @@
 
         if ($output->e == false) {
             $vendor = new SimpleVendor();
-            $output->res = $vendor->login($_POST['email'],$_POST['password']);
+            $output->res = $vendor->signin($_POST['email'],$_POST['password']);
         }
         echo json_encode($output);
     }

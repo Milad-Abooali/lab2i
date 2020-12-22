@@ -63,7 +63,7 @@ class SimpleVendor
                 )
             );
             $subject = 'SignUp on '.SITE['name'];
-            $mail->send($receivers, $subject, 'register-activate');
+            $mail->send($receivers, $subject, 'signup-activate');
             return true;
         }
         return false;
@@ -91,7 +91,7 @@ class SimpleVendor
                     )
                 );
                 $subject = 'Welcome to '.SITE['name'];
-                $mail->send($receivers, $subject, 'register-welcome');
+                $mail->send($receivers, $subject, 'signup-welcome');
                 return true;
             }
         } else {
@@ -144,6 +144,8 @@ class SimpleVendor
      * @return bool
      */
     public function signin($email, $password) {
+        $_SESSION['M']['vendor'] = false;
+        $_SESSION['M']['user'] = false;
         if ($this->getVendor($email)) {
             if ($this->vendor['status']==0) {
                 $_SESSION['M']['vendor'] = false;
@@ -166,8 +168,9 @@ class SimpleVendor
      * Logout
      * @return bool
      */
-    public function logout() {
+    public function signout() {
         $_SESSION['M']['vendor'] = false;
+        $_SESSION['M']['user'] = false;
 //        session_unset();
         return true;
     }

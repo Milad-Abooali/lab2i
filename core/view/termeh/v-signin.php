@@ -72,6 +72,22 @@
 
 $( document ).ready(function() {
 
+
+    //  SingIn
+    $('body').on('submit','form#singin', function(event){
+        event.preventDefault();
+        const id = $(this).attr('id');
+        const reload = $(this).data('reload');
+        const data = $(this).serialize();
+        const classA = $(this).attr('action');
+        ajaxCall (classA, data,function(response) {
+            let obj = JSON.parse(response);
+            (obj.res) || notify('Email or Password is not true!','error',false);
+            (obj.res) && notify('Welcome back ....','success',false);
+            (obj.res) && $(location).attr('href', 'home')
+        });
+    });
+
 });
 
 </script>

@@ -26,8 +26,14 @@
         <?php if (!in_array($this->page['vid'],array('login','register'))) { ?>
         <section class="ml-auto">
             <?php if($_SESSION['M']['user'] ?? false) { ?>
-            <button class="btn btn-danger my-2 my-sm-0 doA-logout">Logout</button>
-            <?php  } else { ?>
+                <span class="text-muted small">Welcome dear <span class="text-warning"><?= $_SESSION['M']['user']['f_name'] ?></span></span>
+                <a class="btn btn-sm btn-outline-success my-2 my-sm-0 mx-2" href="dashboard" data-toggle="tooltip" data-placement="left" title="Account Panel">Dashboard</a>
+                <button class="btn btn-sm btn-danger my-2 my-sm-0 doA-logout">Logout</button>
+            <?php  } elseif($_SESSION['M']['vendor'] ?? false) {  ?>
+                <span class="text-muted small">Welcome dear <span class="text-warning"><?= $_SESSION['M']['vendor']['f_name'] ?></span></span>
+                <a class="btn btn-sm btn-outline-info my-2 my-sm-0 mx-2" href="dashboard" data-toggle="tooltip" data-placement="left" title="Vendor Panel">Dashboard</a>
+                <button class="btn btn-sm btn-danger my-2 my-sm-0 doA-logout">Logout</button>
+            <?php  } else {  ?>
             <form id="login" action="user/login" class="form-inline my-2 my-lg-0 small">
                 <input class="form-control input-sm mr-sm-2" type="email" name="email"placeholder="Email" required>
                 <input class="form-control input-sm mr-sm-2" type="password" name="password"placeholder="Password" required>
@@ -35,6 +41,8 @@
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
                  <small class="mx-3 text-light border border-secondary rounded-circle p-1">OR</small>
                 <a class="btn btn-primary my-2 my-sm-0" href="register">Register</a>
+                <span class="px-2 text-muted">|</span>
+                <a class="btn btn-xs btn-outline-info my-2 my-sm-0 py-2" href="v-signin">Vendor Panel</a>
             </form>
             <?php  } ?>
         </section>

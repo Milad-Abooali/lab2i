@@ -25,7 +25,6 @@ var appCDN = $("meta[name=app-cdn]").attr('content');
 var appIMG = $("meta[name=app-img]").attr('content');
 var appJS = $("meta[name=app-js]").attr('content');
 
-
 // Ajax Call- Core
 function ajaxCall (classAction, data, callback) {
     $.ajax({
@@ -42,6 +41,11 @@ function ajaxCall (classAction, data, callback) {
     });
     afterAjax();
 }
+
+// Tooltip Bootstrap
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 
 // Ajax logs reload - Core
 function afterAjax () {

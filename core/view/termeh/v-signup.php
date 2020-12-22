@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="lat" id="lat" value="41.0566498">
                                 <input type="hidden" class="form-control" name="lng" id="lng" value="28.9877828">
-                                <div id="map" style="width:100%;height:400px;"></div>
+                                <div id="map"></div>
                                 <textarea class="form-control" name="address" id="address" readonly></textarea><br>
                                 <textarea class="form-control" name="address2" id="address2" placeholder="Address 2"></textarea>
                             </div>

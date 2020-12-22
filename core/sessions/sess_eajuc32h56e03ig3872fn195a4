@@ -1,1 +1,1 @@
-M|a:2:{s:13:"LAST_ACTIVITY";i:1608617288;s:5:"TOKEN";s:6:"3a3a31";}
+M|a:4:{s:13:"LAST_ACTIVITY";i:1608627967;s:5:"TOKEN";s:6:"3a3a31";s:6:"vendor";a:10:{s:2:"id";s:1:"5";s:5:"email";s:10:"v@test.com";s:8:"password";s:60:"$2y$08$VE9XuYQtIfyTD0bU15vuBOUx80rvWt8bNZnvefQIgrj.Wu.Y1kSQC";s:6:"f_name";s:4:"Mila";s:6:"l_name";s:1:"A";s:5:"phone";s:8:"23894034";s:5:"extra";N;s:8:"map_data";s:21:"41.0566498,28.9877828";s:7:"address";s:65:"Meşrutiyet, Hrant Dink Sok. 64a, 34363 Şişli/İstanbul, Turkey";s:6:"status";s:1:"1";}s:4:"user";b:0;}

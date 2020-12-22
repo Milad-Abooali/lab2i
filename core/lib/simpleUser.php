@@ -142,6 +142,8 @@ class SimpleUser
      * @return bool
      */
     public function login($username, $password) {
+        $_SESSION['M']['vendor'] = false;
+        $_SESSION['M']['user'] = false;
         if ($this->getUser($username)) {
             if ($this->user['status']==0) {
                 $_SESSION['M']['user'] = false;
@@ -166,6 +168,7 @@ class SimpleUser
      */
     public function logout() {
         $_SESSION['M']['user'] = false;
+        $_SESSION['M']['vendor'] = false;
 //        session_unset();
         return true;
     }

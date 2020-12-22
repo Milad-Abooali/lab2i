@@ -18,6 +18,12 @@
     /** @var array $page */
     switch ($page['vid']) {
 
+        case "dashboard":
+            $page['vid']    = 'dashboard';
+            $page['view']   = "dashboard";
+            $page['inc']    = "dashboard";
+            $page['cache']  = false;
+            break;
         case "login":
             $page['vid']    = 'login';
             $page['view']   = "login";
@@ -38,7 +44,6 @@
         case "v-signin":
             $page['vid']    = 'v-signin';
             $page['view']   = "v-signin";
-            $page['inc']    = "v-signin";
             $page['cache']  = false;
             break;
         case "v-recoverPassword":
