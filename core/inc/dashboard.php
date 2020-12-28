@@ -5,22 +5,11 @@
  * Dashboard
  */
 
-    USE App\Core\iSQL;
+    USE App\Core\F;
+    USE App\Core\M;
 
-    // Check user type
-    $user = ($_SESSION['M']['user']) ?? false;
-    $vendor = ($_SESSION['M']['vendor']) ?? false;
-
-    $db = new iSQL(DB_INFO);
-
-    $db->ver();
-
-    if($user) {
-        $this->data['test'] = 1;
+    if(is_user) {
+        $this->data['account_type'] = 'User';
+    } else if (is_vendor) {
+        $this->data['account_type'] = 'Vendor';
     }
-
-    if ($vendor) {
-        $this->data['test'] = 1;
-
-    }
-

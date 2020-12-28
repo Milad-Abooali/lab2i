@@ -15,6 +15,11 @@
 
     if (!defined('START')) die('__ You just find me! 😹 . . . <a href="javascript:history.back()">Go Back</a>');
 
+    // Check user login
+    define('is_user',($_SESSION['M']['user']['id']) ?? false);
+    define('is_vendor',($_SESSION['M']['vendor']['id']) ?? false);
+    define('is_login',(is_user || is_vendor) ?? false);
+
     /** @var array $page */
     switch ($page['vid']) {
 
