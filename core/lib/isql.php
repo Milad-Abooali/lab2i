@@ -9,7 +9,7 @@
      * @author     Milad Abooali <m.abooali@hotmail.com>
      * @copyright  2012 - 2020 Codebox
      * @license    http://codebox.ir/license/1_0.txt  Codebox License 1.0
-     * @version    1.5.11
+     * @version    1.5.13
      */
 
     namespace App\Core;
@@ -74,8 +74,18 @@
             $this->sql[] = $sql;
             $sql_number = count($this->sql)-1;
             $result = mysqli_query($this->LINK, $sql) or false;
-            ($result!=false) ?: $this->error[$sql_number] =  "Error: ".mysqli_error($this->LINK);
-            if ($insert && $result) {$result = mysqli_insert_id($this->LINK);}
+            $error = 0;
+            $log = $sql;
+            if (!$result) {
+                $error = 1;
+                $log .= '<br><b style="color:deeppink">#</b> ' . mysqli_error($this->LINK);
+                $this->error[$sql_number] =  "Error: ".mysqli_error($this->LINK);
+            }
+            if ($insert && $result) {
+                $result = mysqli_insert_id($this->LINK);
+                $log .= ' <b style="color:deeppink">#</b> Inserted ID: <b style="color:blue">'.$result.'</b>';
+            }
+            M::aLog('database', $log, $error, 'sql');
             return ($this->error[$sql_number] ?? false) ? false : $result;
         }
 
