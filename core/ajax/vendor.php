@@ -97,11 +97,11 @@
             $output->e = ($lowercase ?? false) ? false : 'Password Lowercase';
             $output->e = ($number ?? false) ? false : 'Password Number';
             $output->e = ($specialChars ?? false) ? false : 'Password SpecialChars';
+            $extra = json_encode($_POST['address2']) ?? array();
             if ($output->e == false) {
                 $vendor = new SimpleVendor();
-
                 $map_data = $_POST['lat'].','.$_POST['lng'];
-                $output->res = $vendor->signup($_POST['email'],$_POST['password'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$map_data,$_POST['address']);
+                $output->res = $vendor->signup($_POST['email'],$_POST['password'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$map_data,$_POST['address'],$extra);
             }
         }
         echo json_encode($output);

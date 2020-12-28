@@ -53,7 +53,7 @@
     define("CSS", CDN."css/");
     define("IMG", CDN."img/");
     define("JS", CDN."js/");
-    define("ICO", CDN."ico/");
+    define("ICO", CDN."icon/");
 
 /**
  * Database information
