@@ -45,12 +45,18 @@ include_once $this->PATH."global/header.php";
                             <h4 class="text-right">My Profile</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="<?= $_SESSION['M']['user']['f_name'] ?>"></div>
-                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="surname" value="<?= $_SESSION['M']['user']['l_name'] ?>" ></div>
+                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" name="f_name" value="<?= $_SESSION['M']['user']['f_name'] ?>"></div>
+                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="surname" name="l_name" value="<?= $_SESSION['M']['user']['l_name'] ?>" ></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Email <small>(Username)</small></label><input type="text" class="form-control" placeholder="email" value="<?= $_SESSION['M']['user']['email'] ?>" readonly></div>
-                            <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="enter country" value=" "></div>
+                            <div class="col-md-12"><label class="labels">Email <small>(Username)</small></label><input type="email" class="form-control" placeholder="email" name="email" value="<?= $_SESSION['M']['user']['email'] ?>" readonly></div>
+                            <div class="col-md-6"><label class="labels">Country</label>
+                                <select class="form-control" placeholder="enter country" name="country" >
+                                    <option value="$_SESSION['M']['user']['extra']['country']">Singapore</option>
+
+                                    <?php include $this->PATH.'profile/request.php' ?>
+
+                            </div>
                             <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
                             <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" value=""></div>
                             <div class="col-md-6"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode" value=""></div>
