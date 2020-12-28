@@ -1,5 +1,7 @@
 <?php
 
+USE App\Core\F;
+USE App\Core\M;
 
 $this->data['PAGE']['demo']=0;
 
@@ -50,16 +52,20 @@ include_once $this->PATH."global/header.php";
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12"><label class="labels">Email <small>(Username)</small></label><input type="email" class="form-control" placeholder="email" name="email" value="<?= $_SESSION['M']['user']['email'] ?>" readonly></div>
-                            <div class="col-md-6"><label class="labels">Country</label>
-                                <select class="form-control" placeholder="enter country" name="country" >
-                                    <option value="$_SESSION['M']['user']['extra']['country']">Singapore</option>
-
-                                    <?php include $this->PATH.'profile/request.php' ?>
-
+                            <div class="col-md-6">
+                                <label class="labels">Country</label>
+                                <select class="selectpicker form-control" placeholder="select country" name="country" data-live-search="true">
+                                    <option value="" <?= ($_SESSION['M']['user']['extra']['country']) ?: 'selected'?> disabled>select country</option>
+                                    <?php foreach (M::countries() as $iso => $country) { ?>
+                                    <option value="<?= $iso ?>" <?= ($iso!=$_SESSION['M']['user']['extra']['country']) ?: 'selected'?>><?= $country ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                            <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" value=""></div>
-                            <div class="col-md-6"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode" value=""></div>
+                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="<?= $_SESSION['M']['user']['extra']['region'] ?>" placeholder="state"></div>
+                            <div class="col-md-12"><label class="labels">Address</label>
+                                <textarea class="form-control" placeholder="enter address"><?= $_SESSION['M']['user']['extra']['address'] ?></textarea>
+                            </div>
+                            <div class="col-md-6"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode" value="<?= $_SESSION['M']['user']['extra']['postcode'] ?>"></div>
                             <div class="col-md-6"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" value="<?= $_SESSION['M']['user']['phone'] ?>"></div>
                         </div>
                         <div class="row mt-3">
