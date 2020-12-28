@@ -1,6 +1,5 @@
 <?php
 
-USE App\Core\F;
 USE App\Core\M;
 
 $this->data['PAGE']['demo']=0;
@@ -16,7 +15,6 @@ $this->data['PAGE']['amphtml'] = NULL;
 $this->data['PAGE']['feed'] = NULL;
 
 $this->data['PAGE']['head'] = ' ';
-
 
 include_once $this->PATH."global/head.php";
 include_once $this->PATH."global/header.php";
@@ -55,18 +53,28 @@ include_once $this->PATH."global/header.php";
                             <div class="col-md-6">
                                 <label class="labels">Country</label>
                                 <select class="selectpicker form-control" placeholder="select country" name="country" data-live-search="true">
-                                    <option value="" <?= ($_SESSION['M']['user']['extra']['country']) ?: 'selected'?> disabled>select country</option>
+                                    <option value="" <?= ($_SESSION['M']['user']['country']) ?: 'selected'?> disabled>select country</option>
                                     <?php foreach (M::countries() as $iso => $country) { ?>
-                                    <option value="<?= $iso ?>" <?= ($iso!=$_SESSION['M']['user']['extra']['country']) ?: 'selected'?>><?= $country ?></option>
+                                    <option value="<?= $iso ?>" <?= ($iso!=$_SESSION['M']['user']['country']) ?: 'selected'?>><?= $country ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
-                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="<?= $_SESSION['M']['user']['extra']['region'] ?>" placeholder="state"></div>
+                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" name="region"  value="<?= $_SESSION['M']['user']['region'] ?>" placeholder="state"></div>
                             <div class="col-md-12"><label class="labels">Address</label>
-                                <textarea class="form-control" placeholder="enter address"><?= $_SESSION['M']['user']['extra']['address'] ?></textarea>
+                                <textarea class="form-control" placeholder="enter address" name="address"><?= $_SESSION['M']['user']['address'] ?></textarea>
                             </div>
-                            <div class="col-md-6"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode" value="<?= $_SESSION['M']['user']['extra']['postcode'] ?>"></div>
-                            <div class="col-md-6"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" value="<?= $_SESSION['M']['user']['phone'] ?>"></div>
+                            <div class="col-md-6"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode"  name="postcode" value="<?= $_SESSION['M']['user']['postcode'] ?>"></div>
+                            <div class="col-md-6"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" name="phone"  value="<?= $_SESSION['M']['user']['phone'] ?>"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <label class="labels">Gender</label>
+                            <select class="selectpicker form-control" placeholder="select gender" name="gender" data-live-search="true">
+                                <option value="" <?= ($_SESSION['M']['user']['gender']) ?: 'selected'?> disabled>select country</option>
+                                <option value="M" <?= ("M"!=$_SESSION['M']['user']['gender']) ?: 'selected'?>>Male</option>
+                                <option value="F" <?= ("F"!=$_SESSION['M']['user']['gender']) ?: 'selected'?>>Female</option>
+                                <option value="O" <?= ("O"!=$_SESSION['M']['user']['gender']) ?: 'selected'?>>Other</option>
+                            </select>
+
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12"><label class="labels">Job Title</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
