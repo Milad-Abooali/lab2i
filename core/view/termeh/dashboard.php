@@ -33,12 +33,16 @@ include_once $this->PATH."global/header.php";
                             <span> <?= $this->data['account_type'] ?> </span>
                         </div>
                         <hr>
-                        <a class="btn btn-link" href="dashboard"> My Profile </a> <br>
-                        <a class="btn btn-link" href="my-requests"> My Requests </a> <br>
-                        <a class="btn btn-link" href="my-transactions"> My Transactions </a> <br>
-                        <a class="btn btn-link" href="email-history"> System Emails </a> <br>
-                        <a class="btn btn-link" href="privacy"> Privacy & Security </a>
-                        <a class="btn btn-link" href="reset-password"> Change Account Password </a>
+                        <section class="links">
+                            <nav class="profil-menu">
+                                <a class="btn btn-link" href="dashboard"> My Profile </a>
+                                <a class="btn btn-link" href="my-requests"> My Requests </a>
+                                <a class="btn btn-link" href="my-transactions"> My Transactions </a>
+                                <a class="btn btn-link" href="email-history"> System Emails </a>
+                                <a class="btn btn-link" href="privacy"> Privacy & Security </a>
+                                <a class="btn btn-link" href="reset-password"> Change Account Password </a>
+                            </nav>
+                        </section>
                     </div>
                     <div class="col-md-5 border-right">
                         <form id="profile" class="form-horizontal" method="post" action="user/update">

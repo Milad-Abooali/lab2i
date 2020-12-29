@@ -23,6 +23,12 @@
     /** @var array $page */
     switch ($page['vid']) {
 
+        case "my-requests":
+            $page['vid']    = 'requests';
+            $page['view']   = "requests";
+            $page['inc']    = "requests";
+            $page['cache']  = false;
+            break;
         case "dashboard":
             $page['vid']    = 'dashboard';
             $page['view']   = "dashboard";

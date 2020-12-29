@@ -159,3 +159,32 @@ main {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
+/* Links */
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+.links a {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+}
+.links {
+    *zoom: 1;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left;
+}
+.links:before, .links:after {
+    content: "";
+    display: table;
+}
+.links:after {
+    clear: both;
+}
+.profil-menu a {
+    padding: 0 10px;
+    margin: 0 20px;
+    color: #797878;
+    text-shadow: none;
+    position: relative;
+}
