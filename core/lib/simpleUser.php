@@ -191,7 +191,10 @@ class SimpleUser
      * @return bool|int|string|null
      */
     public function update($id, $data) {
-        return $this->db->updateId('users', $id, $data);
+        $output =  $this->db->updateId('users', $id, $data);
+        $_SESSION['M']['user'] = $this->getId($id);
+        $_SESSION['M']['user']['extra'] = json_decode($_SESSION['M']['user']['extra']);
+        return $output;
     }
 
     public function recoverPass($username)

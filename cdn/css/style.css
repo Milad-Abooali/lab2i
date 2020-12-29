@@ -148,7 +148,12 @@ main {
 .labels {
     font-size: 11px
 }
-.add-experience:hover {
+.add-request {
+    cursor: pointer;
+    color: #BA68C8;
+    border: solid 1px #BA68C8
+}
+.add-request:hover {
     background: #BA68C8;
     color: #fff;
     cursor: pointer;

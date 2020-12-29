@@ -63,6 +63,22 @@
         echo json_encode($output);
     }
 
+    // Update
+    function update() {
+        $output = new stdClass();
+
+        $output->e = !(($_POST['id']) ?? false);
+
+        if ($output->e == false) {
+            $id = $_POST['id'];
+            unset($_POST['id']);
+            $_POST['interests'] = implode(',',$_POST['interests']);
+            $user = new SimpleUser();
+            $output->res = $user->update($id,$_POST);
+        }
+        echo json_encode($output);
+    }
+
     // Rest Password
     function restPass() {
         $output = new stdClass();
