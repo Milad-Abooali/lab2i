@@ -34,7 +34,7 @@ include_once $this->PATH."global/header.php";
                         </div>
                         <hr>
                         <section class="links">
-                            <nav class="profil-menu">
+                            <nav class="profile-menu">
                                 <a class="btn btn-link" href="dashboard"> My Profile </a>
                                 <a class="btn btn-link" href="my-requests"> My Requests </a>
                                 <a class="btn btn-link" href="my-transactions"> My Transactions </a>
@@ -127,14 +127,7 @@ include_once $this->PATH."global/header.php";
                         </form>
                     </div>
                     <div class="col-md-4">
-                        <div class="p-3 py-1">
-                            <div class="d-flex justify-content-between align-items-center experience">
-                                <span>Active Requests</span>
-                                <a class="btn btn-sm btn-request"  data-toggle="tooltip" href="add-request" data-placement="top" title="Add New Request"><i class="fa fa-plus"></i> Request</a>
-                            </div>
-                            <br>
-                            <?php include_once $this->PATH.'profile/request.php' ?>
-                        </div>
+                        <?php include_once $this->PATH.'widgets/request.php' ?>
                         <hr>
                         <div class="p-3 py-1">
                             <div class="d-flex justify-content-between align-items-center">
@@ -164,7 +157,7 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
 
             //  Update Profile
-            $('body').on('submit','form#profile', function(event){
+            $('body').on('submit','form#widgets', function(event){
                 event.preventDefault();
                 const id = $(this).attr('id');
                 const reload = $(this).data('reload');
