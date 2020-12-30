@@ -4,7 +4,7 @@ use App\Core\M;
 
 $this->data['PAGE']['demo']=0;
 
-$this->data['PAGE']['title'] = 'Dashboard';
+$this->data['PAGE']['title'] = 'My Requests';
 $this->data['PAGE']['keywords'] = 'test';
 $this->data['PAGE']['description'] = 'test';
 $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -130,7 +130,7 @@ include_once $this->PATH."global/header.php";
                         <div class="p-3 py-1">
                             <div class="d-flex justify-content-between align-items-center experience">
                                 <span>Active Requests</span>
-                                <a class="btn btn-sm btn-request"  data-toggle="tooltip" href="add-request" data-placement="top" title="Add New Request"><i class="fa fa-plus"></i> Request</a>
+                                <a class="btn btn-sm add-request"  data-toggle="tooltip" href="add-request" data-placement="top" title="Add New Request"><i class="fa fa-plus"></i> Request</a>
                             </div>
                             <br>
                             <?php include_once $this->PATH.'profile/request.php' ?>

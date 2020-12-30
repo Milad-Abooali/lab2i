@@ -27,7 +27,7 @@
         <section class="ml-auto">
             <?php if($_SESSION['M']['user'] ?? false) { ?>
                 <span class="text-muted small mr-2">Welcome dear <span class="text-warning"><?= $_SESSION['M']['user']['f_name'] ?></span></span>
-                <a class="btn btn-sm add-request"  data-toggle="tooltip" href="add-request" data-placement="bottom" title="Add New Request"><i class="fa fa-plus"></i> Request</a>
+                <a class="btn btn-sm btn-request"  data-toggle="tooltip" href="add-request" data-placement="bottom" title="Add New Request"><i class="fa fa-plus"></i> Request</a>
                 <a class="btn btn-sm btn-outline-success my-2 my-sm-0 mx-2" href="dashboard" data-toggle="tooltip" data-placement="bottom" title="Account Settings">Dashboard</a>
                 <button class="btn btn-sm btn-danger my-2 my-sm-0 doA-logout">Logout</button>
             <?php  } elseif($_SESSION['M']['vendor'] ?? false) {  ?>

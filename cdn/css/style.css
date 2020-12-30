@@ -148,12 +148,12 @@ main {
 .labels {
     font-size: 11px
 }
-.add-request {
+.btn-request {
     cursor: pointer;
     color: #BA68C8;
     border: solid 1px #BA68C8
 }
-.add-request:hover {
+.btn-request:hover {
     background: #BA68C8;
     color: #fff;
     cursor: pointer;

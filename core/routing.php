@@ -24,9 +24,9 @@
     switch ($page['vid']) {
 
         case "my-requests":
-            $page['vid']    = 'requests';
-            $page['view']   = "requests";
-            $page['inc']    = "requests";
+            $page['vid']    = 'my-requests';
+            $page['view']   = "my-requests";
+            $page['inc']    = "my-requests";
             $page['cache']  = false;
             break;
         case "dashboard":
