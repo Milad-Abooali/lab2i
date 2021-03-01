@@ -23,12 +23,33 @@
     /** @var array $page */
     switch ($page['vid']) {
 
+// Vendor
+        case "v-signin":
+            $page['vid']    = 'v-signin';
+            $page['view']   = "v-signin";
+            $page['cache']  = false;
+            break;
+        case "v-recoverPassword":
+            $page['vid']    = 'v-recoverPassword';
+            $page['view']   = "v-recover_password";
+            $page['inc']    = "v-recover_password";
+            $page['cache']  = false;
+            break;
+        case "v-signup":
+            $page['vid']    = 'v-signup';
+            $page['view']   = "v-signup";
+            $page['inc']    = "v-signup";
+            $page['cache']  = false;
+            break;
+        case "account":
+            $page['vid']    = 'account';
+            $page['view']   = "account";
+            $page['inc']    = "account";
+            $page['cache']  = false;
+            break;
 
 
         case "reset-password":
-            if (!is_login) $page['vid']='login';
-//            if (!is_login) continue 2;
-
             $page['vid']    = 'reset-assword';
             $page['view']   = "reset-password";
             $page['inc']    = "recover_password";
@@ -85,23 +106,6 @@
             $page['vid']    = 'register';
             $page['view']   = "register";
             $page['inc']    = "register";
-            $page['cache']  = false;
-            break;
-        case "v-signin":
-            $page['vid']    = 'v-signin';
-            $page['view']   = "v-signin";
-            $page['cache']  = false;
-            break;
-        case "v-recoverPassword":
-            $page['vid']    = 'v-recoverPassword';
-            $page['view']   = "v-recover_password";
-            $page['inc']    = "v-recover_password";
-            $page['cache']  = false;
-            break;
-        case "v-signup":
-            $page['vid']    = 'v-signup';
-            $page['view']   = "v-signup";
-            $page['inc']    = "v-signup";
             $page['cache']  = false;
             break;
         case null:

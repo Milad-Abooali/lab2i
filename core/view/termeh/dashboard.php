@@ -136,37 +136,37 @@ include_once $this->PATH."global/header.php";
                     <div id="v-menu">
                         <ul>
                             <li>
-                                <a href='#'>
+                                <a href='account'>
                                     <i class='fa fa-user-circle-o'></i>
                                     <div>Profile</div>
                                 </a>
                             </li>
                             <li class='current'>
-                                <a href='#'>
+                                <a href='dashboard'>
                                     <i class='fa fa-briefcase'></i>
                                     <div>Overview</div>
                                 </a>
                             </li>
                             <li>
-                                <a href='#'>
+                                <a href='my-shop'>
                                     <i class='fa fa-gears'></i>
                                     <div>My Shop</div>
                                 </a>
                             </li>
                             <li>
-                                <a href='#'>
-                                    <i class='fa fa-gears'></i>
-                                    <div>Settings</div>
+                                <a href='my-offers'>
+                                    <i class='fa fa-gavel'></i>
+                                    <div>Auctions</div>
                                 </a>
                             </li>
                             <li>
-                                <a href='#'>
+                                <a href='statistics'>
                                     <i class='fa fa-bar-chart'></i>
                                     <div>Statistics</div>
                                 </a>
                             </li>
                             <li>
-                                <a href='#'>
+                                <a href='reviews'>
                                     <i class='fa fa-wechat'></i>
                                     <div>Reviews</div>
                                 </a>
@@ -182,7 +182,8 @@ include_once $this->PATH."global/header.php";
                     </ul>
                 </div>
                 <div class="col-md-12 border-top pt-3 mt-3">
-                    page
+
+
 
                 </div>
             </div>
