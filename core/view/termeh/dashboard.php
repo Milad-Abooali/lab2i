@@ -26,23 +26,7 @@ include_once $this->PATH."global/header.php";
             <div class="container rounded bg-white mt-5 mb-5">
                 <div class="row">
                     <div class="col-md-3 border-right">
-                        <div class="d-flex flex-column align-items-center text-center px-3">
-                            <img class="rounded-circle mt-5" width="150px" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['M']['user']['email']) ?>?s=160">
-                            <span class="font-weight-bold"><?= $_SESSION['M']['user']['f_name'] ?> <?= $_SESSION['M']['user']['l_name'] ?></span>
-                            <span class="text-black-50"><?= $_SESSION['M']['user']['email'] ?></span>
-                            <span> <?= $this->data['account_type'] ?> </span>
-                        </div>
-                        <hr>
-                        <section class="links">
-                            <nav class="profile-menu">
-                                <a class="btn btn-link" href="dashboard"> My Profile </a>
-                                <a class="btn btn-link" href="my-requests"> My Requests </a>
-                                <a class="btn btn-link" href="my-transactions"> My Transactions </a>
-                                <a class="btn btn-link" href="email-history"> System Emails </a>
-                                <a class="btn btn-link" href="privacy"> Privacy & Security </a>
-                                <a class="btn btn-link" href="reset-password"> Change Account Password </a>
-                            </nav>
-                        </section>
+                        <?php include_once $this->PATH."widgets/profile-menu.php"; ?>
                     </div>
                     <div class="col-md-5 border-right">
                         <form id="profile" class="form-horizontal" method="post" action="user/update">
@@ -122,7 +106,11 @@ include_once $this->PATH."global/header.php";
                                     </div>
                                 </div>
                                 <input type="hidden" name="id" value="<?= $_SESSION['M']['user']['id'] ?? null ?>">
-                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
+
+                                <div class="my-4 alert form-alert">
+
+                                </div>
+                                <div class="mt-4 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
                             </div>
                         </form>
                     </div>
@@ -157,7 +145,7 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
 
             //  Update Profile
-            $('body').on('submit','form#widgets', function(event){
+            $('body').on('submit','form#profile', function(event){
                 event.preventDefault();
                 const id = $(this).attr('id');
                 const reload = $(this).data('reload');
@@ -165,10 +153,18 @@ include_once $this->PATH."global/header.php";
                 const classA = $(this).attr('action');
                 ajaxCall (classA, data,function(response) {
                     let obj = JSON.parse(response);
-
-                    // $('form#register').fadeOut();
-                    // $('form#register').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Account created,<br> Now check your mail (also spam box) for a link to activate your password.</p>');
-                    // $('form#register').fadeIn();
+                    let alertType,alertText;
+                    if (obj.e) {
+                        alertType = 'alert-danger';
+                        alertText = 'Error on saving..!';
+                    } else {
+                        alertType = 'alert-success';
+                        alertText = 'Profile updated.';
+                    }
+                    $('form#profile .form-alert').addClass(alertType).html(alertText).fadeIn();
+                    setTimeout(function() {
+                        $('form#profile .form-alert').fadeOut().removeClass(alertType);
+                    }, 5000);
 
                 });
 

@@ -24,3 +24,14 @@
         echo json_encode($output);
     }
 
+    // Email History
+    function emailLog() {
+        $output = new stdClass();
+        $output->e = !(($_POST['id']) ?? false);
+        $db = new iSQL(DB_INFO);
+        $res = $db->selectId('log_email',$_POST['id'],'subject, content');
+        $output->res['subject'] = $res['subject'];
+        $content = str_replace("\r",'',$res['content']);
+        $output->res['content'] = htmlspecialchars_decode(stripslashes($content));
+        echo json_encode($output);
+    }

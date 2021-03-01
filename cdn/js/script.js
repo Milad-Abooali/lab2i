@@ -25,6 +25,23 @@ var appCDN = $("meta[name=app-cdn]").attr('content');
 var appIMG = $("meta[name=app-img]").attr('content');
 var appJS = $("meta[name=app-js]").attr('content');
 
+// Modal Maker - Core
+function makeModal(title,body,size='md',footer=null,dissClose=false) {
+    $("#modalMain .modal-dialog").removeClass().addClass('modal-dialog modal-'+size);
+    $("#modalMain .modal-title").html('').html(title);
+    $("#modalMain .modal-body").html('').html(body);
+    $("#modalMain .modal-footer").html('<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>');
+    if (footer) $("#modalMain .modal-footer").html(footer);
+    if (dissClose) {
+        $("#modalMain").data('keyboard',false).data('backdrop','static')
+        $("#modalMain .close").hide();
+    } else {
+        $("#modalMain").data('keyboard',true).data('backdrop',true);
+        $("#modalMain .show").hide();
+    }
+    $("#modalMain").modal('show');
+}
+
 // Ajax Call- Core
 function ajaxCall (classAction, data, callback) {
     $.ajax({

@@ -32,7 +32,7 @@
             ?>
 
             <ul class="list-group shadow">
-                <?php if ($requests_card) foreach ($loop_data as $item) { ?>
+                <?php if ($this->data['requests_card']) foreach ($this->data['requests_card'] as $item) { ?>
                     <li class="list-group-item small">
                         <div class="media align-items-lg-center flex-column flex-lg-row p-1 ">
                             <div class="media-body order-2 order-lg-1">
@@ -56,9 +56,9 @@
                                     </h6>
                                 </div>
                                 <div class="btn-group col-md-12 pt-3">
-                                    <a type="button" class="btn btn-success">Show</a>
+                                    <a type="button" class="btn btn-success" href="request-<?= $item['id'] ?>">Show</a>
                                     <a type="button" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Expire Date"><small><?= $item['expire_date'] ?></small></a>
-                                    <a type="button" class="btn btn-danger">Close</a>
+                                    <button type="button" class="btn btn-danger doA-closeReq" data-id="?= $item['id'] ?>">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -68,5 +68,5 @@
 
         </div>
     </div>
-    <a class="btn btn-sm btn-block btn-request"> Go To My Requests </a>
+    <a class="btn btn-sm btn-block btn-request" href="my-requests"> Go To My Requests </a>
 </div>

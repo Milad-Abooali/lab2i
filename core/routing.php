@@ -23,6 +23,34 @@
     /** @var array $page */
     switch ($page['vid']) {
 
+
+        case "reset-password":
+            if (!is_login) $page['vid']='login';
+//            if (!is_login) continue 2;
+
+            $page['vid']    = 'reset-assword';
+            $page['view']   = "reset-password";
+            $page['inc']    = "recover_password";
+            $page['cache']  = false;
+            break;
+        case "email-history":
+            $page['vid']    = 'email-history';
+            $page['view']   = "email-history";
+            $page['inc']    = "email-history";
+            $page['cache']  = false;
+            break;
+        case "my-invoices":
+            $page['vid']    = 'my-invoices';
+            $page['view']   = "my-invoices";
+            $page['inc']    = "my-invoices";
+            $page['cache']  = false;
+            break;
+        case "my-transactions":
+            $page['vid']    = 'my-transactions';
+            $page['view']   = "my-transactions";
+            $page['inc']    = "my-transactions";
+            $page['cache']  = false;
+            break;
         case "my-requests":
             $page['vid']    = 'my-requests';
             $page['view']   = "my-requests";

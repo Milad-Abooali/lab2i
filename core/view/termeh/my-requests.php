@@ -26,28 +26,52 @@ include_once $this->PATH."global/header.php";
             <div class="container rounded bg-white mt-5 mb-5">
                 <div class="row">
                     <div class="col-md-3 border-right">
-                        <div class="d-flex flex-column align-items-center text-center px-3">
-                            <img class="rounded-circle mt-5" width="150px" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['M']['user']['email']) ?>?s=160">
-                            <span class="font-weight-bold"><?= $_SESSION['M']['user']['f_name'] ?> <?= $_SESSION['M']['user']['l_name'] ?></span>
-                            <span class="text-black-50"><?= $_SESSION['M']['user']['email'] ?></span>
-                            <span> <?= $this->data['account_type'] ?> </span>
-                        </div>
-                        <hr>
-                        <section class="links">
-                            <nav class="profile-menu">
-                                <a class="btn btn-link" href="dashboard"> My Profile </a>
-                                <a class="btn btn-link" href="my-requests"> My Requests </a>
-                                <a class="btn btn-link" href="my-transactions"> My Transactions </a>
-                                <a class="btn btn-link" href="email-history"> System Emails </a>
-                                <a class="btn btn-link" href="privacy"> Privacy & Security </a>
-                                <a class="btn btn-link" href="reset-password"> Change Account Password </a>
-                            </nav>
-                        </section>
+                        <?php include_once $this->PATH."widgets/profile-menu.php"; ?>
                     </div>
                     <div class="col-md-9">
-
-
-
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">My Requests</h4>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="text-left">
+                                You have <strong><?= $this->data['requests_count'] ?></strong> orders.
+                        </div>
+                        <div class="container">
+                            <ul class="list-inline row">
+                                <?php if ($this->data['requests']) foreach ($this->data['requests'] as $item) { ?>
+                                    <li class="col-md-6 small mb-3 px-2">
+                                        <div class="media align-items-lg-center border py-3 px-4">
+                                            <div class="media-body order-2 order-lg-1">
+                                                <div class="mb-4">
+                                                    <div class="float-right small text-muted" data-toggle="tooltip" data-placement="top" title="Request ID">
+                                                        #<?= $item['id'] ?>
+                                                    </div>
+                                                    <div class="float-left small text-muted" data-toggle="tooltip" data-placement="top" title="Views">
+                                                        <i class="fa fa-eye"></i> <?= $item['views'] ?>
+                                                    </div>
+                                                </div>
+                                                <h6 class="font-weight-bold my-2"><?= $item['title'] ?> <br>
+                                                    <small class="text-secondary"><?= $item['category'] ?></small>
+                                                </h6>
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h6 class="col-md-6 font-weight-bold my-2 border-right text-center">
+                                                        <small class="text-muted">Offers</small><br> <?= $item['offer_count'] ?>
+                                                    </h6>
+                                                    <h6 class="col-md-6 font-weight-bold my-2 text-center">
+                                                        <small class="text-muted">Best Price</small><br> $ <?= $item['offers_best'] ?>
+                                                    </h6>
+                                                </div>
+                                                <div class="btn-group col-md-12 pt-3">
+                                                    <a type="button" class="btn btn-success" href="request-<?= $item['id'] ?>">Show</a>
+                                                    <a type="button" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Expire Date"><small><?= $item['expire_date'] ?></small></a>
+                                                    <button type="button" class="btn btn-danger doA-closeReq" data-id="?= $item['id'] ?>">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,23 +83,6 @@ include_once $this->PATH."global/header.php";
 
         $( document ).ready(function() {
 
-            //  Update Profile
-            $('body').on('submit','form#profile', function(event){
-                event.preventDefault();
-                const id = $(this).attr('id');
-                const reload = $(this).data('reload');
-                const data = $(this).serialize();
-                const classA = $(this).attr('action');
-                ajaxCall (classA, data,function(response) {
-                    let obj = JSON.parse(response);
-
-                    // $('form#register').fadeOut();
-                    // $('form#register').html('<p class="small text-muted"><i class="text-success fa fa-check"></i> Account created,<br> Now check your mail (also spam box) for a link to activate your password.</p>');
-                    // $('form#register').fadeIn();
-
-                });
-
-            });
 
         });
 
