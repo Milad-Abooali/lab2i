@@ -78,13 +78,14 @@
          * @return bool
          */
         private function _log($subject, $content, $receiver) {
+            $content = base64_encode($content);
             $content_escaped = $this->db->escape($content);
             $data['subject'] = $this->db->escape($subject);
             $data['content'] = $content_escaped;
             $data['user_id'] = $receiver['id'];
             $data['email']   = $receiver['email'];
-            $this->db->insert('log_email', $data);
-            return true;
+            $log_id = $this->db->insert('log_email', $data);
+            return $log_id;
         }
 
     }

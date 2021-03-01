@@ -43,6 +43,7 @@
         case "privacy":
             $page['vid']    = 'privacy';
             $page['view']   = "privacy";
+            $page['inc']   = "privacy";
             $page['cache']  = false;
             break;
         case "my-invoices":
