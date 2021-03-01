@@ -24,6 +24,7 @@
     switch ($page['vid']) {
 
 
+
         case "reset-password":
             if (!is_login) $page['vid']='login';
 //            if (!is_login) continue 2;
@@ -37,6 +38,11 @@
             $page['vid']    = 'email-history';
             $page['view']   = "email-history";
             $page['inc']    = "email-history";
+            $page['cache']  = false;
+            break;
+        case "privacy":
+            $page['vid']    = 'privacy';
+            $page['view']   = "privacy";
             $page['cache']  = false;
             break;
         case "my-invoices":
