@@ -84,8 +84,7 @@
             $data['content'] = $content_escaped;
             $data['user_id'] = $receiver['id'];
             $data['email']   = $receiver['email'];
-            $log_id = $this->db->insert('log_email', $data);
-            return $log_id;
+            return $this->db->insert('log_email', $data);
         }
 
     }

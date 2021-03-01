@@ -21,7 +21,7 @@ include_once $this->PATH."global/header.php";
 ?>
 
     <main role="main" class="container">
-        <?php if (is_user): ?>
+        <?php if (is_user){ ?>
 
             <div class="container rounded bg-white mt-5 mb-5">
                 <div class="row">
@@ -127,16 +127,74 @@ include_once $this->PATH."global/header.php";
                     </div>
                 </div>
             </div>
-        <?php elseif (is_vendor): ?>
-        Vendor
-        <?php else: ?>
+        <?php } elseif (is_vendor){ ?>
+            <link href="<?= CSS ?>v-menu.css" rel="stylesheet" />
+
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="v-menu">
+                        <ul>
+                            <li>
+                                <a href='#'>
+                                    <i class='fa fa-user-circle-o'></i>
+                                    <div>Profile</div>
+                                </a>
+                            </li>
+                            <li class='current'>
+                                <a href='#'>
+                                    <i class='fa fa-briefcase'></i>
+                                    <div>Overview</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href='#'>
+                                    <i class='fa fa-gears'></i>
+                                    <div>My Shop</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href='#'>
+                                    <i class='fa fa-gears'></i>
+                                    <div>Settings</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href='#'>
+                                    <i class='fa fa-bar-chart'></i>
+                                    <div>Statistics</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href='#'>
+                                    <i class='fa fa-wechat'></i>
+                                    <div>Reviews</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 small">
+                    <ul class="list-group">
+                        <li class="list-group-item">Active Offers <span class="float-right">23</span></li>
+                        <li class="list-group-item">Pending Orders <span class="float-right">4</span></li>
+                        <li class="list-group-item">Active Products <span class="float-right">15</span></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 border-top pt-3 mt-3">
+                    page
+
+                </div>
+            </div>
+        </div>
+        <?php } else { ?>
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3">
                     Please Login ...
                 </div>
         </div>
-        <?php endif; ?>
+        <?php } ?>
 
     </main>
 
