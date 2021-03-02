@@ -44,7 +44,7 @@ include_once $this->PATH."global/header.php";
                             </li>
                             <li class='current'>
                                 <a href='my-shop'>
-                                    <i class='fa fa-gears'></i>
+                                    <i class='fa  fa-shopping-bag'></i>
                                     <div>My Shop</div>
                                 </a>
                             </li>
@@ -56,8 +56,8 @@ include_once $this->PATH."global/header.php";
                             </li>
                             <li>
                                 <a href='statistics'>
-                                    <i class='fa fa-bar-chart'></i>
-                                    <div>Statistics</div>
+                                    <i class='fa fa-bank'></i>
+                                    <div>Financial</div>
                                 </a>
                             </li>
                             <li>
@@ -79,50 +79,57 @@ include_once $this->PATH."global/header.php";
                 <div class="col-md-12 border-top pt-3 mt-3">
 
                     <div class="row">
-                        <link href="<?= CSS ?>s-menu.css" rel="stylesheet" />
-                        <div id="s-menu" class="col-md-3 border-right">
-                            <div class="tabbable tabs-left">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-                                    <li><a href="#about" data-toggle="tab">About</a></li>
-                                    <li><a href="#services" data-toggle="tab">Services</a></li>
-                                    <li><a href="#contact" data-toggle="tab">Contact</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="home">
-                                        <div class="">
-                                            <h1>Home Tab</h1>
-                                            <p>These lists are meant to identify articles which deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="about">
-                                        <div class="">
-                                            <h1>About Tab</h1>
-                                            <p>because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
-                                        </div>
+                        <div class=" col-md-3  border-right pr-2">
+                            <ul id="tabsJustified" class="nav nav-pills">
+                                <li class="nav-item w-100"><a href="" data-target="#Orders" data-toggle="tab" class="nav-link small">Orders</a></li>
+                                <li class="nav-item w-100"><a href="" data-target="#Products" data-toggle="tab" class="nav-link small">Products</a></li>
+                                <li class="nav-item w-100"><a href="" data-target="#Style" data-toggle="tab" class="nav-link small">Shop Style</a></li>
+                                <li class="nav-item w-100"><a href="" data-target="#Settings" data-toggle="tab" class="nav-link small active">Shop Settings</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content col-md-5 px-5">
+                            <div id="Orders" class="tab-pane fade">
+                                Orders
+                            </div>
+                            <div id="Products" class="tab-pane fade">
+                                Products ...
+                            </div>
+                            <div id="Style" class="tab-pane fade">
+                                Style ...
+                            </div>
+                            <div id="Settings" class="tab-pane active fade show">
+
+                                <h5>Shop Settings</h5>
+
+                                <?php if ($this->data['myShop']) { ?>
+                                <form id="shopSettings" class="form-horizontal" method="post" action="vendor/settings">
+
+                                    <div class="col-md-12">
+                                        <label class="labels">Title</label>
+                                        <input type="text" class="form-control" placeholder="Title" name="title" value="<?= $this->data['myShop']['title'] ?>">
+
+                                        <label class="labels">Slang</label>
+                                        <input type="text" class="form-control" placeholder="Slang" name="slang" value="<?= $this->data['myShop']['slang'] ?>">
+
+                                        <label class="labels">Status</label>
+                                        <select class="selectpicker form-control" placeholder="select annual income" name="status" data-live-search="false" tabindex="-98">
+                                            <option value="1">Active</option>
+                                            <option value="0">Deactive</option>
+                                        </select>
+
                                     </div>
 
-                                    <div class="tab-pane" id="services">
-                                        <div class="">
-                                            <h1>Services Tab</h1>
-                                            <p>meant to identify articles which deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
-                                        </div>
+                                    <div class="mt-4 text-center">
+                                        <button class="btn btn-info" type="submit">Update Settings</button>
                                     </div>
-
-                                    <div class="tab-pane" id="contact">
-                                        <div class="">
-                                            <h1>Contact Tab</h1>
-                                            <p>deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
+                                <?php } else { ?>
+                                    <button class="btn btn-primary">Creat Shop</button>
+                                <?php } ?>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            content
-
-                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@ include_once $this->PATH."global/header.php";
                             </li>
                             <li>
                                 <a href='my-shop'>
-                                    <i class='fa fa-gears'></i>
+                                    <i class='fa  fa-shopping-bag'></i>
                                     <div>My Shop</div>
                                 </a>
                             </li>
@@ -56,8 +56,8 @@ include_once $this->PATH."global/header.php";
                             </li>
                             <li>
                                 <a href='statistics'>
-                                    <i class='fa fa-bar-chart'></i>
-                                    <div>Statistics</div>
+                                    <i class='fa fa-bank'></i>
+                                    <div>Financial</div>
                                 </a>
                             </li>
                             <li>
