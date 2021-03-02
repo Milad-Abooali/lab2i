@@ -81,7 +81,7 @@ include_once $this->PATH."global/header.php";
                     <div class="row">
                         <div class="col-md-6 border-right">
                             <h5>Basic Information</h5>
-                            <form id="signup" class="form-horizontal" method="post" action="vendor/signup">
+                            <form id="update" class="form-horizontal" method="post" action="vendor/update">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card" aria-hidden="true"></i></span>
@@ -108,17 +108,41 @@ include_once $this->PATH."global/header.php";
                                 </div>
                                 <h6 class="">Location</h6>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="address2" id="address2" placeholder="Address 2"><?= $_SESSION['M']['vendor']['address'] ?></textarea>
+                                    <textarea class="form-control" name="address" id="address" placeholder="Address"><?= $_SESSION['M']['vendor']['address'] ?></textarea>
                                 </div>
                                 <div class="form-group text-center">
+                                    <input type="hidden"  name="id" value="<?= $_SESSION['M']['vendor']['id'] ?>"  required>
+
                                     <button type="submit" class="btn btn-info col-4">Save</button>
                                 </div>
                             </form>
 
                         </div>
                         <div class="col-md-6">
+                        <?php if($_SESSION['M']['vendor']['status']==2){ ?>
+                            <p class="text-center">
+                                <i class="fa text-success fa-certificate fa-3x"></i>
+                                <br>
+                                Your Account is verified.
+                            </p>
+                        <?php } else { ?>
+                            <p class="text-center">
+                                <i class="fa text-muted fa-certificate fa-3x"></i>
+                                <br>
+                                Your Account need to verify!
+                            </p>
+                        <?php } ?>
+                            <hr>
                             <h5>Verify your account</h5>
-                            upload documents & ....
+                            <p>
+                            Please Send these documentation to <kbd class="text-light">verify@bid2enjoy.com</kbd :
+                            </p>
+                            <ul>
+                                <li>Passport</li>
+                                <li>Anything </li>
+                                <li>else </li>
+                            </ul>
+
                         </div>
                     </div>
                 </div>
@@ -135,38 +159,22 @@ include_once $this->PATH."global/header.php";
 
     </main>
 
+
     <script>
 
-        $( document ).ready(function() {
-
-            //  Update Profile
-            $('body').on('submit','form#profile', function(event){
-                event.preventDefault();
-                const id = $(this).attr('id');
-                const reload = $(this).data('reload');
-                const data = $(this).serialize();
-                const classA = $(this).attr('action');
-                ajaxCall (classA, data,function(response) {
-                    let obj = JSON.parse(response);
-                    let alertType,alertText;
-                    if (obj.e) {
-                        alertType = 'alert-danger';
-                        alertText = 'Error on saving..!';
-                    } else {
-                        alertType = 'alert-success';
-                        alertText = 'Profile updated.';
-                    }
-                    $('form#profile .form-alert').addClass(alertType).html(alertText).fadeIn();
-                    setTimeout(function() {
-                        $('form#profile .form-alert').fadeOut().removeClass(alertType);
-                    }, 5000);
-
-                });
-
+        //  update
+        $('body').on('submit','form#update', function(event){
+            event.preventDefault();
+            const data = $(this).serialize();
+            const classA = $(this).attr('action');
+            ajaxCall (classA, data,function(response) {
+                let obj = JSON.parse(response);
+                $('form#update').append('<p class="alert alert-success noticForm"><i class="text-success fa fa-check"></i> Account updated</p>');
+                setTimeout(function(){
+                    $(".noticForm").fadeOut();
+                }, 1500);
             });
-
         });
-
     </script>
 
 <?php include_once $this->PATH."global/footer.php"; ?>

@@ -97,11 +97,31 @@
             $output->e = ($lowercase ?? false) ? false : 'Password Lowercase';
             $output->e = ($number ?? false) ? false : 'Password Number';
             $output->e = ($specialChars ?? false) ? false : 'Password SpecialChars';
-            $extra = json_encode($_POST['address2']) ?? array();
             if ($output->e == false) {
                 $vendor = new SimpleVendor();
                 $map_data = $_POST['lat'].','.$_POST['lng'];
                 $output->res = $vendor->signup($_POST['email'],$_POST['password'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$map_data,$_POST['address'],$extra);
+            }
+        }
+        echo json_encode($output);
+    }
+
+
+    // Update Account
+    function update() {
+        $output = new stdClass();
+
+        $output->e = ( ($_POST['id']) ?? false ) ? false : 'ID';
+        $output->e = ( (($_POST['fname']) ?? false) && (strlen($_POST['fname']) > 2) ) ? false : 'First name';
+        $output->e = ( (($_POST['lname']) ?? false) && (strlen($_POST['lname']) > 2) ) ? false : 'Last name';
+        $output->e = ( (($_POST['phone']) ?? false) && (strlen($_POST['phone']) > 9) ) ? false : 'Phone Number';
+        $output->e = ( (($_POST['email']) ?? false) && (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) ) ? false : 'Email';
+        $output->e = ( (($_POST['address']) ?? false) && (strlen($_POST['address']) > 9) ) ? false : 'Address';
+
+        if ($output->e == false) {
+            if ($output->e == false) {
+                $vendor = new SimpleVendor();
+                $output->res = $vendor->update($_POST['id'], $_POST['email'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['address']);
             }
         }
         echo json_encode($output);

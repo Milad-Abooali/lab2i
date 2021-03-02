@@ -69,6 +69,30 @@ class SimpleVendor
         return false;
     }
 
+
+    /**
+     * Update
+     * @param int $id
+     * @param string $email
+     * @param string $f_name
+     * @param string $l_name
+     * @param int $phone
+     * @param $address
+     * @return bool|int|mysqli_result|string|null
+     */
+    public function Update($id, $email, $f_name, $l_name, $phone, $address)
+    {
+        $update_data = array();
+        $update_data['email'] = $email;
+        $update_data['f_name'] = $f_name;
+        $update_data['l_name'] = $l_name;
+        $update_data['phone'] = $phone;
+        $update_data['address'] = $address;
+        $update = $this->db->updateId('vendors', $id, $update_data);
+        if($update) foreach ($update_data as $k => $v) $_SESSION['M']['vendor'][$k] = $update_data[$k];
+        return $update;
+    }
+
     /**
      * Activate
      * @param string $email
@@ -184,16 +208,6 @@ class SimpleVendor
     public function updatePass($id, $password) {
         $data['password'] = password_hash($password, PASSWORD_BCRYPT, ["cost" => 8]);
         return $this->db->updateId('vendors',$id, $data);
-    }
-
-    /**
-     * Upate vendor.
-     * @param int $id
-     * @param array $data
-     * @return bool|int|string|null
-     */
-    public function update($id, $data) {
-        return $this->db->updateId('vendors', $id, $data);
     }
 
     public function recoverPass($email)
