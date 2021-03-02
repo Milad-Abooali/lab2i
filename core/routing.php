@@ -47,6 +47,14 @@
             $page['inc']    = "account";
             $page['cache']  = false;
             break;
+        case "my-shop":
+            $page['vid']    = 'my-shop';
+            $page['view']   = "my-shop";
+            $page['inc']    = "my-shop";
+            $page['cache']  = false;
+            break;
+
+
 
 
         case "reset-password":
