@@ -106,7 +106,6 @@
         echo json_encode($output);
     }
 
-
     // Update Account
     function update() {
         $output = new stdClass();
@@ -124,5 +123,21 @@
                 $output->res = $vendor->update($_POST['id'], $_POST['email'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['address']);
             }
         }
+        echo json_encode($output);
+    }
+
+    // Shop Settings
+    function settings (){
+        $output = new stdClass();
+
+        $db = new iSQL(DB_INFO);
+
+        if($_POST['id'] ?? false) {
+            $output->res = $db->updateId('vendor_shop', $_POST['id'], $_POST);
+        } else {
+            $_POST['id'] = $_SESSION['M']['vendor']['id'];
+            $output->res = $db->insert('vendor_shop', $_POST);
+        }
+
         echo json_encode($output);
     }

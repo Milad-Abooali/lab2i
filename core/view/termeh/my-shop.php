@@ -101,7 +101,6 @@ include_once $this->PATH."global/header.php";
 
                                 <h5>Shop Settings</h5>
 
-                                <?php if ($this->data['myShop']) { ?>
                                 <form id="shopSettings" class="form-horizontal" method="post" action="vendor/settings">
 
                                     <div class="col-md-12">
@@ -112,20 +111,20 @@ include_once $this->PATH."global/header.php";
                                         <input type="text" class="form-control" placeholder="Slang" name="slang" value="<?= $this->data['myShop']['slang'] ?>">
 
                                         <label class="labels">Status</label>
-                                        <select class="selectpicker form-control" placeholder="select annual income" name="status" data-live-search="false" tabindex="-98">
-                                            <option value="1">Active</option>
-                                            <option value="0">Deactive</option>
+                                        <select class="selectpicker form-control" name="status" data-live-search="false" tabindex="-98">
+                                            <option value="0" <?= ($this->data['myShop']['status']) ?: 'selected' ?>>Deactive</option>
+                                            <option value="1" <?= ($this->data['myShop']['status']) ? 'selected' : null ?>>Active</option>
                                         </select>
 
                                     </div>
 
                                     <div class="mt-4 text-center">
-                                        <button class="btn btn-info" type="submit">Update Settings</button>
+                                        <input type="text" name="id" value="<?= $this->data['myShop']['id'] ?>">
+
+                                        <button class="btn btn-info creatShop" type="submit">Update Settings</button>
                                     </div>
                                 </form>
-                                <?php } else { ?>
-                                    <button class="btn btn-primary">Creat Shop</button>
-                                <?php } ?>
+
                             </div>
                         </div>
                     </div>
@@ -148,13 +147,13 @@ include_once $this->PATH."global/header.php";
     <script>
 
         //  update
-        $('body').on('submit','form#update', function(event){
+        $('body').on('submit','form#shopSettings', function(event){
             event.preventDefault();
             const data = $(this).serialize();
             const classA = $(this).attr('action');
             ajaxCall (classA, data,function(response) {
                 let obj = JSON.parse(response);
-                $('form#update').append('<p class="alert alert-success noticForm"><i class="text-success fa fa-check"></i> Account updated</p>');
+                $('form#shopSettings').append('<p class="alert alert-success noticForm"><i class="text-success fa fa-check"></i> Shop Settings updated</p>');
                 setTimeout(function(){
                     $(".noticForm").fadeOut();
                 }, 1500);
