@@ -53,6 +53,12 @@
             $page['inc']    = "my-shop";
             $page['cache']  = false;
             break;
+        case "my-offers":
+            $page['vid']    = 'my-offers';
+            $page['view']   = "my-offers";
+            $page['inc']    = "my-offers";
+            $page['cache']  = false;
+            break;
 
 
 

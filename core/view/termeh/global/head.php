@@ -24,7 +24,6 @@
     <!--- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="<?= CSS ?>bootstrap.4.2.1.min.css" rel="stylesheet" />
-    <link href="<?= CSS ?>dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="<?= CSS ?>notific.css" rel="stylesheet" />
     <link href="<?= CSS ?>bootstrap-select.css" rel="stylesheet" />
     <link href="<?= CSS ?>style.css" rel="stylesheet" />
@@ -35,11 +34,10 @@
     <script defer src="<?= JS ?>popper.min.js"></script>
     <script defer src="<?= JS ?>bootstrap.4.2.1.min.js"></script>
     <script defer src="<?= JS ?>pace.min.js"></script>
-    <script defer src="<?= JS ?>jquery.dataTables.min.js"></script>
-    <script defer src="<?= JS ?>dataTables.bootstrap4.min.js"></script>
     <script defer src="<?= JS ?>notific.js"></script>
     <script defer src="<?= JS ?>bootstrap-select.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script defer src="<?= JS ?>dataTables.bootstrap4.min.js"></script>
 
     <!--- Head -->
     <?= $this->HEADER; ?>
