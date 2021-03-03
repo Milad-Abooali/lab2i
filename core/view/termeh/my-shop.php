@@ -27,63 +27,15 @@ include_once $this->PATH."global/header.php";
 
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
-                <div class="col-md-9">
-                    <div id="v-menu">
-                        <ul>
-                            <li>
-                                <a href='account'>
-                                    <i class='fa fa-user-circle-o'></i>
-                                    <div>Profile</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='dashboard'>
-                                    <i class='fa fa-briefcase'></i>
-                                    <div>Overview</div>
-                                </a>
-                            </li>
-                            <li class='current'>
-                                <a href='my-shop'>
-                                    <i class='fa  fa-shopping-bag'></i>
-                                    <div>My Shop</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='my-offers'>
-                                    <i class='fa fa-gavel'></i>
-                                    <div>Auctions</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='my-orders'>
-                                    <i class='fa  fa-flash'></i>
-                                    <div>Orders</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='reviews'>
-                                    <i class='fa fa-wechat'></i>
-                                    <div>Reviews</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 small">
-                    <ul class="list-group">
-                        <li class="list-group-item">Active Offers <span class="float-right">23</span></li>
-                        <li class="list-group-item">Pending Orders <span class="float-right">4</span></li>
-                        <li class="list-group-item">Active Products <span class="float-right">15</span></li>
-                    </ul>
-                </div>
+                <?php include_once $this->PATH."global/v-menu.php"; ?>
                 <div class="col-md-12 border-top pt-3 mt-3">
 
                     <div class="row">
                         <div class="col-md-3  border-right pr-2">
                             <ul id="tabsJustified" class="nav nav-pills">
-                                <li class="nav-item w-100"><a href="" data-target="#Products" data-toggle="tab" class="nav-link small">Products</a></li>
+                                <li class="nav-item w-100"><a href="" data-target="#Products" data-toggle="tab" class="nav-link small active">Products</a></li>
                                 <li class="nav-item w-100"><a href="" data-target="#Style" data-toggle="tab" class="nav-link small">Shop Style</a></li>
-                                <li class="nav-item w-100"><a href="" data-target="#Settings" data-toggle="tab" class="nav-link small active">Shop Settings</a></li>
+                                <li class="nav-item w-100"><a href="" data-target="#Settings" data-toggle="tab" class="nav-link small">Shop Settings</a></li>
                             </ul>
                         </div>
                         <div class="tab-content col-md-9 px-5">
