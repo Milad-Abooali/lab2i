@@ -23,6 +23,14 @@
     /** @var array $page */
     switch ($page['vid']) {
 
+// Admin
+        case "zadmin":
+            $page['vid']    = 'zadmin';
+            $page['view']   = "zadmin";
+            $page['inc']    = "zadmin";
+            $page['cache']  = false;
+            break;
+
 // Vendor
         case "v-signin":
             $page['vid']    = 'v-signin';
