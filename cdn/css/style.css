@@ -160,6 +160,22 @@ main {
     border: solid 1px #BA68C8
 }
 
+/* Admin Menu */
+#adminMenu {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 13px;
+    text-decoration: none;
+}
+#adminMenu .menu-title {
+    color:#2e6da4;
+}
+#adminMenu .menu-title:hover {
+    color: #1783e2;
+    background-color:rgba(0,0,0,0.01);
+}
+#adminMenu a {
+    color: #2f82cd;
+}
 /* Links */
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 .links a {
