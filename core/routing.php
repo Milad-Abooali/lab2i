@@ -59,6 +59,18 @@
             $page['inc']    = "my-offers";
             $page['cache']  = false;
             break;
+        case "my-orders":
+            $page['vid']    = 'my-orders';
+            $page['view']   = "my-orders";
+            $page['inc']    = "my-orders";
+            $page['cache']  = false;
+            break;
+        case "reviews":
+            $page['vid']    = 'reviews';
+            $page['view']   = "reviews";
+            $page['inc']    = "reviews";
+            $page['cache']  = false;
+            break;
 
 
 
