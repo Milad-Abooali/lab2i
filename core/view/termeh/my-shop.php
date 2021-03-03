@@ -4,7 +4,7 @@ use App\Core\M;
 
 $this->data['PAGE']['demo']=0;
 
-$this->data['PAGE']['title'] = 'Profile';
+$this->data['PAGE']['title'] = 'Shop';
 $this->data['PAGE']['keywords'] = 'test';
 $this->data['PAGE']['description'] = 'test';
 $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -55,9 +55,9 @@ include_once $this->PATH."global/header.php";
                                 </a>
                             </li>
                             <li>
-                                <a href='statistics'>
-                                    <i class='fa fa-bank'></i>
-                                    <div>Financial</div>
+                                <a href='my-orders'>
+                                    <i class='fa  fa-flash'></i>
+                                    <div>Orders</div>
                                 </a>
                             </li>
                             <li>
@@ -81,46 +81,13 @@ include_once $this->PATH."global/header.php";
                     <div class="row">
                         <div class="col-md-3  border-right pr-2">
                             <ul id="tabsJustified" class="nav nav-pills">
-                                <li class="nav-item w-100"><a href="" data-target="#Orders" data-toggle="tab" class="nav-link small">Orders</a></li>
                                 <li class="nav-item w-100"><a href="" data-target="#Products" data-toggle="tab" class="nav-link small">Products</a></li>
                                 <li class="nav-item w-100"><a href="" data-target="#Style" data-toggle="tab" class="nav-link small">Shop Style</a></li>
                                 <li class="nav-item w-100"><a href="" data-target="#Settings" data-toggle="tab" class="nav-link small active">Shop Settings</a></li>
                             </ul>
                         </div>
                         <div class="tab-content col-md-9 px-5">
-                            <div id="Orders" class="tab-pane fade ">
-                                <h5>Orders</h5>
 
-                                <table id="OrdersTable" class="table table-sm table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>user_id</th>
-                                        <th>vendor_id</th>
-                                        <th>product_id</th>
-                                        <th>quantity</th>
-                                        <th>price</th>
-                                        <th>detail</th>
-                                        <th>date</th>
-                                        <th>status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                            <td>123123</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
                             <div id="Products" class="tab-pane active fade show">
                                 <h5>Products</h5>
                                 <button class="btn btn-sm btn-outline-primary float-right doM-newProduct"><i class="fa fa-plus"></i> New Product</button>
@@ -207,11 +174,8 @@ include_once $this->PATH."global/header.php";
 
     <script>
 
-
-
         $( document ).ready(function() {
 
-            $('#OrdersTable').DataTable();
             $('#ProductsTable').DataTable();
 
             $('body').on('click','.doM-newProduct', function(event){

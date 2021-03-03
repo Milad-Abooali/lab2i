@@ -56,7 +56,7 @@ include_once $this->PATH."global/header.php";
                             </li>
                             <li>
                                 <a href='my-orders'>
-                                    <i class='fa  fa-flash'></i>
+                                    <i class='fa fa-flash'></i>
                                     <div>Orders</div>
                                 </a>
                             </li>

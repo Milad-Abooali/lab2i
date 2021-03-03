@@ -4,7 +4,7 @@ use App\Core\M;
 
 $this->data['PAGE']['demo']=0;
 
-$this->data['PAGE']['title'] = 'My Requests';
+$this->data['PAGE']['title'] = 'Auction Offers';
 $this->data['PAGE']['keywords'] = 'test';
 $this->data['PAGE']['description'] = 'test';
 $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -22,18 +22,65 @@ include_once $this->PATH."global/header.php";
 
     <main role="main" class="container">
 
+        <?php if (is_vendor){ ?>
+            <link href="<?= CSS ?>v-menu.css" rel="stylesheet" />
+
             <div class="container rounded bg-white mt-5 mb-5">
                 <div class="row">
-                    <div class="col-md-3 border-right">
-                        <?php include_once $this->PATH."widgets/profile-menu.php"; ?>
-                    </div>
                     <div class="col-md-9">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">My Requests</h4>
+                        <div id="v-menu">
+                            <ul>
+                                <li>
+                                    <a href='account'>
+                                        <i class='fa fa-user-circle-o'></i>
+                                        <div>Profile</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='dashboard'>
+                                        <i class='fa fa-briefcase'></i>
+                                        <div>Overview</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='my-shop'>
+                                        <i class='fa  fa-shopping-bag'></i>
+                                        <div>My Shop</div>
+                                    </a>
+                                </li>
+                                <li class='current'>
+                                    <a href='my-offers'>
+                                        <i class='fa fa-gavel'></i>
+                                        <div>Auctions</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='my-orders'>
+                                        <i class='fa  fa-flash'></i>
+                                        <div>Orders</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='reviews'>
+                                        <i class='fa fa-wechat'></i>
+                                        <div>Reviews</div>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <p class="text-left">
-                                You have <strong><?= $this->data['requests_count'] ?></strong> orders.
+                    </div>
+                    <div class="col-md-3 small">
+                        <ul class="list-group">
+                            <li class="list-group-item">Active Offers <span class="float-right">23</span></li>
+                            <li class="list-group-item">Pending Orders <span class="float-right">4</span></li>
+                            <li class="list-group-item">Active Products <span class="float-right">15</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12 border-top pt-3 mt-3">
+
+
+                        <div class="text-left">
+                            You have <strong><?= $this->data['requests_count'] ?></strong> orders.
                         </div>
                         <div class="container">
                             <ul class="list-inline row">
@@ -60,10 +107,20 @@ include_once $this->PATH."global/header.php";
                                                         <small class="text-muted">Best Price</small><br> $ <?= $item['offers_best'] ?>
                                                     </h6>
                                                 </div>
+
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h6 class="col-md-6 font-weight-bold my-2 border-right text-center">
+                                                        <small class="text-muted">Your Position</small><br><span class="text-primary"><?= $item['offer_count'] ?></span>
+                                                    </h6>
+                                                    <h6 class="col-md-6 font-weight-bold my-2 text-center">
+                                                        <small class="text-muted">Your Price</small><br><span class="text-primary">$ <?= $item['offers_best'] ?></span>
+                                                    </h6>
+                                                </div>
+
                                                 <div class="btn-group col-md-12 pt-3">
-                                                    <a type="button" class="btn btn-success" href="request-<?= $item['id'] ?>">Show</a>
+                                                    <button type="button" class="btn btn-danger" data-id="?= $item['id'] ?>">Offer</button>
                                                     <a type="button" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Expire Date"><small><?= $item['expire_date'] ?></small></a>
-                                                    <button type="button" class="btn btn-danger doA-closeReq" data-id="?= $item['id'] ?>">Close</button>
+                                                    <a type="button" class="btn btn-success" href="request-<?= $item['id'] ?>">Show</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,19 +128,32 @@ include_once $this->PATH."global/header.php";
                                 <?php } ?>
                             </ul>
                         </div>
+
+
                     </div>
                 </div>
             </div>
+        <?php } else { ?>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3">
+                    Please Login ...
+                </div>
+            </div>
+        <?php } ?>
 
     </main>
 
+
     <script>
+
+
 
         $( document ).ready(function() {
 
 
-        });
 
+        });
     </script>
 
 <?php include_once $this->PATH."global/footer.php"; ?>

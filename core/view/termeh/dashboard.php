@@ -160,9 +160,9 @@ include_once $this->PATH."global/header.php";
                                 </a>
                             </li>
                             <li>
-                                <a href='statistics'>
-                                    <i class='fa fa-bank'></i>
-                                    <div>Financial</div>
+                                <a href='my-orders'>
+                                    <i class='fa  fa-flash'></i>
+                                    <div>Orders</div>
                                 </a>
                             </li>
                             <li>
