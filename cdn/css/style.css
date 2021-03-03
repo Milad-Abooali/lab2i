@@ -168,6 +168,7 @@ main {
 }
 #adminMenu .menu-title {
     color:#2e6da4;
+    border-bottom: 3px solid #dee2e6!important;
 }
 #adminMenu .menu-title:hover {
     color: #1783e2;
@@ -176,6 +177,7 @@ main {
 #adminMenu a {
     color: #2f82cd;
 }
+
 /* Links */
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 .links a {
