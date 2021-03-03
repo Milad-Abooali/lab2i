@@ -20,6 +20,7 @@ include_once $this->PATH."global/head.php";
 include_once $this->PATH."global/header.php";
 ?>
 
+<?php if (is_vendor && $_SESSION['M']['vendor']['admin']) { ?>
     <main role="main" class="container">
         <h6>Admin Panel
         <small class="float-right">
@@ -40,6 +41,7 @@ include_once $this->PATH."global/header.php";
 
     </main>
 
+    <?php } ?>
     <script>
 
         $( document ).ready(function() {
