@@ -173,9 +173,9 @@
             $page['cache']  = false;
             break;
         case "recoverPassword":
-            $page['vid']    = 'recoverPassword';
-            $page['view']   = "recover_password";
-            $page['inc']    = "recover_password";
+            $page['vid']    = 'user/recoverPassword';
+            $page['view']   = "user/recover_password";
+            $page['inc']    = "user/recover_password";
             $page['cache']  = false;
             break;
         case "reset-password":
@@ -193,9 +193,9 @@
             break;
         case "privacy":
             if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
-            $page['vid']    = 'privacy';
-            $page['view']   = "privacy";
-            $page['inc']   = "privacy";
+            $page['vid']    = 'user/privacy';
+            $page['view']   = "user/privacy";
+            $page['inc']   = "user/privacy";
             $page['cache']  = false;
             break;
         case "my-invoices":
@@ -207,9 +207,9 @@
             break;
         case "my-transactions":
             if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
-            $page['vid']    = 'my-transactions';
-            $page['view']   = "my-transactions";
-            $page['inc']    = "my-transactions";
+            $page['vid']    = 'user/my-transactions';
+            $page['view']   = "user/my-transactions";
+            $page['inc']    = "user/my-transactions";
             $page['cache']  = false;
             break;
         case "my-requests":
