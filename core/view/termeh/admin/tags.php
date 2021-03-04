@@ -91,7 +91,34 @@ include_once $this->PATH."global/header.php";
 
             $('#tagsTable').DataTable();
 
+            //  Update tag
+            $('body').on('click','.doP-edit', function(event){
+                let tagId = $(this).data('id');
+                $('input.tag').prop('disabled', true);
+                $('input#tag-'+tagId).prop('disabled', false);
+                $('.doP-edit').text('Edit').removeClass('doA-update btn-success').addClass('btn-primary');
+                $(this).text('Update').blur().removeClass('btn-primary').addClass('doA-update btn-success');
+            });
+            $('body').on('click','.doA-update', function(event){
+                let id = $(this).data('id');
+                let tag = $('input#tag-'+id).val();
+                let data = {
+                    id: id,
+                    tag: tag
+                }
+                ajaxCall ('tags/update', data,function(response) {
+                    let obj = JSON.parse(response);
+                    if (obj.res) {
+                        notify('Tag Updated.','success',false);
+                        $('input.tag').prop('disabled', true);
+                        $('.doP-edit').text('Edit').removeClass('doA-update btn-success').addClass('btn-primary');
+                    } else {
+                        notify('Not Saved!','error',false);
+                    }
+                });
+            });
 
+            //  Add new tag
             $('body').on('submit','form#addTag', function(event){
                 event.preventDefault();
                 const id = $(this).attr('id');

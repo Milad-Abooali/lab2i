@@ -43,7 +43,7 @@ class tags
      */
     public function update($id, $tag) {
         $update['name'] = $tag;
-        return $this->db->updateId('tags',$id, $tag);
+        return $this->db->updateId('tags',$id, $update);
     }
 
     /**
