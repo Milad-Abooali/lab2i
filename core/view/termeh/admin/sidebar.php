@@ -9,13 +9,14 @@
     <div class="menu-group">
         <div class="menu-title" id="headingOne">
             <div class="mb-0 py-2" data-toggle="collapse" data-target="#a0">
-                <i class="fa fa-arrow-right"></i> Site Settings
+                <i class="fa fa-arrow-right"></i> General
             </div>
         </div>
         <div id="a0" class="collapse" aria-labelledby="headingOne" data-parent="#adminMenu">
             <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/settings">General Settings</a>
             <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/categories">Categories</a>
             <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/products">Products</a>
+            <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/tags">Tags</a>
         </div>
     </div>
     <div class="menu-group">

@@ -34,6 +34,12 @@
                     $page['inc']    = 'admin/settings';
                     $page['cache']  = false;
                     break;
+                case "admin/tags":
+                    $page['vid']    = 'admin/tags';
+                    $page['view']   = 'admin/tags';
+                    $page['inc']    = 'admin/tags';
+                    $page['cache']  = false;
+                    break;
                 case "admin/categories":
                     $page['vid']    = 'admin/categories';
                     $page['view']   = 'admin/categories';
