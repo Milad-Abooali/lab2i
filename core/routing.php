@@ -24,10 +24,10 @@
     switch ($page['vid']) {
 
 // Admin
-        case "zadmin":
-            $page['vid']    = 'zadmin';
-            $page['view']   = "zadmin";
-            $page['inc']    = "zadmin";
+        case "admin":
+            $page['vid']    = 'admin';
+            $page['view']   = "admin";
+            $page['inc']    = "admin";
             $page['cache']  = false;
             break;
 
