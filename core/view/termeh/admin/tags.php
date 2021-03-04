@@ -34,7 +34,7 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                <form id="profile" class="form-horizontal" method="post" action="user/update">
+                <form id="addTag" class="form-horizontal" method="post" action="tags/add">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                         </div>
@@ -63,10 +63,12 @@ include_once $this->PATH."global/header.php";
                     <?php if($this->data['tags']) foreach ($this->data['tags'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
-                            <td><input type="text" class="form-control" placeholder="example" name="tag" value="<?= $item['name'] ?>" disabled></td>
                             <td>
-                                <button class="doA-delete btn mx-2 btn-sm btn-danger float-right" type="submit">Delete</button>
-                                <button class="doP-edit btn mx-2 btn-sm btn-primary" type="submit">Edit</button>
+                                <input id="tag-<?= $item['id'] ?>" type="text" class="form-control" placeholder="example" name="tag" value="<?= $item['name'] ?>" disabled>
+                            </td>
+                            <td>
+                                <button data-id="<?= $item['id'] ?>" class="doA-delete btn mx-2 btn-sm btn-danger float-right" type="submit">Delete</button>
+                                <button data-id="<?= $item['id'] ?>" class="doP-edit btn mx-2 btn-sm btn-primary" type="submit">Edit</button>
                             </td>
                         </tr>
                     <?php } ?>
@@ -85,6 +87,22 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
 
             $('#tagsTable').DataTable();
+
+
+            $('body').on('submit','form#addTag', function(event){
+                event.preventDefault();
+                const id = $(this).attr('id');
+                const reload = $(this).data('reload');
+                const data = $(this).serialize();
+                const classA = $(this).attr('action');
+                ajaxCall (classA, data,function(response) {
+                    let obj = JSON.parse(response);
+                    (obj.res) || notify('Tag not saved!','error',false);
+                    (obj.res) || $(location).attr('href', 'login&error=1')
+                    (obj.res) && notify('Tag Saved.','success',false);
+                    (obj.res) && location.reload();
+                });
+            });
 
         });
 

@@ -38,6 +38,7 @@ function add() {
 // Update Tags
 function update() {
     $output = new stdClass();
+    $output->e = !(($_POST['id']) ?? false);
     $output->e = !(($_POST['tag']) ?? false);
     if ($output->e == false) {
         $tags = new tags();
