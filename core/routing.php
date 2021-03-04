@@ -229,10 +229,11 @@
             break;
         case null:
         case "403":
-            $page['vid']    = '403';
-            $page['view']   = "403";
-            $page['inc']    = null;
-            $page['cache']  = false;
+            $page['vid']        = false;
+            $page['upon']       = null;
+            $page['inc']        = null;
+            $page['view']       = 'error/403';
+            $page['cache']      = false;
             break;
         case null:
         case "home":    // Site Index/root
