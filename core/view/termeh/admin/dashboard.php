@@ -24,7 +24,7 @@ include_once $this->PATH."global/header.php";
     <main role="main" class="container">
         <h6><?= $this->data['PAGE']['title'] ?>
         <small class="float-right">
-            <button class="btn btn-sm btn-primary"><i class="fa "></i>Save</button>
+
         </small>
         </h6>
         <hr>
@@ -33,7 +33,7 @@ include_once $this->PATH."global/header.php";
                 <?php include_once $this->PATH."admin/sidebar.php"; ?>
             </div>
             <div class="col-md-9">
-                Admin Dashboard
+                @TODO | Admin Dashboard
             </div>
         </div>
 

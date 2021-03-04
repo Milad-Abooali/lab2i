@@ -167,12 +167,14 @@ main {
     text-decoration: none;
 }
 #adminMenu .menu-title {
-    color:#2e6da4;
+    color:#fff;
     border-bottom: 3px solid #dee2e6!important;
+    background-color: #343a40;
+    padding-left:5px;
 }
 #adminMenu .menu-title:hover {
     color: #1783e2;
-    background-color:rgba(0,0,0,0.01);
+    background-color: #343d45;
 }
 #adminMenu a {
     color: #2f82cd;

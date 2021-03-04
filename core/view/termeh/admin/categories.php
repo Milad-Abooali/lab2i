@@ -34,8 +34,8 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                @TODO | Site Settings
-
+                @TODO | Site Categories
+                
                 <!--
                 <form id="profile" class="form-horizontal" method="post" action="user/update">
                     <div class="p-3 py-5">
