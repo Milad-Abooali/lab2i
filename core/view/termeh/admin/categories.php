@@ -34,25 +34,38 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                @TODO | Site Categories
-                
-                <!--
-                <form id="profile" class="form-horizontal" method="post" action="user/update">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">My Profile</h4>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" name="f_name" value="<?= $_SESSION['M']['user']['f_name'] ?? null ?>"></div>
-                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="surname" name="l_name" value="<?= $_SESSION['M']['user']['l_name'] ?? null ?>" ></div>
-                        </div>
+                <form id="addCat" class="form-horizontal" method="post" action="cats/add">
+                    <div class="p-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="labels">Title</label>
+                                <input type="text" class="form-control" placeholder="example" name="title" required >
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Excerpt</label>
+                                <textarea class="form-control" placeholder="enter address" name="excerpt"> </textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Tags</label>
+                                <select multiple="" class="selectpicker form-control" id="tags" name="tags[]" data-container="body" data-live-search="true" title="Select category tag" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
+                                    <?php foreach($this->data['tags'] as $item) { ?>
+                                        <option id="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Excerpt</label>
+                                <input type="text" class="form-control" placeholder="example" name="title" required >
+                            </div>
 
-                        <div class="my-4 alert form-alert"></div>
-                        <hr>
-                        <div class="mt-4 text-center"><button class="btn btn-sm btn-primary float-right" type="submit">Save</button></div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn mt-2 col-md-6 btn-primary" type="submit">Add Tag</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
-                -->
+
+                <hr>
 
             </div>
         </div>

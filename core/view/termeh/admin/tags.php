@@ -35,9 +35,7 @@ include_once $this->PATH."global/header.php";
             <div class="col-md-9">
 
                 <form id="addTag" class="form-horizontal" method="post" action="tags/add">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                        </div>
+                    <div class="p-3">
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="labels">New Tag</label><input type="text" class="form-control" placeholder="example" name="tag" required >
