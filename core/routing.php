@@ -232,7 +232,6 @@
             } else {
                 if (!isset($_SESSION['M']['vendor']['admin'])) header("Location: ".APP_URL."403&y=Please Login!");
             }
-
             break;
         case "403":
             $page['vid']        = false;

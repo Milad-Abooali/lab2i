@@ -21,7 +21,6 @@ include_once $this->PATH."global/header.php";
 ?>
 
     <main role="main" class="container">
-        <?php if (is_user){ ?>
 
             <div class="container rounded bg-white mt-5 mb-5">
                 <div class="row">
@@ -127,27 +126,6 @@ include_once $this->PATH."global/header.php";
                     </div>
                 </div>
             </div>
-        <?php } elseif (is_vendor){ ?>
-            <link href="<?= CSS ?>v-menu.css" rel="stylesheet" />
-
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <?php include_once $this->PATH."global/v-menu.php"; ?>
-                <div class="col-md-12 border-top pt-3 mt-3">
-
-
-
-                </div>
-            </div>
-        </div>
-        <?php } else { ?>
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-3">
-                    Please Login ...
-                </div>
-        </div>
-        <?php } ?>
 
     </main>
 
