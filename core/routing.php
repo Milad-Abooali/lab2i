@@ -103,7 +103,6 @@
             }
             break;
 
-
 // Vendor
         case "v-signin":
             $page['vid']    = 'vendor/v-signin';
@@ -157,8 +156,6 @@
             $page['inc']    = "vendor/reviews";
             $page['cache']  = false;
             break;
-
-
 
 // Client
         case "register":
@@ -222,10 +219,20 @@
 
 // Shared
         case "dashboard":
-            $page['vid']    = 'dashboard';
-            $page['view']   = "dashboard";
-            $page['inc']    = "dashboard";
-            $page['cache']  = false;
+            if (is_user) {
+                $page['vid']    = 'user/dashboard';
+                $page['view']   = "user/dashboard";
+                $page['inc']    = "user/dashboard";
+                $page['cache']  = false;
+            } else if(is_vendor) {
+                $page['vid']    = 'vendor/dashboard';
+                $page['view']   = "vendor/dashboard";
+                $page['inc']    = "vendor/dashboard";
+                $page['cache']  = false;
+            } else {
+                if (!isset($_SESSION['M']['vendor']['admin'])) header("Location: ".APP_URL."403&y=Please Login!");
+            }
+
             break;
         case "403":
             $page['vid']        = false;
