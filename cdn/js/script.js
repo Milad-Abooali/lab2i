@@ -1,6 +1,15 @@
 $( document ).ready(function() {
 
-    //  Login
+    //  Update tag
+    $('body').on('click','.doP-edit', function(event){
+        let tagId = $(this).data('id');
+        $('input.tag').prop('disabled', true);
+        $('input#tag-'+tagId).prop('disabled', false);
+        $('.doP-edit').text('Edit').removeClass('doA-update btn-success').addClass('btn-primary');
+        $(this).text('Update').blur().removeClass('btn-primary').addClass('doA-update btn-success');
+    });
+
+    //  Add new tag
     $('body').on('submit','form#login', function(event){
         event.preventDefault();
         const id = $(this).attr('id');

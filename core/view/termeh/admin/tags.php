@@ -41,10 +41,13 @@ include_once $this->PATH."global/header.php";
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="labels">New Tag</label><input type="text" class="form-control" placeholder="example" name="tag" required >
-                                <button class="btn mt-2 btn-block btn-primary float-right" type="submit">example</button>
+                                <button class="btn mt-2 btn-block btn-primary float-right" type="submit">Add Tag</button>
                             </div>
-                            <div class="col-md-6">
-
+                            <div class="col-md-6 border-left">
+                                <ul>
+                                    <li>Use lowercase.</li>
+                                    <li>Use '_' instead of space.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -64,7 +67,7 @@ include_once $this->PATH."global/header.php";
                         <tr>
                             <td><?= $item['id'] ?></td>
                             <td>
-                                <input id="tag-<?= $item['id'] ?>" type="text" class="form-control" placeholder="example" name="tag" value="<?= $item['name'] ?>" disabled>
+                                <input id="tag-<?= $item['id'] ?>" type="text" class="tag form-control" placeholder="example" name="tag" value="<?= $item['name'] ?>" disabled>
                             </td>
                             <td>
                                 <button data-id="<?= $item['id'] ?>" class="doA-delete btn mx-2 btn-sm btn-danger float-right" type="submit">Delete</button>
@@ -100,7 +103,7 @@ include_once $this->PATH."global/header.php";
                     (obj.res) || notify('Tag not saved!','error',false);
                     (obj.res) || $(location).attr('href', 'login&error=1')
                     (obj.res) && notify('Tag Saved.','success',false);
-                    (obj.res) && location.reload();
+                    (obj.res) && setTimeout(function(){ location.reload(); }, 1000);
                 });
             });
 
