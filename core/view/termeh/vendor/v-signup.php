@@ -35,7 +35,7 @@
                             <?php if($this->data['active']) { ?>
                                 <div class="alert alert-success">Your Account has been active, Now you can enjoy it...
                                 <br>
-                                <a href="v-signin">Try SignIn</a>
+                                <a href="../../../../index.php">Try SignIn</a>
                                 </div>
                             <?php } else { ?>
                                 <div class="alert alert-danger">Your Account has been not active, this link is expired/wrong!</div>
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-info btn-lg col-8 login-button">SignUp</button>
                                 <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
-                                <a class="btn btn-sm btn-outline-info mx-auto" href="v-signin">SignIn</a>
+                                <a class="btn btn-sm btn-outline-info mx-auto" href="../../../../index.php">SignIn</a>
                             </div>
                         </form>
                         <?php } ?>

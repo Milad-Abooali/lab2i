@@ -51,12 +51,12 @@
                             <div class="form-group ">
                                 <button type="submit" class="btn btn-info btn-lg col-8 signin-button">SingIn</button>
                                 <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
-                                <a class="btn btn-outline-info my-2 my-sm-0" href="v-signup">SingUp</a>
+                                <a class="btn btn-outline-info my-2 my-sm-0" href="../../../../index.php">SingUp</a>
                             </div>
 
                             <div class="form-group">
                                 <p class="small text-muted">
-                                   * If you forgot your password, click <a href="v-recoverPassword" class="">here</a>.
+                                   * If you forgot your password, click <a href="../../../../index.php" class="">here</a>.
                                 </p>
                             </div>
                         </form>

@@ -106,20 +106,20 @@
 
 // Vendor
         case "v-signin":
-            $page['vid']    = 'v-signin';
-            $page['view']   = "v-signin";
+            $page['vid']    = 'vendor/v-signin';
+            $page['view']   = "vendor/v-signin";
             $page['cache']  = false;
             break;
         case "v-recoverPassword":
-            $page['vid']    = 'v-recoverPassword';
-            $page['view']   = "v-recover_password";
-            $page['inc']    = "v-recover_password";
+            $page['vid']    = 'vendor/v-recoverPassword';
+            $page['view']   = "vendor/v-recover_password";
+            $page['inc']    = "vendor/v-recover_password";
             $page['cache']  = false;
             break;
         case "v-signup":
-            $page['vid']    = 'v-signup';
-            $page['view']   = "v-signup";
-            $page['inc']    = "v-signup";
+            $page['vid']    = 'vendor/v-signup';
+            $page['view']   = "vendor/v-signup";
+            $page['inc']    = "vendor/v-signup";
             $page['cache']  = false;
             break;
         case "account":
@@ -152,9 +152,9 @@
             break;
         case "reviews":
             if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
-            $page['vid']    = 'users/reviews';
-            $page['view']   = "users/reviews";
-            $page['inc']    = "users/reviews";
+            $page['vid']    = 'vendor/reviews';
+            $page['view']   = "vendor/reviews";
+            $page['inc']    = "vendor/reviews";
             $page['cache']  = false;
             break;
 
@@ -162,9 +162,9 @@
 
 // Client
         case "register":
-            $page['vid']    = 'register';
-            $page['view']   = "register";
-            $page['inc']    = "register";
+            $page['vid']    = 'user/register';
+            $page['view']   = "user/register";
+            $page['inc']    = "user/register";
             $page['cache']  = false;
             break;
         case "login":
@@ -179,9 +179,9 @@
             $page['cache']  = false;
             break;
         case "reset-password":
-            $page['vid']    = 'reset-assword';
-            $page['view']   = "reset-password";
-            $page['inc']    = "recover_password";
+            $page['vid']    = 'user/reset-assword';
+            $page['view']   = "user/reset-password";
+            $page['inc']    = null;
             $page['cache']  = false;
             break;
         case "email-history":
