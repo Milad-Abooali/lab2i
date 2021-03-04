@@ -59,6 +59,8 @@ include_once $this->PATH."global/header.php";
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Products</th>
+                        <th>Categories</th>
                         <th>Mange</th>
                     </tr>
                     </thead>
@@ -69,6 +71,8 @@ include_once $this->PATH."global/header.php";
                             <td>
                                 <input id="tag-<?= $item['id'] ?>" type="text" class="tag form-control" placeholder="example" name="tag" value="<?= $item['name'] ?>" disabled>
                             </td>
+                            <td><?= $item['count_p'] ?></td>
+                            <td><?= $item['count_c'] ?></td>
                             <td>
                                 <button data-id="<?= $item['id'] ?>" class="doA-delete btn mx-2 btn-sm btn-danger float-right" type="submit">Delete</button>
                                 <button data-id="<?= $item['id'] ?>" class="doP-edit btn mx-2 btn-sm btn-primary" type="submit">Edit</button>
@@ -90,6 +94,24 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
 
             $('#tagsTable').DataTable();
+
+
+            //  Add new tag
+            $('body').on('submit','form#addTag', function(event){
+                event.preventDefault();
+                const id = $(this).attr('id');
+                const reload = $(this).data('reload');
+                const data = $(this).serialize();
+                const classA = $(this).attr('action');
+                ajaxCall (classA, data,function(response) {
+                    let obj = JSON.parse(response);
+                    (obj.res) || notify('Tag not saved!','error',false);
+                    (obj.res) || $(location).attr('href', 'login&error=1')
+                    (obj.res) && notify('Tag Saved.','success',false);
+                    (obj.res) && setTimeout(function(){ location.reload(); }, 1000);
+                });
+            });
+
 
             //  Update tag
             $('body').on('click','.doP-edit', function(event){
@@ -118,22 +140,24 @@ include_once $this->PATH."global/header.php";
                 });
             });
 
-            //  Add new tag
-            $('body').on('submit','form#addTag', function(event){
-                event.preventDefault();
-                const id = $(this).attr('id');
-                const reload = $(this).data('reload');
-                const data = $(this).serialize();
-                const classA = $(this).attr('action');
-                ajaxCall (classA, data,function(response) {
+
+            //  Delete tag
+            $('body').on('click','.doA-delete', function(event){
+                let clicked = $(this);
+                let id = clicked.data('id');
+                let data = {
+                    id: id
+                }
+                ajaxCall ('tags/delete', data,function(response) {
                     let obj = JSON.parse(response);
-                    (obj.res) || notify('Tag not saved!','error',false);
-                    (obj.res) || $(location).attr('href', 'login&error=1')
-                    (obj.res) && notify('Tag Saved.','success',false);
-                    (obj.res) && setTimeout(function(){ location.reload(); }, 1000);
+                    if (obj.res) {
+                        notify('Tag Deleted.','success',false);
+                        clicked.closest("tr").remove();
+                    } else {
+                        notify('Error!','error',false);
+                    }
                 });
             });
-
         });
 
     </script>
