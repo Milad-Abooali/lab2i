@@ -25,20 +25,73 @@
 
 // Admin
         case "admin":
-            (!$_SESSION['M']['vendor']['admin']) ?: die ('Access Denid !');
+            if (!isset($_SESSION['M']['vendor']['admin'])) header("Location: ".APP_URL."403&y=Admin permission needed!");
             $page['vid']  = 'admin"/'.array_shift($page['data']);
             switch ($page['vid']) {
+                case "admin/settings":
+                    $page['vid']    = 'admin/settings';
+                    $page['view']   = 'admin/settings';
+                    $page['inc']    = 'admin/settings';
+                    $page['cache']  = false;
+                    break;
+                case "admin/categories":
+                    $page['vid']    = 'admin/categories';
+                    $page['view']   = 'admin/categories';
+                    $page['inc']    = 'admin/categories';
+                    $page['cache']  = false;
+                    break;
+                case "admin/products":
+                    $page['vid']    = 'admin/products';
+                    $page['view']   = 'admin/products';
+                    $page['inc']    = 'admin/products';
+                    $page['cache']  = false;
+                    break;
                 case "admin/list-vendors":
                     $page['vid']    = 'admin/list-vendors';
                     $page['view']   = "admin/list-vendors";
                     $page['inc']    = "admin/list-vendors";
                     $page['cache']  = false;
                     break;
-                case "admin/bots":
-                    (USER_ACCESS['staff']) ?: die ('Access Denid !');
-                    $page['vid']    = 'v-recoverPassword';
-                    $page['view']   = "v-recover_password";
-                    $page['inc']    = "v-recover_password";
+                case "admin/verification":
+                    $page['vid']    = 'admin/verification';
+                    $page['view']   = 'admin/verification';
+                    $page['inc']    = 'admin/verification';
+                    $page['cache']  = false;
+                    break;
+                case "admin/users":
+                    $page['vid']    = 'admin/users';
+                    $page['view']   = 'admin/users';
+                    $page['inc']    = 'admin/users';
+                    $page['cache']  = false;
+                    break;
+                case "admin/active-tenders":
+                    $page['vid']    = 'admin/active-tenders';
+                    $page['view']   = 'admin/active-tenders';
+                    $page['inc']    = 'admin/active-tenders';
+                    $page['cache']  = false;
+                    break;
+                case "admin/tenders-archive":
+                    $page['vid']    = 'admin/tenders-archive';
+                    $page['view']   = 'admin/tenders-archive';
+                    $page['inc']    = 'admin/tenders-archive';
+                    $page['cache']  = false;
+                    break;
+                case "admin/invoices":
+                    $page['vid']    = 'admin/invoices';
+                    $page['view']   = 'admin/invoices';
+                    $page['inc']    = 'admin/invoices';
+                    $page['cache']  = false;
+                    break;
+                case "admin/transactions":
+                    $page['vid']    = 'admin/transactions';
+                    $page['view']   = 'admin/transactions';
+                    $page['inc']    = 'admin/transactions';
+                    $page['cache']  = false;
+                    break;
+                case "admin/pages":
+                    $page['vid']    = 'admin/pages';
+                    $page['view']   = 'admin/pages';
+                    $page['inc']    = 'admin/pages';
                     $page['cache']  = false;
                     break;
                 case "admin/":
@@ -70,30 +123,35 @@
             $page['cache']  = false;
             break;
         case "account":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
             $page['vid']    = 'account';
             $page['view']   = "account";
             $page['inc']    = "account";
             $page['cache']  = false;
             break;
         case "my-shop":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
             $page['vid']    = 'my-shop';
             $page['view']   = "my-shop";
             $page['inc']    = "my-shop";
             $page['cache']  = false;
             break;
         case "my-offers":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
             $page['vid']    = 'my-offers';
             $page['view']   = "my-offers";
             $page['inc']    = "my-offers";
             $page['cache']  = false;
             break;
         case "my-orders":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
             $page['vid']    = 'my-orders';
             $page['view']   = "my-orders";
             $page['inc']    = "my-orders";
             $page['cache']  = false;
             break;
         case "reviews":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
             $page['vid']    = 'reviews';
             $page['view']   = "reviews";
             $page['inc']    = "reviews";
@@ -127,30 +185,35 @@
             $page['cache']  = false;
             break;
         case "email-history":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
             $page['vid']    = 'email-history';
             $page['view']   = "email-history";
             $page['inc']    = "email-history";
             $page['cache']  = false;
             break;
         case "privacy":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
             $page['vid']    = 'privacy';
             $page['view']   = "privacy";
             $page['inc']   = "privacy";
             $page['cache']  = false;
             break;
         case "my-invoices":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
             $page['vid']    = 'my-invoices';
             $page['view']   = "my-invoices";
             $page['inc']    = "my-invoices";
             $page['cache']  = false;
             break;
         case "my-transactions":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
             $page['vid']    = 'my-transactions';
             $page['view']   = "my-transactions";
             $page['inc']    = "my-transactions";
             $page['cache']  = false;
             break;
         case "my-requests":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
             $page['vid']    = 'my-requests';
             $page['view']   = "my-requests";
             $page['inc']    = "my-requests";
@@ -165,14 +228,21 @@
             $page['cache']  = false;
             break;
         case null:
+        case "403":
+            $page['vid']    = '403';
+            $page['view']   = "403";
+            $page['inc']    = null;
+            $page['cache']  = false;
+            break;
+        case null:
         case "home":    // Site Index/root
-        case "":    // Site Index/root
+        case "":        // Site Index/root
             $page['vid']    = 'home';
             $page['view']   = 'home';
             $page['cache']  = false;
         break;
 
-        default:    // Not Found
+        default:        // Not Found
             $page['vid']        = false;        // Page View ID/Name
             $page['upon']       = null;         // Page Upon File
             $page['inc']        = null;         // Page Inc File
