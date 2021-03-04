@@ -55,7 +55,11 @@ include_once $this->PATH."global/header.php";
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Excerpt</label>
-                                <input type="text" class="form-control" placeholder="example" name="title" required >
+                                <select multiple="" class="selectpicker form-control" id="tags" name="tags[]" data-container="body" data-live-search="true" title="Select category tag" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
+                                    <?php foreach($this->data['forms'] as $item) { ?>
+                                        <option id="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
+                                    <?php } ?>
+                                </select>
                             </div>
 
                             <div class="col-md-12 text-center">
