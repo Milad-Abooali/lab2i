@@ -131,9 +131,9 @@
             break;
         case "my-shop":
             if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
-            $page['vid']    = 'my-shop';
-            $page['view']   = "my-shop";
-            $page['inc']    = "my-shop";
+            $page['vid']    = 'vendor/my-shop';
+            $page['view']   = "vendor/my-shop";
+            $page['inc']    = "vendor/my-shop";
             $page['cache']  = false;
             break;
         case "my-offers":
@@ -145,16 +145,16 @@
             break;
         case "my-orders":
             if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
-            $page['vid']    = 'my-orders';
-            $page['view']   = "my-orders";
-            $page['inc']    = "my-orders";
+            $page['vid']    = 'vendor/my-orders';
+            $page['view']   = "vendor/my-orders";
+            $page['inc']    = "vendor/my-orders";
             $page['cache']  = false;
             break;
         case "reviews":
             if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
-            $page['vid']    = 'reviews';
-            $page['view']   = "reviews";
-            $page['inc']    = "reviews";
+            $page['vid']    = 'users/reviews';
+            $page['view']   = "users/reviews";
+            $page['inc']    = "users/reviews";
             $page['cache']  = false;
             break;
 
@@ -214,9 +214,9 @@
             break;
         case "my-requests":
             if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
-            $page['vid']    = 'my-requests';
-            $page['view']   = "my-requests";
-            $page['inc']    = "my-requests";
+            $page['vid']    = 'user/my-requests';
+            $page['view']   = "user/my-requests";
+            $page['inc']    = "user/my-requests";
             $page['cache']  = false;
             break;
 
