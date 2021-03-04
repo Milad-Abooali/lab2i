@@ -25,11 +25,31 @@
 
 // Admin
         case "admin":
-            $page['vid']    = 'admin';
-            $page['view']   = "admin";
-            $page['inc']    = "admin";
-            $page['cache']  = false;
+            (!$_SESSION['M']['vendor']['admin']) ?: die ('Access Denid !');
+            $page['vid']  = 'admin"/'.array_shift($page['data']);
+            switch ($page['vid']) {
+                case "admin/list-vendors":
+                    $page['vid']    = 'admin/list-vendors';
+                    $page['view']   = "admin/list-vendors";
+                    $page['inc']    = "admin/list-vendors";
+                    $page['cache']  = false;
+                    break;
+                case "admin/bots":
+                    (USER_ACCESS['staff']) ?: die ('Access Denid !');
+                    $page['vid']    = 'v-recoverPassword';
+                    $page['view']   = "v-recover_password";
+                    $page['inc']    = "v-recover_password";
+                    $page['cache']  = false;
+                    break;
+                case "admin/":
+                default:
+                    $page['vid']    = 'admin';
+                    $page['view']   = "admin";
+                    $page['inc']    = "admin";
+                    $page['cache']  = false;
+            }
             break;
+
 
 // Vendor
         case "v-signin":
@@ -82,7 +102,24 @@
 
 
 
-
+// Client
+        case "register":
+            $page['vid']    = 'register';
+            $page['view']   = "register";
+            $page['inc']    = "register";
+            $page['cache']  = false;
+            break;
+        case "login":
+            $page['vid']    = 'login';
+            $page['view']   = "login";
+            $page['cache']  = false;
+            break;
+        case "recoverPassword":
+            $page['vid']    = 'recoverPassword';
+            $page['view']   = "recover_password";
+            $page['inc']    = "recover_password";
+            $page['cache']  = false;
+            break;
         case "reset-password":
             $page['vid']    = 'reset-assword';
             $page['view']   = "reset-password";
@@ -119,27 +156,12 @@
             $page['inc']    = "my-requests";
             $page['cache']  = false;
             break;
+
+// Shared
         case "dashboard":
             $page['vid']    = 'dashboard';
             $page['view']   = "dashboard";
             $page['inc']    = "dashboard";
-            $page['cache']  = false;
-            break;
-        case "login":
-            $page['vid']    = 'login';
-            $page['view']   = "login";
-            $page['cache']  = false;
-            break;
-        case "recoverPassword":
-            $page['vid']    = 'recoverPassword';
-            $page['view']   = "recover_password";
-            $page['inc']    = "recover_password";
-            $page['cache']  = false;
-            break;
-        case "register":
-            $page['vid']    = 'register';
-            $page['view']   = "register";
-            $page['inc']    = "register";
             $page['cache']  = false;
             break;
         case null:
