@@ -5,6 +5,7 @@
 
 ?>
 <div class="accordion" id="adminMenu">
+    <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin">Admin Dashboard</a>
     <div class="menu-group">
         <div class="menu-title" id="headingOne">
             <div class="mb-0 py-2" data-toggle="collapse" data-target="#a0">
