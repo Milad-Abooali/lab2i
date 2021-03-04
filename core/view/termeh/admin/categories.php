@@ -49,17 +49,28 @@ include_once $this->PATH."global/header.php";
                                 <label class="labels">Tags</label>
                                 <select multiple="" class="selectpicker form-control" id="tags" name="tags[]" data-container="body" data-live-search="true" title="Select category tag" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
                                     <?php foreach($this->data['tags'] as $item) { ?>
-                                        <option id="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
+                                        <option value="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label class="labels">Excerpt</label>
-                                <select multiple="" class="selectpicker form-control" id="tags" name="tags[]" data-container="body" data-live-search="true" title="Select category tag" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
+                                <label class="labels">Form</label>
+                                <select class="selectpicker form-control" id="tags" name="form" data-container="body" data-live-search="true" title="Select Form" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
                                     <?php foreach($this->data['forms'] as $item) { ?>
-                                        <option id="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
+                                        <option><?= $item ?></option>
                                     <?php } ?>
                                 </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="labels">Commission Type</label>
+                                <select class="selectpicker form-control" id="tags" name="form" data-container="body" data-live-search="true" title="Select commission type" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
+                                    <option value="1">$ - Flat</option>
+                                    <option value="2">% - Percentage</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="labels">Commission Fee</label>
+                                <input type="number" class="form-control" min="0.00" max="10000.00" step="0.01" id="fee" name="fee" placeholder="0,00">
                             </div>
 
                             <div class="col-md-12 text-center">

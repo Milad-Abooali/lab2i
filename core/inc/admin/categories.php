@@ -13,4 +13,4 @@ use App\Core\iSQL;
 
 
     $this->data['forms'] = scandir(APP_ROOT.'/core/inc/instances-forms');
-    unset($this->data['forms'][0],$this->data['forms'][1]);
+    unset($this->data['forms'][0], $this->data['forms'][1]);
