@@ -124,9 +124,9 @@
             break;
         case "account":
             if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
-            $page['vid']    = 'account';
-            $page['view']   = "account";
-            $page['inc']    = "account";
+            $page['vid']    = 'vendor/account';
+            $page['view']   = "vendor/account";
+            $page['inc']    = null;
             $page['cache']  = false;
             break;
         case "my-shop":
@@ -138,9 +138,9 @@
             break;
         case "my-offers":
             if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
-            $page['vid']    = 'my-offers';
-            $page['view']   = "my-offers";
-            $page['inc']    = "my-offers";
+            $page['vid']    = 'vendor/my-offers';
+            $page['view']   = "vendor/my-offers";
+            $page['inc']    = "vendor/my-offers";
             $page['cache']  = false;
             break;
         case "my-orders":
@@ -168,8 +168,8 @@
             $page['cache']  = false;
             break;
         case "login":
-            $page['vid']    = 'login';
-            $page['view']   = "login";
+            $page['vid']    = 'user/login';
+            $page['view']   = "user/login";
             $page['cache']  = false;
             break;
         case "recoverPassword":
@@ -186,9 +186,9 @@
             break;
         case "email-history":
             if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
-            $page['vid']    = 'email-history';
-            $page['view']   = "email-history";
-            $page['inc']    = "email-history";
+            $page['vid']    = 'user/email-history';
+            $page['view']   = "user/email-history";
+            $page['inc']    = "user/email-history";
             $page['cache']  = false;
             break;
         case "privacy":
@@ -200,9 +200,9 @@
             break;
         case "my-invoices":
             if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
-            $page['vid']    = 'my-invoices';
-            $page['view']   = "my-invoices";
-            $page['inc']    = "my-invoices";
+            $page['vid']    = 'user/my-invoices';
+            $page['view']   = "user/my-invoices";
+            $page['inc']    = "user/my-invoices";
             $page['cache']  = false;
             break;
         case "my-transactions":
@@ -227,7 +227,6 @@
             $page['inc']    = "dashboard";
             $page['cache']  = false;
             break;
-        case null:
         case "403":
             $page['vid']        = false;
             $page['upon']       = null;
@@ -235,14 +234,13 @@
             $page['view']       = 'error/403';
             $page['cache']      = false;
             break;
-        case null:
         case "home":    // Site Index/root
-        case "":        // Site Index/root
+        case null:
+        case "":
             $page['vid']    = 'home';
             $page['view']   = 'home';
             $page['cache']  = false;
         break;
-
         default:        // Not Found
             $page['vid']        = false;        // Page View ID/Name
             $page['upon']       = null;         // Page Upon File

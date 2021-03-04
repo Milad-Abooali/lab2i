@@ -35,56 +35,88 @@ include_once $this->PATH."global/header.php";
             <div class="col-md-9">
 
 
-                <form id="register" class="form-horizontal" method="post" action="user/register">
+                <form id="profile" class="form-horizontal" method="post" action="user/update">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">My Profile</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" name="f_name" value="<?= $_SESSION['M']['user']['f_name'] ?? null ?>"></div>
+                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="surname" name="l_name" value="<?= $_SESSION['M']['user']['l_name'] ?? null ?>" ></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Email <small>(Username)</small></label><input type="email" class="form-control" placeholder="email" name="email" value="<?= $_SESSION['M']['user']['email'] ?? null ?>" readonly></div>
+                            <div class="col-md-6">
+                                <label class="labels">Country</label>
+                                <select class="selectpicker form-control" placeholder="select country" name="country" data-live-search="true">
+                                    <option value="" <?= ($_SESSION['M']['user']['country'] ?? false) ?: 'selected'?> disabled>select country</option>
+                                    <?php foreach (M::countries() as $iso => $country) { ?>
+                                        <option value="<?= $iso ?>" <?= ($iso!= ($_SESSION['M']['user']['country'] ?? false)) ?: 'selected' ?>><?= $country ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" name="region"  value="<?= $_SESSION['M']['user']['region'] ?? null ?>" placeholder="state"></div>
+                            <div class="col-md-12"><label class="labels">Address</label>
+                                <textarea class="form-control" placeholder="enter address" name="address"><?= $_SESSION['M']['user']['address'] ?? null ?></textarea>
+                            </div>
+                            <div class="col-md-6"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode"  name="postcode" value="<?= $_SESSION['M']['user']['postcode'] ?? null ?>"></div>
+                            <div class="col-md-6"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" name="phone"  value="<?= $_SESSION['M']['user']['phone'] ?? null ?>"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label class="labels">Gender</label>
+                                <select class="selectpicker form-control" placeholder="select gender" name="gender" data-live-search="false">
+                                    <option value="" <?= ($_SESSION['M']['user']['gender'] ?? false) ?: 'selected' ?> disabled>select gender</option>
+                                    <option value="M" <?= ("M" != ($_SESSION['M']['user']['gender'] ?? false)) ?: 'selected' ?> >Male</option>
+                                    <option value="F" <?= ("F" != ($_SESSION['M']['user']['gender'] ?? false)) ?: 'selected' ?> >Female</option>
+                                    <option value="O" <?= ("O" != ($_SESSION['M']['user']['gender'] ?? false)) ?: 'selected' ?> >Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Birthday</label><input type="date" class="form-control" placeholder="Birthday" name="birthday" value="<?= $_SESSION['M']['user']['birthday'] ?? null ?>" >
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Job Title</label><input type="text" class="form-control" placeholder="enter job title" name="job" value="<?= $_SESSION['M']['user']['job'] ?? null ?>">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Annual Income</label>
+                                <select class="selectpicker form-control" placeholder="select annual income" name="income" data-live-search="false">
+                                    <option value="0" <?= ($_SESSION['M']['user']['income'] ?? false) ?: 'selected' ?> disabled>select annual income</option>
+                                    <option value="1" <?= ("M" != ($_SESSION['M']['user']['income'] ?? false)) ?: 'selected' ?> >Less than $ 10,000</option>
+                                    <option value="2" <?= ("F" != ($_SESSION['M']['user']['income'] ?? false)) ?: 'selected' ?> >$ 10,000 ~ $ 15,000</option>
+                                    <option value="3" <?= ("O" != ($_SESSION['M']['user']['income'] ?? false)) ?: 'selected' ?> >$ 15,000 ~ $ 25,000</option>
+                                    <option value="4" <?= ("O" != ($_SESSION['M']['user']['income'] ?? false)) ?: 'selected' ?> >$ 25,000 ~ $ 40,000</option>
+                                    <option value="5" <?= ("O" != ($_SESSION['M']['user']['income'] ?? false)) ?: 'selected' ?> >$ 40,000 ~ $ 65,000</option>
+                                    <option value="6" <?= ("O" != ($_SESSION['M']['user']['income'] ?? false)) ?: 'selected' ?> >+ $ 65,000</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Interested <small>(Select multi as you like)</small></label>
+                                <select multiple class="selectpicker form-control" id="Interested" name="interests[]" data-container="body" data-live-search="true" title="Select your Interested" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false">
+                                    <optgroup label="Sport">
+                                        <option <?= (!in_array('Football',$this->data['interests'])) ?: 'selected' ?>>Football</option>
+                                        <option <?= (!in_array('Basketball',$this->data['interests'])) ?: 'selected' ?>>Basketball</option>
+                                        <option <?= (!in_array('Baseball',$this->data['interests'])) ?: 'selected' ?>>Baseball</option>
+                                        <option <?= (!in_array('volleyball',$this->data['interests'])) ?: 'selected' ?>>volleyball</option>
+                                    </optgroup>
+                                    <optgroup label="Movie">
+                                        <option <?= (!in_array('Hollywood',$this->data['interests'])) ?: 'selected' ?>>Hollywood</option>
+                                        <option <?= (!in_array('Bollywood',$this->data['interests'])) ?: 'selected' ?>>Bollywood</option>
+                                        <option <?= (!in_array('Festivals',$this->data['interests'])) ?: 'selected' ?>>Festivals</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="<?= $_SESSION['M']['user']['id'] ?? null ?>">
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-                        </div>
-                        <input type="text" class="form-control" minlength="3" name="fname" id="fname" placeholder="Enter your First Name" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-                        </div>
-                        <input type="text" class="form-control" minlength="3" name="lname" id="lname" placeholder="Enter your Last Name" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
-                        </div>
-                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter your phone number" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                        </div>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-key" aria-hidden="true"></i></span>
-                        </div>
-                        <input type="password" class="form-control"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" id="password" placeholder="Enter your Password" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-key" aria-hidden="true"></i></span>
-                        </div>
-                        <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" required>
-                    </div>
+                        <div class="my-4 alert form-alert">
 
-                    <div class="form-group ">
-                        <button type="submit" class="btn btn-primary btn-lg col-8 login-button">Register</button>
-                        <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
-                        <a class="btn btn-success my-2 my-sm-0" href="login">Login</a>
-                    </div>
-                    <hr>
-                    <div class="form-group small text-center">
-                        <p>
-                            You can signup as <span class="text-danger">vendor</span> to provide service and products, also create your own shop:
-                        </p>
-                        <a class="btn btn-sm btn-outline-info mx-auto" href="v-signup">SignUp As Vendor</a>
+                        </div>
+                        <div class="mt-4 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
                     </div>
                 </form>
 

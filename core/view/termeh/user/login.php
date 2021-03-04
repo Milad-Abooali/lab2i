@@ -51,11 +51,11 @@
                             <div class="form-group ">
                                 <button type="submit" class="btn btn-success btn-lg col-8 login-button">Login</button>
                                 <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
-                                <a class="btn btn-primary my-2 my-sm-0" href="register">Register</a>
+                                <a class="btn btn-primary my-2 my-sm-0" href="../../../../index.php">Register</a>
                             </div>
                             <div class="form-group">
                                 <p class="small text-muted">
-                                   * If you forgot your password, click <a href="recoverPassword" class="">here</a>.
+                                   * If you forgot your password, click <a href="../../../../index.php" class="">here</a>.
                                 </p>
                             </div>
                         </form>
