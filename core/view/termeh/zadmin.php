@@ -25,7 +25,7 @@ include_once $this->PATH."global/header.php";
         <h6>Admin Panel
         <small class="float-right">
             <button class="btn btn-sm btn-primary"><i class="fa "></i>Save</button>
-            <button class="btn btn-sm btn-outline-danger">Save</button>
+            <button class="btn btn-sm btn-outline-danger">Rest</button>
         </small>
         </h6>
         <hr>

@@ -61,6 +61,16 @@
             <a class="d-block py-2 pl-4 border-bottom" href="#">Transactions</a>
         </div>
     </div>
+    <div class="menu-group">
+        <div class="menu-title" id="headingThree">
+            <div class="mb-0 py-2" data-toggle="collapse" data-target="#a4">
+                <i class="fa fa-arrow-right"></i> CMS
+            </div>
+        </div>
+        <div id="a4" class="collapse" aria-labelledby="headingThree" data-parent="#adminMenu">
+            <a class="d-block py-2 pl-4 border-bottom" href="#">Pages</a>
+        </div>
+    </div>
 </div>
 
 
