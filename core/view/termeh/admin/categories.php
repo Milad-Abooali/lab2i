@@ -122,12 +122,8 @@ include_once $this->PATH."global/header.php";
                             <th>Tags</th>
                             <th>Form</th>
                             <th>Commission</th>
-                            <th>Highlight</th>
-                            <th>Image</th>
-                            <th>Video</th>
-                            <th>Date Range</th>
-                            <th>Discount</th>
-                            <th>Auto Offer</th>
+                            <th>Options</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -135,7 +131,7 @@ include_once $this->PATH."global/header.php";
                         <tr>
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['title'] ?></td>
-                            <td><?= $item['excerpt'] ?></td>
+                            <td class="small"><?= $item['excerpt'] ?></td>
                             <td>
                             <?php
                                 if($item['tags']) {
@@ -146,12 +142,20 @@ include_once $this->PATH."global/header.php";
                             </td>
                             <td><?= $item['form'] ?></td>
                             <td><?= ($item['commission_type']==1) ? '$' : '%'; ?> <?= $item['commission_fee'] ?></td>
-                            <td><?php \App\Core\F::status($item['highlight']) ?></td>
-                            <td>Image</td>
-                            <td>Video</td>
-                            <td>Date Range</td>
-                            <td>Discount</td>
-                            <td>Auto Offer</td>
+                            <td class="small">
+                                <?php \App\Core\F::status($item['highlight'],'oo') ?> Highlight
+                                <br>
+                                <?php \App\Core\F::status($item['image'],'oo') ?> Image
+                                <br>
+                                <?php \App\Core\F::status($item['video'],'oo') ?> Video
+                                <br>
+                                <?php \App\Core\F::status($item['date_range'],'oo') ?> Date Range
+                                <br>
+                                <?php \App\Core\F::status($item['discount'],'oo') ?> Discount
+                                <br>
+                                <?php \App\Core\F::status($item['auto_offer'],'oo') ?> Auto Offer
+                            </td>
+                            <td> <button class="doA-delete btn btn-sm btn-danger" data-id="<?= $item['id'] ?>">Delete</button> </td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -170,6 +174,26 @@ include_once $this->PATH."global/header.php";
 
             //  Data Table - Transaction
             $('#categoriesTable').DataTable();
+
+
+            //  Delete Category
+            $('body').on('click','.doA-delete', function(event){
+                let clicked = $(this);
+                let id = clicked.data('id');
+                let data = {
+                    t: 'categories',
+                    id: id
+                }
+                ajaxCall ('core/delete', data, function(response) {
+                    let obj = JSON.parse(response);
+                    if (obj.res) {
+                        notify('Deleted.', 'success', false);
+                        clicked.closest("tr").remove();
+                    } else {
+                        notify('Error!', 'error', false);
+                    }
+                });
+            });
 
         });
 

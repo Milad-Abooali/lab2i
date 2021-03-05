@@ -35,3 +35,15 @@
         $output->res['content'] = htmlspecialchars_decode(stripslashes($content));
         echo json_encode($output);
     }
+
+    // Delete
+    function delete() {
+        $output = new stdClass();
+        $output->e = !(($_POST['t']) ?? false);
+        $output->e = !(($_POST['id']) ?? false);
+        if ($output->e == false) {
+            $db = new iSQL(DB_INFO);
+            $output->res = $db->deleteId($_POST['t'], $_POST['id']);
+        }
+        echo json_encode($output);
+    }

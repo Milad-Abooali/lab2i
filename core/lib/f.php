@@ -39,8 +39,6 @@
 
         /**
          * Status Checker
-         * @param $input
-         * @param string $type
          * @return void
          */
         public static function status($input,$type='ico') {
