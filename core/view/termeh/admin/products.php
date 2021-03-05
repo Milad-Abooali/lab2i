@@ -43,9 +43,10 @@ include_once $this->PATH."global/header.php";
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Category</label>
-                                <select class="selectpicker form-control" id="tags" name="commission_type" data-container="body" data-live-search="true" title="Commission type" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
-                                    <option value="1">$ - Flat</option>
-                                    <option value="2">% - Percentage</option>
+                                <select class="selectpicker form-control" id="tags" name="category" data-container="body" data-live-search="true" title="Category" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
+                                    <?php foreach($this->data['categories'] as $category) { ?>
+                                        <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="col-md-12 text-center">
