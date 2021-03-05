@@ -37,4 +37,11 @@
             return $user->getId($id);
         }
 
+        /**
+         * Status Checker
+         * @return void
+         */
+        public static function status($input) {
+            echo ($input) ? '<i class="fa fa-check-circle text-success"></i>' : '<i class="fa fa-exclamation-circle text-danger"></i>';
+        }
     }

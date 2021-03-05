@@ -121,8 +121,7 @@ include_once $this->PATH."global/header.php";
                             <th>Excerpt</th>
                             <th>Tags</th>
                             <th>Form</th>
-                            <th>Commission Type</th>
-                            <th>Commission Fee</th>
+                            <th>Commission</th>
                             <th>Highlight</th>
                             <th>Image</th>
                             <th>Video</th>
@@ -134,19 +133,25 @@ include_once $this->PATH."global/header.php";
                     <tbody>
                     <?php if($this->data['categories']) foreach ($this->data['categories'] as $item) { ?>
                         <tr>
+                            <td><?= $item['id'] ?></td>
                             <td><?= $item['title'] ?></td>
                             <td><?= $item['excerpt'] ?></td>
-                            <td><?php if($item['tags']) foreach ($item['tags'] as $tag) echo $this->data['tags'][$tag]['name'].', ';  ?></td>
+                            <td>
+                            <?php
+                                if($item['tags']) {
+                                    $tags = explode(',',$item['tags']);
+                                    foreach ($tags as $tag) echo '<span class="small badge-pill badge-info ">'.$this->data['tags'][$tag]['name'].'</span>';
+                                }
+                            ?>
+                            </td>
                             <td><?= $item['form'] ?></td>
                             <td><?= ($item['commission_type']==1) ? '$' : '%'; ?> <?= $item['commission_fee'] ?></td>
-                            <td>Commission Fee</td>
-                            <td>Highlight</td>
+                            <td><?= \App\Core\F::status($item['id']) ?></td>
                             <td>Image</td>
                             <td>Video</td>
                             <td>Date Range</td>
                             <td>Discount</td>
                             <td>Auto Offer</td>
-
                         </tr>
                     <?php } ?>
                     </tbody>

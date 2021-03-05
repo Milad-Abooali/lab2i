@@ -12,7 +12,8 @@ use App\Core\M;
     $db = new iSQL(DB_INFO);
 
     // Tags
-    $this->data['tags'] = $db->selectAll('tags');
+    $tags = $db->selectAll('tags');
+    foreach ($tags as $tag) $this->data['tags'][$tag['id']] = $tag;
 
     // List forms
     $this->data['forms'] = scandir(APP_ROOT.'/core/inc/instances-forms');
@@ -38,4 +39,22 @@ use App\Core\M;
         $insert['discount'] = isset($_POST['discount']);
         $insert['auto_offer'] = isset($_POST['auto_offer']);
         $this->data['insert_id'] = $db->insert('categories', $insert);
+
+        if($this->data['insert_id']) {
+
+            // Update Tag Counter
+            if($_POST['tags'] ?? false) {
+                foreach($_POST['tags'] as $tag) {
+                    $where = "id=$tag";
+                    $db->increase('tags','count_c', $where);
+                }
+            }
+
+            // Upload Feature Image
+            if($_POST['tags'] ?? false) {
+
+            }
+
+        }
+
     }
