@@ -30,4 +30,13 @@ use App\Core\M;
         $insert['category'] = $_POST['category'];
         $this->data['insert_id'] = $db->insert('products', $insert);
 
+
+        if($this->data['insert_id']) {
+
+            // Update Category Counter
+            $where = "id=".$insert['category'];
+            $db->increase('categories','count_p', $where);
+
+        }
+
     }
