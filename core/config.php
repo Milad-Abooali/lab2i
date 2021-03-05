@@ -27,7 +27,7 @@
       "language"      => false,
       "view"          => true
     ]);
-    define("LOG_FORCE", false);  // 1 Force to Show Log - 0: Need add '&mLog' to URL
+    define("LOG_FORCE", true);  // 1 Force to Show Log - 0: Need add '&mLog' to URL
 
 /**
  * App Settings

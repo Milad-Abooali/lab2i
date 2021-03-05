@@ -34,16 +34,16 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                <form id="addCat" class="form-horizontal" method="post" action="cats/add">
+                <form id="addCategory" class="form-horizontal" method="post" action="">
                     <div class="p-3">
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="labels">Title</label>
-                                <input type="text" class="form-control" placeholder="example" name="title" required >
+                                <input type="text" class="form-control" placeholder="example" name="title" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Excerpt</label>
-                                <textarea class="form-control" placeholder="enter address" name="excerpt"> </textarea>
+                                <textarea class="form-control" placeholder="enter address" name="excerpt" required> </textarea>
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Tags</label>
@@ -63,14 +63,14 @@ include_once $this->PATH."global/header.php";
                             </div>
                             <div class="col-md-3">
                                 <label class="labels">Commission Type</label>
-                                <select class="selectpicker form-control" id="tags" name="form" data-container="body" data-live-search="true" title="Commission type" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
+                                <select class="selectpicker form-control" id="tags" name="commission_type" data-container="body" data-live-search="true" title="Commission type" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
                                     <option value="1">$ - Flat</option>
                                     <option value="2">% - Percentage</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 <label class="labels">Commission Fee</label>
-                                <input type="number" class="form-control" min="0.00" max="10000.00" step="0.01" id="fee" name="fee" placeholder="0,00">
+                                <input type="number" class="form-control" min="0.00" max="10000.00" step="0.01" id="fee" name="commission_fee" placeholder="0,00" required>
                             </div>
 
                             <div class="col-md-6">
@@ -88,8 +88,8 @@ include_once $this->PATH."global/header.php";
                                     <input type="checkbox" class="form-check-input" id="video" name="video">
                                     <label class="form-check-label" for="video">Products have videos</label>
                                     <br>
-                                    <input type="checkbox" class="form-check-input" id="dateRange" name="dateRange">
-                                    <label class="form-check-label" for="dateRange">Products have date range</label>
+                                    <input type="checkbox" class="form-check-input" id="date_range" name="date_range">
+                                    <label class="form-check-label" for="date_range">Products have date range</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -100,8 +100,8 @@ include_once $this->PATH."global/header.php";
                                     <input type="checkbox" class="form-check-input" id="discount" name="discount">
                                     <label class="form-check-label" for="discount">Products have discount</label>
                                     <br>
-                                    <input type="checkbox" class="form-check-input" id="autoOffer" name="autoOffer">
-                                    <label class="form-check-label" for="autoOffer">Auto offer option</label>
+                                    <input type="checkbox" class="form-check-input" id="auto_offer" name="auto_offer">
+                                    <label class="form-check-label" for="auto_offer">Auto offer option</label>
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">
@@ -112,6 +112,45 @@ include_once $this->PATH."global/header.php";
                 </form>
 
                 <hr>
+
+                <table id="categoriesTable" class="table table-sm table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Excerpt</th>
+                            <th>Tags</th>
+                            <th>Form</th>
+                            <th>Commission Type</th>
+                            <th>Commission Fee</th>
+                            <th>Highlight</th>
+                            <th>Image</th>
+                            <th>Video</th>
+                            <th>Date Range</th>
+                            <th>Discount</th>
+                            <th>Auto Offer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php if($this->data['categories']) foreach ($this->data['categories'] as $item) { ?>
+                        <tr>
+                            <td><?= $item['title'] ?></td>
+                            <td><?= $item['excerpt'] ?></td>
+                            <td><?php if($item['tags']) foreach ($item['tags'] as $tag) echo $this->data['tags'][$tag]['name'].', ';  ?></td>
+                            <td><?= $item['form'] ?></td>
+                            <td><?= ($item['commission_type']==1) ? '$' : '%'; ?> <?= $item['commission_fee'] ?></td>
+                            <td>Commission Fee</td>
+                            <td>Highlight</td>
+                            <td>Image</td>
+                            <td>Video</td>
+                            <td>Date Range</td>
+                            <td>Discount</td>
+                            <td>Auto Offer</td>
+
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
 
             </div>
         </div>
@@ -124,6 +163,8 @@ include_once $this->PATH."global/header.php";
 
         $( document ).ready(function() {
 
+            //  Data Table - Transaction
+            $('#categoriesTable').DataTable();
 
         });
 
