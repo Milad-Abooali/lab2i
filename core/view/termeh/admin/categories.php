@@ -146,7 +146,7 @@ include_once $this->PATH."global/header.php";
                             </td>
                             <td><?= $item['form'] ?></td>
                             <td><?= ($item['commission_type']==1) ? '$' : '%'; ?> <?= $item['commission_fee'] ?></td>
-                            <td><?= \App\Core\F::status($item['id']) ?></td>
+                            <td><?php \App\Core\F::status($item['highlight']) ?></td>
                             <td>Image</td>
                             <td>Video</td>
                             <td>Date Range</td>

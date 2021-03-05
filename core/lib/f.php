@@ -39,9 +39,19 @@
 
         /**
          * Status Checker
+         * @param $input
+         * @param string $type
          * @return void
          */
-        public static function status($input) {
-            echo ($input) ? '<i class="fa fa-check-circle text-success"></i>' : '<i class="fa fa-exclamation-circle text-danger"></i>';
+        public static function status($input,$type='ico') {
+            if ($type=='ico') {
+                echo ($input) ? '<i class="fa fa-check-circle text-success"></i>' : '<i class="fa fa-exclamation-circle text-danger"></i>';
+            } elseif($type=='yn') {
+                echo ($input) ? '<span class="text-success">Yes</span>' : '<span class="text-danger">No</span>';
+            } elseif($type=='oo') {
+                echo ($input) ? '<span class="text-success">On</span>' : '<span class="text-danger">Off</span>';
+            } else {
+                echo ($input) ? '<span class="text-success">True</span>' : '<span class="text-danger">False</span>';
+            }
         }
     }
