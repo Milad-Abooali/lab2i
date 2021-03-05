@@ -34,7 +34,7 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                <form id="addCategory" class="form-horizontal" method="post" action="">
+                <form id="addCategory" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
                     <div class="p-3">
                         <div class="row">
                             <div class="col-md-6">
@@ -130,13 +130,17 @@ include_once $this->PATH."global/header.php";
                     <?php if($this->data['categories']) foreach ($this->data['categories'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
-                            <td><?= $item['title'] ?></td>
+                            <td>
+                                <?= $item['title'] ?>
+                                <hr>
+                                <img class="col-md-12" src="<?= CDN.'/upload/categories/'.$item['id'] ?>">
+                            </td>
                             <td class="small"><?= $item['excerpt'] ?></td>
                             <td>
                             <?php
                                 if($item['tags']) {
                                     $tags = explode(',',$item['tags']);
-                                    foreach ($tags as $tag) echo '<span class="small badge-pill badge-info ">'.$this->data['tags'][$tag]['name'].'</span>';
+                                    foreach ($tags as $tag) echo '<span class="small badge-pill badge-info">'.$this->data['tags'][$tag]['name'].'</span><br>';
                                 }
                             ?>
                             </td>

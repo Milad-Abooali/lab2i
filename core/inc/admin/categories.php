@@ -51,8 +51,50 @@ use App\Core\M;
             }
 
             // Upload Feature Image
-            if($_POST['tags'] ?? false) {
+            if($_FILES['featuredImage'] ?? false) {
 
+                    if (isset($_FILES['featuredImage']) && $_FILES['featuredImage']['error'] === UPLOAD_ERR_OK)
+                    {
+                        // get details of the uploaded file
+                        $fileTmpPath = $_FILES['featuredImage']['tmp_name'];
+                        $fileName = $_FILES['featuredImage']['name'];
+                        $fileSize = $_FILES['featuredImage']['size'];
+                        $fileType = $_FILES['featuredImage']['type'];
+                        $fileNameCmps = explode(".", $fileName);
+                        $fileExtension = strtolower(end($fileNameCmps));
+
+                        // sanitize file-name
+                        $newFileName = $this->data['insert_id'] . '.' . $fileExtension;
+
+                        // check if file has one of the following extensions
+                        $allowedfileExtensions = array('jpg', 'png', 'jpeg');
+
+                        if (in_array($fileExtension, $allowedfileExtensions))
+                        {
+                            // directory in which the uploaded file will be moved
+                            $uploadFileDir = APP_ROOT.'/cdn/upload/categories/';
+                            $dest_path = $uploadFileDir . $newFileName;
+
+                            if(move_uploaded_file($fileTmpPath, $dest_path))
+                            {
+                                $message ='File is successfully uploaded.';
+                            }
+                            else
+                            {
+                                $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+                            }
+                        }
+                        else
+                        {
+                            $message = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+                        }
+                    }
+                    else
+                    {
+                        $message = 'There is some error in the file upload. Please check the following error.<br>';
+                        $message .= 'Error:' . $_FILES['featuredImage']['error'];
+                    }
+                    $this->data['upload_file'] = $message;
             }
 
         }
