@@ -34,7 +34,7 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                <form id="addCategory" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                <form id="addProducts" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
                     <div class="p-3">
                         <div class="row">
                             <div class="col-md-6">
@@ -63,48 +63,17 @@ include_once $this->PATH."global/header.php";
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Excerpt</th>
-                            <th>Tags</th>
-                            <th>Form</th>
-                            <th>Commission</th>
-                            <th>Options</th>
-                            <th>Manage</th>
+                            <th>Category</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php if($this->data['categories']) foreach ($this->data['categories'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
+                            <td><?= $item['category'] ?></td>
                             <td>
-                                <?= $item['title'] ?>
-                                <hr>
-                                <img class="col-md-12" src="<?= CDN.'/upload/categories/'.$item['id'] ?>">
+                                <button class="doA-delete btn btn-sm btn-danger" data-id="<?= $item['id'] ?>">Delete</button>
                             </td>
-                            <td class="small"><?= $item['excerpt'] ?></td>
-                            <td>
-                            <?php
-                                if($item['tags']) {
-                                    $tags = explode(',',$item['tags']);
-                                    foreach ($tags as $tag) echo '<span class="small badge-pill badge-info">'.$this->data['tags'][$tag]['name'].'</span><br>';
-                                }
-                            ?>
-                            </td>
-                            <td><?= $item['form'] ?></td>
-                            <td><?= ($item['commission_type']==1) ? '$' : '%'; ?> <?= $item['commission_fee'] ?></td>
-                            <td class="small">
-                                <?php \App\Core\F::status($item['highlight'],'oo') ?> Highlight
-                                <br>
-                                <?php \App\Core\F::status($item['image'],'oo') ?> Image
-                                <br>
-                                <?php \App\Core\F::status($item['video'],'oo') ?> Video
-                                <br>
-                                <?php \App\Core\F::status($item['date_range'],'oo') ?> Date Range
-                                <br>
-                                <?php \App\Core\F::status($item['discount'],'oo') ?> Discount
-                                <br>
-                                <?php \App\Core\F::status($item['auto_offer'],'oo') ?> Auto Offer
-                            </td>
-                            <td> <button class="doA-delete btn btn-sm btn-danger" data-id="<?= $item['id'] ?>">Delete</button> </td>
                         </tr>
                     <?php } ?>
                     </tbody>
