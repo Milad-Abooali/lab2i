@@ -63,7 +63,7 @@ include_once $this->PATH."global/header.php";
                             </div>
                             <div class="col-md-3">
                                 <label class="labels">Commission Type</label>
-                                <select class="selectpicker form-control" id="tags" name="form" data-container="body" data-live-search="true" title="Select commission type" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
+                                <select class="selectpicker form-control" id="tags" name="form" data-container="body" data-live-search="true" title="Commission type" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98">
                                     <option value="1">$ - Flat</option>
                                     <option value="2">% - Percentage</option>
                                 </select>
@@ -73,8 +73,39 @@ include_once $this->PATH."global/header.php";
                                 <input type="number" class="form-control" min="0.00" max="10000.00" step="0.01" id="fee" name="fee" placeholder="0,00">
                             </div>
 
+                            <div class="col-md-6">
+                                <label class="labels">Featured Image</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="featuredImage" accept="image/png, image/jpeg, image/jpg">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pl-4 pt-3">
+                                    <input type="checkbox" class="form-check-input" id="image" name="image">
+                                    <label class="form-check-label" for="image">Products have images</label>
+                                    <br>
+                                    <input type="checkbox" class="form-check-input" id="video" name="video">
+                                    <label class="form-check-label" for="video">Products have videos</label>
+                                    <br>
+                                    <input type="checkbox" class="form-check-input" id="dateRange" name="dateRange">
+                                    <label class="form-check-label" for="dateRange">Products have date range</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pl-4 pt-3">
+                                    <input type="checkbox" class="form-check-input" id="highlight" name="highlight">
+                                    <label class="form-check-label" for="highlight">Highlight Category</label>
+                                    <br>
+                                    <input type="checkbox" class="form-check-input" id="discount" name="discount">
+                                    <label class="form-check-label" for="discount">Products have discount</label>
+                                    <br>
+                                    <input type="checkbox" class="form-check-input" id="autoOffer" name="autoOffer">
+                                    <label class="form-check-label" for="autoOffer">Auto offer option</label>
+                                </div>
+                            </div>
                             <div class="col-md-12 text-center">
-                                <button class="btn mt-2 col-md-6 btn-primary" type="submit">Add Tag</button>
+                                <button class="btn mt-2 col-md-6 btn-primary" type="submit">Add Category</button>
                             </div>
                         </div>
                     </div>
