@@ -57,19 +57,29 @@ include_once $this->PATH."global/header.php";
 
                                     <div id="step-1" class="step row">
                                         <!-- Main Information -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <label class="labels">Title</label>
                                             <input type="text" class="form-control" placeholder="example" name="title" required="">
+                                        </div>
+                                        <div class="col-md-12 my-3">
+                                            <label class="labels">Description</label>
+                                            <textarea class="form-control" placeholder="enter address" name="excerpt" required=""> </textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="labels">Tags</label>
+                                            <select class="selectpicker form-control" id="tags" name="tags[]" data-container="body" data-live-search="true" title="Product tags" data-hide-disabled="true" data-actions-box="false" data-virtual-scroll="false" multiple data-max-options="5">
+                                                <?php foreach($this->data['tags'] as $item) { ?>
+                                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="labels">Category</label>
                                             <input type="text" class="form-control" placeholder="example" name="title" value="<?= $this->data['categories']['title'] ?>" readonly>
                                         </div>
-                                        <div class="col-md-12 mt-3">
-                                            <label class="labels">Description</label>
-                                            <textarea class="form-control" placeholder="enter address" name="excerpt" required=""> </textarea>
+                                        <div class="col-md-12 text-center">
+                                             <span data-step="step-1" class="doS-next btn btn-primary my-5 px-4">Next Step</span>
                                         </div>
-
                                     </div>
 
                                     <div id="step-2" class="step">
