@@ -150,14 +150,17 @@ include_once $this->PATH."global/header.php";
 
         $( document ).ready(function() {
 
+            // Product Table
             $('#ProductsTable').DataTable();
 
+
+
             $('body').on('click','.doM-newProduct', function(event){
-
-
-                body = 'test';
+                let body;
+                ajaxCall ('products/MakeForm', '',function(response) {
+                    body = response;
+                });
                 makeModal('New Product',body,'lg');
-
            });
 
 

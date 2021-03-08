@@ -25,6 +25,6 @@ function def () {
 }
 
 // Modal Maker
-function ModalMaker() {
+function MakeForm() {
 
 }
