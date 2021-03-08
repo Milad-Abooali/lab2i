@@ -36,22 +36,49 @@ include_once $this->PATH."global/header.php";
                     <section class="container steps">
                         <ol class="list-steps">
                             <li class="done">
-                                Main Information
+                                <span class="doS-1">Main Information</span>
                             </li>
                             <li class="active">
-                                Media
+                                <span class="doS-2">Media</span>
                             </li>
                             <li>
-                                Detail
+                                <span class="doS-3">Detail</span>
                             </li>
                             <li>
-                                Price
+                                <span class="doS-4">Price</span>
                             </li>
                             <li>
-                                Options
+                                <span class="doS-5">Options</span>
                             </li>
                         </ol>
                     </section>
+                    <section class="row">
+                        <div class="col-md-12">
+
+                            <div id="doS-1" class="step">
+                                Main Information
+                            </div>
+
+                            <div id="doS-2" class="step">
+                                Media
+                            </div>
+
+                            <div id="doS-3" class="step">
+                                Detail
+                            </div>
+
+                            <div id="doS-4" class="step">
+                                Price
+                            </div>
+
+                            <div id="doS-5" class="step">
+                                Options
+                            </div>
+                        </div>
+
+                    </section>
+
+
 
                 </div>
             </div>
@@ -70,19 +97,11 @@ include_once $this->PATH."global/header.php";
 
     <script>
 
-        //  update
-        $('body').on('submit','form#update', function(event){
-            event.preventDefault();
-            const data = $(this).serialize();
-            const classA = $(this).attr('action');
-            ajaxCall (classA, data,function(response) {
-                let obj = JSON.parse(response);
-                $('form#update').append('<p class="alert alert-success noticForm"><i class="text-success fa fa-check"></i> Account updated</p>');
-                setTimeout(function(){
-                    $(".noticForm").fadeOut();
-                }, 1500);
-            });
-        });
+        // Initial steps
+        $('.step').hide();
+        $('#doS-1').fadeIn();
+
+
     </script>
 
 <?php include_once $this->PATH."global/footer.php"; ?>
