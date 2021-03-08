@@ -44,20 +44,16 @@ include_once $this->PATH."global/header.php";
 
                                 <div class="p-3">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <label class="labels">Title</label>
-                                            <input type="text" class="form-control" placeholder="example" name="title" required>
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6 text-center">
                                             <label class="labels">Category</label>
-                                            <select class="selectpicker form-control" id="tags" name="category" data-container="body" data-live-search="true" title="Category" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
+                                            <select class="selectpicker form-control" id="category" name="category" data-container="body" data-live-search="true" title="Category" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
                                                 <?php foreach($this->data['categories'] as $category) { ?>
                                                     <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="col-md-4 text-center">
-                                            <button class="doM-newProduct btn btn-lg mt-4 btn-primary" type="submit">Add Product <i class="fa fa-chevron-right"></i> </button>
+                                        <div class="col-md-6 text-center">
+                                            <button class="doM-newProduct btn mt-4 btn-primary" type="submit">Add New Product <i class="fa fa-chevron-right"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -153,14 +149,15 @@ include_once $this->PATH."global/header.php";
             // Product Table
             $('#ProductsTable').DataTable();
 
-
-
+            // Add New Product Modal
             $('body').on('click','.doM-newProduct', function(event){
                 let body;
-                ajaxCall ('products/MakeForm', '',function(response) {
-                    body = response;
+                data = {
+                    cat:$('#category').val()
+                }
+                ajaxCall ('products/MakeForm', data,function(response) {
+                    makeModal('New Product',response,'lg');
                 });
-                makeModal('New Product',body,'lg');
            });
 
 
