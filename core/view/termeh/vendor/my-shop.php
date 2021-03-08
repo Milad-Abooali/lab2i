@@ -154,7 +154,7 @@ include_once $this->PATH."global/header.php";
                 let body;
                 let category = $('#category').val();
                 if(category) {
-                    window.location.replace("new-product&cat="+category);
+                    window.location.replace("new-product&category="+category);
                 } else {
                     $('#category').parent().addClass('border border-danger')
                 }

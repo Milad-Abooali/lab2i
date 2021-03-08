@@ -32,53 +32,71 @@ include_once $this->PATH."global/header.php";
 
                 <div class="col-md-12 border-top pt-3 mt-3">
 
+                        <section class="container steps">
+                            <ol class="list-steps">
+                                <li data-step="step-1" class="done active">
+                                    Main Information
+                                </li>
+                                <li data-step="step-2">
+                                    Media
+                                </li>
+                                <li data-step="step-3">
+                                    Detail
+                                </li>
+                                <li data-step="step-4">
+                                    Price
+                                </li>
+                                <li data-step="step-5">
+                                    Options
+                                </li>
+                            </ol>
+                        </section>
 
-                    <section class="container steps">
-                        <ol class="list-steps">
-                            <li data-step="step-1" class="done active">
-                                Main Information
-                            </li>
-                            <li data-step="step-2">
-                                Media
-                            </li>
-                            <li data-step="step-3">
-                                Detail
-                            </li>
-                            <li data-step="step-4">
-                                Price
-                            </li>
-                            <li data-step="step-5">
-                                Options
-                            </li>
-                        </ol>
-                    </section>
-                    <section class="row">
-                        <div class="col-md-12">
+                        <form id="addProduct" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                            <section class=" ">
 
-                            <div id="step-1" class="step">
-                                Main Information
-                            </div>
+                                    <div id="step-1" class="step row">
+                                        <!-- Main Information -->
+                                        <div class="col-md-6">
+                                            <label class="labels">Title</label>
+                                            <input type="text" class="form-control" placeholder="example" name="title" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="labels">Category</label>
+                                            <input type="text" class="form-control" placeholder="example" name="title" value="<?= $this->data['categories']['title'] ?>" readonly>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <label class="labels">Description</label>
+                                            <textarea class="form-control" placeholder="enter address" name="excerpt" required=""> </textarea>
+                                        </div>
 
-                            <div id="step-2" class="step">
-                                Media
-                            </div>
+                                    </div>
 
-                            <div id="step-3" class="step">
-                                Detail
-                            </div>
-
-                            <div id="step-4" class="step">
-                                Price
-                            </div>
-
-                            <div id="step-5" class="step">
-                                Options
-                            </div>
-                        </div>
-
-                    </section>
+                                    <div id="step-2" class="step">
+                                        <!-- Media -->
 
 
+                                    </div>
+
+                                    <div id="step-3" class="step">
+                                        <!-- Detail -->
+
+
+                                    </div>
+
+                                    <div id="step-4" class="step">
+                                        <!-- Price -->
+
+                                    </div>
+
+                                    <div id="step-5" class="step">
+                                        <!-- Options -->
+
+
+                                    </div>
+
+                            </section>
+                        </form>
 
                 </div>
             </div>
