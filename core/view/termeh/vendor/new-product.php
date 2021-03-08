@@ -102,6 +102,8 @@ include_once $this->PATH."global/header.php";
         $('#doS-1').fadeIn();
 
 
+
+
     </script>
 
 <?php include_once $this->PATH."global/footer.php"; ?>
