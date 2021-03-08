@@ -34,45 +34,24 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                <form id="addProducts" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label class="labels">Title</label>
-                                <input type="text" class="form-control" placeholder="example" name="title" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="labels">Category</label>
-                                <select class="selectpicker form-control" id="tags" name="category" data-container="body" data-live-search="true" title="Category" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
-                                    <?php foreach($this->data['categories'] as $category) { ?>
-                                        <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <button class="btn mt-2 col-md-6 btn-primary" type="submit">Add Product</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <hr>
-
                 <table id="categoriesTable" class="table table-sm table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Title</th>
                             <th>Category</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if($this->data['categories']) foreach ($this->data['categories'] as $item) { ?>
+                    <?php if($this->data['products']) foreach ($this->data['products'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
-                            <td><?= $item['category'] ?></td>
+                            <td><?= $item['title'] ?></td>
+                            <td><?= $this->data['categories'][$item['category']]['title'] ?></td>
                             <td>
-                                <button class="doA-delete btn btn-sm btn-danger" data-id="<?= $item['id'] ?>">Delete</button>
+                                <button class="doA-Manage btn btn-sm btn-primary" data-id="<?= $item['id'] ?>">Edit</button>
+                                <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
                             </td>
                         </tr>
                     <?php } ?>

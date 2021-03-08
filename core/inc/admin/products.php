@@ -15,28 +15,9 @@ use App\Core\M;
     $this->data['products'] = $db->selectAll('products');
 
     // Categories
-    $this->data['categories'] = $db->selectAll('categories');
+    $categories = $db->selectAll('categories');
+    foreach ($categories as $category) $this->data['categories'][$category['id']] = $category;
 
     // Tags
     $tags = $db->selectAll('tags');
     foreach ($tags as $tag) $this->data['tags'][$tag['id']] = $tag;
-
-    /**
-     *  Add new product
-     */
-    if ($_POST ?? false){
-
-        $insert['title'] = $_POST['title'];
-        $insert['category'] = $_POST['category'];
-        $this->data['insert_id'] = $db->insert('products', $insert);
-
-
-        if($this->data['insert_id']) {
-
-            // Update Category Counter
-            $where = "id=".$insert['category'];
-            $db->increase('categories','count_p', $where);
-
-        }
-
-    }

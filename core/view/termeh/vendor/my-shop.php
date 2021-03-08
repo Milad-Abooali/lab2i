@@ -41,8 +41,30 @@ include_once $this->PATH."global/header.php";
                         <div class="tab-content col-md-9 px-5">
 
                             <div id="Products" class="tab-pane active fade show">
+
+                                <div class="p-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="labels">Title</label>
+                                            <input type="text" class="form-control" placeholder="example" name="title" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="labels">Category</label>
+                                            <select class="selectpicker form-control" id="tags" name="category" data-container="body" data-live-search="true" title="Category" data-hide-disabled="true" data-actions-box="true" data-virtual-scroll="false" tabindex="-98" required>
+                                                <?php foreach($this->data['categories'] as $category) { ?>
+                                                    <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <button class="doM-newProduct btn btn-lg mt-4 btn-primary" type="submit">Add Product <i class="fa fa-chevron-right"></i> </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
                                 <h5>Products</h5>
-                                <button class="btn btn-sm btn-outline-primary float-right doM-newProduct"><i class="fa fa-plus"></i> New Product</button>
                                 <table id="ProductsTable" class="table table-sm table-striped table-bordered" style="width:100%">
                                     <thead>
                                     <tr>
@@ -134,8 +156,7 @@ include_once $this->PATH."global/header.php";
 
                 // Ajax Get New Product
                 body = 'test';
-                footer = 'tests';
-                makeModal('New Product',body,'lg',footer);
+                makeModal('New Product',body,'lg');
 
            });
 

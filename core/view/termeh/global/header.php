@@ -28,11 +28,11 @@
             <?php if($_SESSION['M']['user'] ?? false) { ?>
                 <span class="text-muted small mr-2">Welcome dear <span class="text-warning"><?= $_SESSION['M']['user']['f_name'] ?></span></span>
                 <a class="btn btn-sm btn-request"  data-toggle="tooltip" href="add-request" data-placement="bottom" title="Add New Request"><i class="fa fa-plus"></i> Request</a>
-                <a class="btn btn-sm btn-outline-success my-2 my-sm-0 mx-2" href="dashboard" data-toggle="tooltip" data-placement="bottom" title="Account Settings">Dashboard</a>
+                <a class="btn btn-sm btn-outline-success my-2 my-sm-0 mx-2" href="<?= APP_URL ?>dashboard" data-toggle="tooltip" data-placement="bottom" title="Account Settings">Dashboard</a>
                 <button class="btn btn-sm btn-danger my-2 my-sm-0 doA-logout">Logout</button>
             <?php  } elseif($_SESSION['M']['vendor'] ?? false) {  ?>
                 <span class="text-muted small">Welcome dear <span class="text-warning"><?= $_SESSION['M']['vendor']['f_name'] ?></span></span>
-                <a class="btn btn-sm btn-outline-info my-2 my-sm-0 mx-2" href="dashboard" data-toggle="tooltip" data-placement="left" title="Vendor Panel">Dashboard</a>
+                <a class="btn btn-sm btn-outline-info my-2 my-sm-0 mx-2" href="<?= APP_URL ?>dashboard" data-toggle="tooltip" data-placement="left" title="Vendor Panel">Dashboard</a>
             <?php if($_SESSION['M']['vendor']['admin']) { ?>
                 <a class="btn btn-sm btn-outline-primary my-2 my-sm-0 mx-2" href="admin" data-toggle="tooltip" data-placement="left" title="Site Admin">Admin</a>
             <?php } ?>
