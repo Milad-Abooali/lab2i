@@ -35,43 +35,43 @@ include_once $this->PATH."global/header.php";
 
                     <section class="container steps">
                         <ol class="list-steps">
-                            <li class="done">
-                                <span class="doS-1">Main Information</span>
+                            <li data-step="step-1" class="done active">
+                                Main Information
                             </li>
-                            <li class="active">
-                                <span class="doS-2">Media</span>
+                            <li data-step="step-2">
+                                Media
                             </li>
-                            <li>
-                                <span class="doS-3">Detail</span>
+                            <li data-step="step-3">
+                                Detail
                             </li>
-                            <li>
-                                <span class="doS-4">Price</span>
+                            <li data-step="step-4">
+                                Price
                             </li>
-                            <li>
-                                <span class="doS-5">Options</span>
+                            <li data-step="step-5">
+                                Options
                             </li>
                         </ol>
                     </section>
                     <section class="row">
                         <div class="col-md-12">
 
-                            <div id="doS-1" class="step">
+                            <div id="step-1" class="step">
                                 Main Information
                             </div>
 
-                            <div id="doS-2" class="step">
+                            <div id="step-2" class="step">
                                 Media
                             </div>
 
-                            <div id="doS-3" class="step">
+                            <div id="step-3" class="step">
                                 Detail
                             </div>
 
-                            <div id="doS-4" class="step">
+                            <div id="step-4" class="step">
                                 Price
                             </div>
 
-                            <div id="doS-5" class="step">
+                            <div id="step-5" class="step">
                                 Options
                             </div>
                         </div>
@@ -99,9 +99,21 @@ include_once $this->PATH."global/header.php";
 
         // Initial steps
         $('.step').hide();
-        $('#doS-1').fadeIn();
+        $('#step-1').fadeIn();
 
-
+        $('body').on('click','.list-steps li', function(event){
+            if($(this).hasClass('done')) {
+                $('.step').hide();
+                $('.list-steps li').removeClass('active')
+                $(this).addClass('active');
+                $('#'+$(this).data('step')).fadeIn();
+            } else {
+                setTimeout(function(){
+                    $(this).prev().fadeOut();
+                }, 500);
+                $(this).prev().fadeIn();
+            }
+        });
 
 
     </script>

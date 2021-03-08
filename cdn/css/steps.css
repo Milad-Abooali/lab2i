@@ -9,6 +9,7 @@
     margin: 3rem 0;
 }
 .steps ol.list-steps li {
+    cursor:pointer;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -19,8 +20,14 @@
     color: #6c757d;
     flex: 1 1 100%;
 }
+.steps ol.list-steps li:hover {
+    opacity: 0.8;
+    color: #000;
+    font-weight: 500;
+}
 .steps ol.list-steps li.active {
     color: #212529;
+    font-weight: 500;
 }
 .steps ol.list-steps li::before {
     z-index: 1;
