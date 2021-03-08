@@ -152,12 +152,18 @@ include_once $this->PATH."global/header.php";
             // Add New Product Modal
             $('body').on('click','.doM-newProduct', function(event){
                 let body;
-                data = {
-                    cat:$('#category').val()
+                let category = $('#category').val();
+                if(category) {
+                    $('#category').parent().removeClass('border border-danger')
+                    data = {
+                        cat:category
+                    }
+                    ajaxCall ('products/MakeForm', data,function(response) {
+                        makeModal('New Product',response,'lg');
+                    });
+                } else {
+                    $('#category').parent().addClass('border border-danger')
                 }
-                ajaxCall ('products/MakeForm', data,function(response) {
-                    makeModal('New Product',response,'lg');
-                });
            });
 
 
