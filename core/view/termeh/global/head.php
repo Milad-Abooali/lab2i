@@ -38,7 +38,6 @@
     <script defer src="<?= JS ?>bootstrap-select.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <script defer src="<?= JS ?>dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
 
     <!--- Head -->
     <?= $this->HEADER; ?>
