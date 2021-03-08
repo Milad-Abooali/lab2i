@@ -60,6 +60,13 @@ function MakeForm() {
             <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger"></div>
         </div>
     </div>
+    <script src="bs-stepper.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var stepper = new Stepper($('.bs-stepper')[0])
+        })
+    </script>
+
 
 <?php
     } else {
