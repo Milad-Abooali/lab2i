@@ -154,7 +154,7 @@ include_once $this->PATH."global/header.php";
 
             $('body').on('click','.doM-newProduct', function(event){
 
-                // Ajax Get New Product
+
                 body = 'test';
                 makeModal('New Product',body,'lg');
 
