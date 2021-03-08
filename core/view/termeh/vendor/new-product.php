@@ -38,21 +38,35 @@ include_once $this->PATH."global/header.php";
                             <div class="step active" data-target="#test-form-1">
                                 <button type="button" class="step-trigger" role="tab" id="stepperFormTrigger1" aria-controls="test-form-1" aria-selected="true">
                                     <span class="bs-stepper-circle">1</span>
-                                    <span class="bs-stepper-label">Email</span>
+                                    <span class="bs-stepper-label">Main Information</span>
                                 </button>
                             </div>
                             <div class="bs-stepper-line"></div>
                             <div class="step" data-target="#test-form-2">
                                 <button type="button" class="step-trigger" role="tab" id="stepperFormTrigger2" aria-controls="test-form-2" aria-selected="false" disabled="disabled">
                                     <span class="bs-stepper-circle">2</span>
-                                    <span class="bs-stepper-label">Password</span>
+                                    <span class="bs-stepper-label">Media</span>
                                 </button>
                             </div>
                             <div class="bs-stepper-line"></div>
                             <div class="step" data-target="#test-form-3">
                                 <button type="button" class="step-trigger" role="tab" id="stepperFormTrigger3" aria-controls="test-form-3" aria-selected="false" disabled="disabled">
                                     <span class="bs-stepper-circle">3</span>
-                                    <span class="bs-stepper-label">Validate</span>
+                                    <span class="bs-stepper-label">Detail</span>
+                                </button>
+                            </div>
+                            <div class="bs-stepper-line"></div>
+                            <div class="step" data-target="#test-form-3">
+                                <button type="button" class="step-trigger" role="tab" id="stepperFormTrigger3" aria-controls="test-form-3" aria-selected="false" disabled="disabled">
+                                    <span class="bs-stepper-circle">3</span>
+                                    <span class="bs-stepper-label">Price</span>
+                                </button>
+                            </div>
+                            <div class="bs-stepper-line"></div>
+                            <div class="step" data-target="#test-form-3">
+                                <button type="button" class="step-trigger" role="tab" id="stepperFormTrigger3" aria-controls="test-form-3" aria-selected="false" disabled="disabled">
+                                    <span class="bs-stepper-circle">3</span>
+                                    <span class="bs-stepper-label">Options</span>
                                 </button>
                             </div>
                         </div>
