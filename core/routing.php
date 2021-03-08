@@ -162,6 +162,13 @@
             $page['inc']    = "vendor/reviews";
             $page['cache']  = false;
             break;
+        case "new-product":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
+            $page['vid']    = 'vendor/new-product';
+            $page['view']   = "vendor/new-product";
+            $page['inc']    = "vendor/new-product";
+            $page['cache']  = false;
+            break;
 
 // Client
         case "register":

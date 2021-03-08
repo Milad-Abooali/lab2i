@@ -28,7 +28,7 @@
     <link href="<?= CSS ?>bootstrap-select.css" rel="stylesheet" />
     <link href="<?= CSS ?>style.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
     <!--- Script -->
     <script src="<?= JS ?>jquery-3.5.1.min.js"></script>
     <script defer src="<?= JS ?>popper.min.js"></script>
@@ -38,6 +38,7 @@
     <script defer src="<?= JS ?>bootstrap-select.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <script defer src="<?= JS ?>dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
 
     <!--- Head -->
     <?= $this->HEADER; ?>
