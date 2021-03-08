@@ -23,6 +23,7 @@
     color: #212529;
 }
 .steps ol.list-steps li::before {
+    z-index: 1;
     counter-increment: steps;
     content: "";
     display: inline-block;
@@ -51,7 +52,6 @@
 }
 .steps ol.list-steps li::after {
     position: absolute;
-    z-index: -1;
     top: 0.75rem;
     display: block;
     content: "";
@@ -74,18 +74,18 @@
     border-bottom-right-radius: 0.25rem;
 }
 @-webkit-keyframes pulsate {
-    .steps from {
+    from {
         transform: scale(1);
     }
-    .steps to {
+    to {
         transform: scale(1.2);
     }
 }
 @keyframes pulsate {
-    .steps from {
+    from {
         transform: scale(1);
     }
-    .steps to {
+    to {
         transform: scale(1.2);
     }
 }

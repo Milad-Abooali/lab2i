@@ -32,8 +32,8 @@ include_once $this->PATH."global/header.php";
 
                 <div class="col-md-12 border-top pt-3 mt-3">
 
-       
-                    <section class="container">
+
+                    <section class="container steps">
                         <ol class="list-steps">
                             <li class="done">
                                 Main Information

@@ -29,6 +29,8 @@
     <link href="<?= CSS ?>style.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+    <link href="<?= CSS ?>steps.css" rel="stylesheet" />
+
     <!--- Script -->
     <script src="<?= JS ?>jquery-3.5.1.min.js"></script>
     <script defer src="<?= JS ?>popper.min.js"></script>
