@@ -154,13 +154,7 @@ include_once $this->PATH."global/header.php";
                 let body;
                 let category = $('#category').val();
                 if(category) {
-                    $('#category').parent().removeClass('border border-danger')
-                    data = {
-                        cat:category
-                    }
-                    ajaxCall ('products/MakeForm', data,function(response) {
-                        makeModal('New Product',response,'lg');
-                    });
+                    window.location.replace("new-product&cat="+category);
                 } else {
                     $('#category').parent().addClass('border border-danger')
                 }

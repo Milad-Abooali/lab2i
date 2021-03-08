@@ -1,0 +1,91 @@
+.steps ol.list-steps {
+    padding: 0;
+    margin: 0;
+    counter-reset: steps;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    position: relative;
+    margin: 3rem 0;
+}
+.steps ol.list-steps li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: #6c757d;
+    flex: 1 1 100%;
+}
+.steps ol.list-steps li.active {
+    color: #212529;
+}
+.steps ol.list-steps li::before {
+    counter-increment: steps;
+    content: "";
+    display: inline-block;
+    background: #6c757d;
+    color: #fff;
+    border-radius: 50%;
+    border: 0.5rem solid #caced1;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.steps ol.list-steps li.active::before {
+    background: #007bff;
+    color: #fff;
+    border: 0.3333333333rem solid #b3d7ff;
+    -webkit-animation: pulsate 1.5s infinite ease-in-out alternate;
+    animation: pulsate 1.5s infinite ease-in-out alternate;
+}
+.steps ol.list-steps li.done::before {
+    background: #007bff;
+    color: #fff;
+    border: 0.5rem solid #b3d7ff;
+}
+.steps ol.list-steps li::after {
+    position: absolute;
+    z-index: -1;
+    top: 0.75rem;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 0.5rem;
+    background: #caced1;
+}
+.steps ol.list-steps li.active::after {
+    background: #b3d7ff;
+}
+.steps ol.list-steps li.done::after {
+    background: #b3d7ff;
+}
+.steps ol.list-steps li:first-child::after {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.steps ol.list-steps li:last-child::after {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+@-webkit-keyframes pulsate {
+    .steps from {
+        transform: scale(1);
+    }
+    .steps to {
+        transform: scale(1.2);
+    }
+}
+@keyframes pulsate {
+    .steps from {
+        transform: scale(1);
+    }
+    .steps to {
+        transform: scale(1.2);
+    }
+}
