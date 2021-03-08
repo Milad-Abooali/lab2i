@@ -21,3 +21,7 @@ use App\Core\M;
     // Tags
     $tags = $db->selectAll('tags');
     foreach ($tags as $tag) $this->data['tags'][$tag['id']] = $tag;
+
+    // shops
+    $vendor_shop = $db->selectAll('vendor_shop');
+    foreach ($vendor_shop as $shop) $this->data['vendor_shop'][$shop['id']] = $shop;

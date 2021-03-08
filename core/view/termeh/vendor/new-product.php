@@ -36,6 +36,10 @@ include_once $this->PATH."global/header.php";
                     <form id="addProduct" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
                         <section class="row">
 
+                            <?php if ($error ?? false) { ?>
+                                <div class="alert alert-danger"><?= $this->data['error'] ?></div>
+                            <?php } ?>
+
                             <!-- Main Information -->
                             <div class="col-md-12">
                                 <label class="labels">Title</label>

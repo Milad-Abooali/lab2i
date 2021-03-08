@@ -34,12 +34,14 @@ include_once $this->PATH."global/header.php";
             </div>
             <div class="col-md-9">
 
-                <table id="categoriesTable" class="table table-sm table-striped table-bordered" style="width:100%">
+                <table id="ProductsTable" class="table table-sm table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Owner</th>
                             <th>Title</th>
                             <th>Category</th>
+                            <th>Tags</th>
                             <th>Manage</th>
                         </tr>
                     </thead>
@@ -47,10 +49,22 @@ include_once $this->PATH."global/header.php";
                     <?php if($this->data['products']) foreach ($this->data['products'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
-                            <td><?= $item['title'] ?></td>
+                            <td><?= $this->data['vendor_shop'][$item['shop_id']]['title'] ?></td>
+                            <td>
+                                <?= $item['title'] ?>
+                                <hr>
+                                <img style="width:95px" src="<?= CDN.'upload/products/'.$item['id'].'/0.jpg'; ?>">
+                            </td>
                             <td><?= $this->data['categories'][$item['category']]['title'] ?></td>
                             <td>
-                                <button class="doA-Manage btn btn-sm btn-primary" data-id="<?= $item['id'] ?>">Edit</button>
+                                <?php
+                                if($item['tags']) {
+                                    $tags = explode(',',$item['tags']);
+                                    foreach ($tags as $tag) echo '<span class="small badge-pill badge-info">'.$this->data['tags'][$tag]['name'].'</span><br>';
+                                }
+                                ?>
+                            </td>
+                            <td>
                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
                             </td>
                         </tr>
@@ -70,15 +84,15 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
 
             //  Data Table - Transaction
-            $('#categoriesTable').DataTable();
+            $('#ProductsTable').DataTable();
 
 
-            //  Delete Category
+            //  Delete Product
             $('body').on('click','.doA-delete', function(event){
                 let clicked = $(this);
                 let id = clicked.data('id');
                 let data = {
-                    t: 'categories',
+                    t: 'products',
                     id: id
                 }
                 ajaxCall ('core/delete', data, function(response) {

@@ -133,7 +133,7 @@ include_once $this->PATH."global/header.php";
                             <td>
                                 <?= $item['title'] ?>
                                 <hr>
-                                <img class="col-md-12" src="<?= CDN.'/upload/categories/'.$item['id'] ?>">
+                                <img style="width:95px" src="<?= CDN.'/upload/categories/'.$item['id'] ?>">
                             </td>
                             <td class="small"><?= $item['excerpt'] ?></td>
                             <td>

@@ -16,7 +16,8 @@
     $db = new iSQL(DB_INFO);
 
     // Products
-    $this->data['products'] = $db->selectAll('products');
+    $where = 'shop_id='.$_SESSION['M']['vendor']['id'];
+    $this->data['products'] = $db->select('products', $where);
 
     // Categories
     $categories = $db->selectAll('categories');
