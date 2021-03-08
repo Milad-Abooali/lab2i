@@ -76,12 +76,10 @@ include_once $this->PATH."global/header.php";
 
     </main>
 
-
-    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script>
-
-        CKEDITOR.replace( 'excerpt' );
-
+        $( document ).ready(function() {
+            CKEDITOR.replace( 'excerpt' );
+        });
     </script>
 
 <?php include_once $this->PATH."global/footer.php"; ?>
