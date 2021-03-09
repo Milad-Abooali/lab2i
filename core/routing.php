@@ -231,6 +231,12 @@
             break;
 
 // Shared
+        case "buy":
+            $page['vid']    = 'buy';
+            $page['view']   = "buy";
+            $page['inc']    = "buy";
+            $page['cache']  = false;
+            break;
         case "dashboard":
             if (is_user) {
                 $page['vid']    = 'user/dashboard';

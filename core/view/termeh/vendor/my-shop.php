@@ -91,6 +91,7 @@ include_once $this->PATH."global/header.php";
                                                 ?>
                                             </td>
                                             <td>
+                                                <a class="btn btn-sm btn-primary" href="<?= APP_URL ?>buy/<?= $item['id'] ?>">View</a>
                                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
                                             </td>
                                         </tr>
