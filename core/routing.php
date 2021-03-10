@@ -28,6 +28,13 @@
             if (!isset($_SESSION['M']['vendor']['admin'])) header("Location: ".APP_URL."403&y=Admin permission needed!");
             $page['vid']  = 'admin/'.array_shift($page['data']);
             switch ($page['vid']) {
+
+                case "admin/list-vendors":
+                    $page['vid']    = 'admin/list-vendors';
+                    $page['view']   = 'admin/list-vendors';
+                    $page['inc']    = 'admin/list-vendors';
+                    $page['cache']  = false;
+                    break;
                 case "admin/settings":
                     $page['vid']    = 'admin/settings';
                     $page['view']   = 'admin/settings';
