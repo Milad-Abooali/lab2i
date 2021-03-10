@@ -38,32 +38,22 @@ include_once $this->PATH."global/header.php";
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Owner</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Tags</th>
-                            <th>Manage</th>
+                            <th>email</th>
+                            <th>f_name l_name</th>
+                            <th>address</th>
+                            <th>status</th>
+                            <th>admin</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if($this->data['products']) foreach ($this->data['products'] as $item) { ?>
+                    <?php if($this->data['vendor_shop']) foreach ($this->data['vendor_shop'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
-                            <td><?= $this->data['vendor_shop'][$item['shop_id']]['title'] ?></td>
-                            <td>
-                                <?= $item['title'] ?>
-                                <hr>
-                                <img style="width:95px" src="<?= CDN.'upload/products/'.$item['id'].'/0.jpg'; ?>">
-                            </td>
-                            <td><?= $this->data['categories'][$item['category']]['title'] ?></td>
-                            <td>
-                                <?php
-                                if($item['tags']) {
-                                    $tags = explode(',',$item['tags']);
-                                    foreach ($tags as $tag) echo '<span class="small badge-pill badge-info">'.$this->data['tags'][$tag]['name'].'</span><br>';
-                                }
-                                ?>
-                            </td>
+                            <td><?= $item['email'] ?></td>
+                            <td><?= $item['f_name'] ?> <?= $item['l_name'] ?></td>
+                            <td><?= $item['address'] ?></td>
+                            <td><?= $item['status'] ?></td>
+                            <td><?= $item['admin'] ?></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" href="<?= APP_URL ?>buy/<?= $item['id'] ?>">View</a>
                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
