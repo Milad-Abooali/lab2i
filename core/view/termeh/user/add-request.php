@@ -81,7 +81,15 @@ include_once $this->PATH."global/header.php";
                                 </div>
                             </div>
                             <div class="col-md-4 my-5">
-
+                                Options
+                                <div class="">
+                                    <label class="labels">Quantity</label>
+                                    <input type="number" min="1" class="expire form-control" name="quantity" value="1" required>
+                                </div>
+                                <div class=" ">
+                                    <label class="labels">Expire Date </label>
+                                    <input type="date" class="expire form-control" id="expire" name="expire" min=" " max=" "required>
+                                </div>
                             </div>
                             <div class="col-md-12 my-3">
                                 <label class="labels">Description</label>
@@ -161,6 +169,12 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
             CKEDITOR.replace( 'excerpt' );
 
+
+            var date = new Date(); // Now
+            var maxdate = new Date(); // Now
+            maxdate.setDate(maxdate.getDate() + 30);
+            $('#expire').prop('min', date.toISOString().split("T")[0]).prop('max', maxdate.toISOString().split("T")[0])
+
             // Date
             $('body').on('click change','#date', function(event){
                 let date = ($(this).is(':checked')) ? 1 : 0;
@@ -182,7 +196,6 @@ include_once $this->PATH."global/header.php";
                     $('.price').prop('disabled', true)
                 }
             });
-
 
 
         });
