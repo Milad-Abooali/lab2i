@@ -38,11 +38,12 @@ include_once $this->PATH."global/header.php";
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>email</th>
-                            <th>f_name l_name</th>
-                            <th>address</th>
-                            <th>status</th>
-                            <th>admin</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Active</th>
+                            <th>Verify</th>
+                            <th>Admin</th>
                             <th>Manage</th>
                         </tr>
                     </thead>
@@ -55,14 +56,20 @@ include_once $this->PATH."global/header.php";
                             <td><?= $item['address'] ?></td>
                             <td class="text-center">
                                 <div class="custom-control custom-switch">
-                                    <input data-id="<?= $item['id'] ?>" type="checkbox" class="doA-vendorStatus custom-control-input" id="customSwitches" <?= ($item['status']) ? 'checked' : null ?> >
-                                    <label class="custom-control-label" for="customSwitches"></label>
+                                    <input data-id="<?= $item['id'] ?>" type="checkbox" class="doA-vendorStatus custom-control-input" id="status-<?= $item['id'] ?>" <?= ($item['status']) ? 'checked' : null ?> >
+                                    <label class="custom-control-label" for="status-<?= $item['id'] ?>"></label>
                                 </div>
                             </td>
                             <td class="text-center">
                                 <div class="custom-control custom-switch">
-                                    <input data-id="<?= $item['id'] ?>" type="checkbox" class="doA-vendorAdmin custom-control-input" id="customSwitches" <?= ($item['admin']) ? 'checked' : null ?> >
-                                    <label class="custom-control-label" for="customSwitches"></label>
+                                    <input data-t="vendors" data-c="verify" data-id="<?= $item['id'] ?>" type="checkbox" class="doA-update custom-control-input" id="verify-<?= $item['id'] ?>" <?= ($item['verify']) ? 'checked' : null ?> >
+                                    <label class="custom-control-label" for="verify-<?= $item['id'] ?>"></label>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="custom-control custom-switch">
+                                    <input data-t="vendors" data-c="admin" data-id="<?= $item['id'] ?>" type="checkbox" class="doA-update custom-control-input" id="admin-<?= $item['id'] ?>" <?= ($item['admin']) ? 'checked' : null ?> >
+                                    <label class="custom-control-label" for="admin-<?= $item['id'] ?>"></label>
                                 </div>
                             </td>
                             <td>
@@ -87,8 +94,53 @@ include_once $this->PATH."global/header.php";
             //  Data Table - Transaction
             $('#ProductsTable').DataTable();
 
+            //  Vendor Status
+            $('body').on('click','.doA-vendorStatus', function(event){
+                var r = confirm("Change vendor status?");
+                if (r == true) {
+                    let clicked = $(this);
+                    let id = clicked.data('id');
+                    let status = (clicked.is(':checked')) ? 1 : 0;
+                    let data = {
+                        t: 'vendors',
+                        id: id,
+                        status:status
+                    }
+                    ajaxCall ('core/status', data, function(response) {
+                        let obj = JSON.parse(response);
+                        if (obj.res) {
+                            notify('Updated.', 'success', false);
+                        } else {
+                            notify('Error!', 'error', false);
+                        }
+                    });
+                }
+            });
 
-            //  Delete Product
+            //  Update
+            $('body').on('click','.doA-update', function(event){
+                let clicked = $(this);
+                let t = clicked.data('t');
+                let c = clicked.data('c');
+                let id = clicked.data('id');
+                let s = (clicked.is(':checked')) ? 1 : 0;
+                let data = {
+                    t: t,
+                    c: c,
+                    id: id,
+                    s:s
+                }
+                ajaxCall ('core/update', data, function(response) {
+                    let obj = JSON.parse(response);
+                    if (obj.res) {
+                        notify('Updated.', 'success', false);
+                    } else {
+                        notify('Error!', 'error', false);
+                    }
+                });
+            });
+
+            //  Delete Vendor
             $('body').on('click','.doA-delete', function(event){
                 var r = confirm("Delete a vendor!");
                 if (r == true) {

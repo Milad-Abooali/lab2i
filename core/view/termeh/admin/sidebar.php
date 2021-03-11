@@ -27,7 +27,6 @@
         </div>
         <div id="a1" class="collapse" aria-labelledby="headingTwo" data-parent="#adminMenu">
             <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/list-vendors">List Vendors</a>
-            <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/verification">Verification</a>
             <a class="d-block py-2 pl-4 border-bottom" href="<?= APP_URL ?>admin/reviews">Reviews</a>
         </div>
     </div>

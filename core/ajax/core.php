@@ -47,3 +47,30 @@
         }
         echo json_encode($output);
     }
+
+    // Update
+    function update() {
+        $output = new stdClass();
+        $output->e = !(($_POST['t']) ?? false);
+        $output->e = !(($_POST['c']) ?? false);
+        $output->e = !(($_POST['id']) ?? false);
+        if ($output->e == false) {
+            $db = new iSQL(DB_INFO);
+            $update[$_POST['c']] = $_POST['s'];
+            $output->res = $db->updateId($_POST['t'], $_POST['id'],$update);
+        }
+        echo json_encode($output);
+    }
+
+    // Change status
+    function status() {
+        $output = new stdClass();
+        $output->e = !(($_POST['t']) ?? false);
+        $output->e = !(($_POST['id']) ?? false);
+        if ($output->e == false) {
+            $db = new iSQL(DB_INFO);
+            $update['status']=$_POST['status'];
+            $output->res = $db->updateId($_POST['t'], $_POST['id'],$update);
+        }
+        echo json_encode($output);
+    }
