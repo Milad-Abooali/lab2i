@@ -4,7 +4,7 @@ use App\Core\M;
 
 $this->data['PAGE']['demo']=0;
 
-$this->data['PAGE']['title'] = 'New Product';
+$this->data['PAGE']['title'] = 'New Offer';
 $this->data['PAGE']['keywords'] = 'test';
 $this->data['PAGE']['description'] = 'test';
 $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -28,9 +28,7 @@ include_once $this->PATH."global/header.php";
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
 
-                <?php include_once $this->PATH."global/v-menu.php"; ?>
-
-                <div class="col-md-12 border-top pt-3 mt-3">
+                <div class="col-md-12">
 
 
                     <form id="addProduct" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
@@ -57,20 +55,8 @@ include_once $this->PATH."global/header.php";
                                 <label class="labels">Description</label>
                                 <textarea class="form-control" placeholder="enter Description" name="excerpt" required> </textarea>
                             </div>
-                            <div class="col-md-6">
-                                <label class="labels">Tags <sup>(Up to 5)</sup></label>
-                                <select class="selectpicker form-control" id="tags" name="tags[]" data-container="body" data-live-search="true" title="Product tags" data-hide-disabled="true" data-actions-box="false" data-virtual-scroll="false" multiple data-max-options="5">
-                                    <?php foreach($this->data['tags'] as $item) { ?>
-                                        <option value="<?= $item['id'] ?>"><?= $item['name'] ?>(<?= $item['count_c'] ?>)</option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="labels">Category</label>
-                                <input type="text" class="form-control" placeholder="example" name="category" value="<?= $this->data['categories']['title'] ?>" readonly>
-                            </div>
 
-                            <div class="col-md-12 my-5 text-center">
+                            <div class="col-md-12 my-3 text-center">
                                 <h5>Media</h5>
                             </div>
 
@@ -114,7 +100,8 @@ include_once $this->PATH."global/header.php";
                             </div>
 
                             <div class="col-md-12 mt-3 text-center">
-                                <button class="btn mt-2 btn-primary px-5" type="submit">Add Product</button>
+                                <input type="hidden" name="id" value="<?= $_GET['id'] ?>" required>
+                                <button class="btn mt-2 btn-primary px-5" type="submit">Add Offer</button>
                             </div>
 
                         </section>
