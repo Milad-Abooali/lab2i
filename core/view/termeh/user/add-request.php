@@ -51,11 +51,11 @@ include_once $this->PATH."global/header.php";
                                 </div>
                                 <div class=" ">
                                     <label class="labels">Start Date:</label>
-                                    <input type="date" class="date form-control" name="start" disabled>
+                                    <input type="date" class="date form-control" name="start" readonly>
                                 </div>
                                 <div class=" ">
                                     <label class="labels">End Date:</label>
-                                    <input type="date" class="date form-control" name="end" disabled>
+                                    <input type="date" class="date form-control" name="end" readonly>
                                 </div>
                             </div>
                             <div class="col-md-4 my-4">
@@ -69,14 +69,14 @@ include_once $this->PATH."global/header.php";
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">$</span>
                                         </div>
-                                        <input type="number" class="price form-control" min="0.00" max="10000.00" step="0.01" id="transferAmount" name="ask" placeholder="Any" disabled>
+                                        <input type="number" class="price form-control" min="0.00" max="10000.00" step="0.01" id="transferAmount" name="ask" placeholder="Any" readonly>
                                     </div>
                                     <label class="labels">Max Price:</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">$</span>
                                         </div>
-                                        <input type="number" class="price form-control" min="0.00" max="10000.00" step="0.01" id="transferAmount" name="max" placeholder="Unlimited" disabled>
+                                        <input type="number" class="price form-control" min="0.00" max="10000.00" step="0.01" id="transferAmount" name="max" placeholder="Unlimited" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ include_once $this->PATH."global/header.php";
                             <div class="col-md-6">
                                 <label class="labels">Images <sup>Optional</sup></label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
+                                    <input type="file" class="custom-file-input" id="image" name="image[]" accept="image/*">
                                     <label class="custom-file-label" for="image1">Choose file</label>
                                 </div>
                             </div>
@@ -135,6 +135,7 @@ include_once $this->PATH."global/header.php";
             maxdate.setDate(maxdate.getDate() + 30);
             var maxEnddate = new Date(); // Now
             maxEnddate.setDate(maxEnddate.getDate() + 365);
+            $('#expire').val(date.toISOString().split("T")[0]);
             $('#expire').prop('min', date.toISOString().split("T")[0]).prop('max', maxdate.toISOString().split("T")[0]);
             $('.date').prop('min', date.toISOString().split("T")[0]).prop('max', maxEnddate.toISOString().split("T")[0]);
 
@@ -142,10 +143,10 @@ include_once $this->PATH."global/header.php";
             $('body').on('click change','#date', function(event){
                 let date = ($(this).is(':checked')) ? 1 : 0;
                 if (date) {
-                    $('.date').prop('disabled', false)
+                    $('.date').prop('readonly', false)
                 } else {
                     $('.date').val('')
-                    $('.date').prop('disabled', true)
+                    $('.date').prop('readonly', true)
                 }
             });
 
@@ -153,10 +154,10 @@ include_once $this->PATH."global/header.php";
             $('body').on('click change','#price', function(event){
                 let date = ($(this).is(':checked')) ? 1 : 0;
                 if (date) {
-                    $('.price').prop('disabled', false)
+                    $('.price').prop('readonly', false)
                 } else {
                     $('.price').val('')
-                    $('.price').prop('disabled', true)
+                    $('.price').prop('readonly', true)
                 }
             });
 
