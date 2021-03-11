@@ -41,10 +41,18 @@ include_once $this->PATH."global/header.php";
                             <?php } ?>
 
                             <!-- Main Information -->
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <label class="labels">Title</label>
                                 <input type="text" class="form-control" placeholder="example" name="title" required>
                             </div>
+                            <div class="col-md-4">
+                                <label class="labels">Price</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">$</span>
+                                    </div>
+                                    <input type="number" class="price form-control" min="0.00" max="10000.00" step="0.01" id="transferAmount" name="price">
+                                </div>                            </div>
                             <div class="col-md-12 my-3">
                                 <label class="labels">Description</label>
                                 <textarea class="form-control" placeholder="enter Description" name="excerpt" required> </textarea>

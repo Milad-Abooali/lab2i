@@ -24,6 +24,7 @@
         $insert['excerpt'] = base64_encode($_POST['excerpt']);
         $insert['category'] = $categories_id;
         $insert['tags'] = implode(',',$_POST['tags']);
+        $insert['price'] = $_POST['price'];
 
         $this->data['insert_id'] = $db->insert('products', $insert);
 

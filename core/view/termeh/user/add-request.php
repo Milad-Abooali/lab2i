@@ -133,7 +133,10 @@ include_once $this->PATH."global/header.php";
             var date = new Date(); // Now
             var maxdate = new Date(); // Now
             maxdate.setDate(maxdate.getDate() + 30);
-            $('#expire').prop('min', date.toISOString().split("T")[0]).prop('max', maxdate.toISOString().split("T")[0])
+            var maxEnddate = new Date(); // Now
+            maxEnddate.setDate(maxEnddate.getDate() + 365);
+            $('#expire').prop('min', date.toISOString().split("T")[0]).prop('max', maxdate.toISOString().split("T")[0]);
+            $('.date').prop('min', date.toISOString().split("T")[0]).prop('max', maxEnddate.toISOString().split("T")[0]);
 
             // Date
             $('body').on('click change','#date', function(event){
