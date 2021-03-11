@@ -51,7 +51,12 @@ include_once $this->PATH."global/header.php";
                     <?php if($this->data['Requests']) foreach ($this->data['Requests'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
-                            <td><?= $item['user_id'] ?></td>
+                            <td>
+                                <?php
+                                    $owner = \App\Core\F::getUserByID($item['user_id']);
+                                    echo $owner['f_name'].' '.$owner['l_name'];
+                                ?>
+                            </td>
                             <td><?= $item['title'] ?></td>
                             <td>
                                 <?php
