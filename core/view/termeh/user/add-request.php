@@ -152,7 +152,7 @@ include_once $this->PATH."global/header.php";
                             </div>
 
                             <div class="col-md-12 mt-3 text-center">
-                                <button class="btn mt-2 btn-primary px-5" type="submit">Add Product</button>
+                                <button class="btn mt-2 btn-primary px-5" type="submit">Add Request</button>
                             </div>
 
                         </section>
