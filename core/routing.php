@@ -29,6 +29,12 @@
             $page['vid']  = 'admin/'.array_shift($page['data']);
             switch ($page['vid']) {
 
+                case "admin/active-tenders":
+                    $page['vid']    = 'admin/active-tenders';
+                    $page['view']   = 'admin/active-tenders';
+                    $page['inc']    = 'admin/active-tenders';
+                    $page['cache']  = false;
+                    break;
                 case "admin/tenders-archive":
                     $page['vid']    = 'admin/tenders-archive';
                     $page['view']   = 'admin/tenders-archive';
