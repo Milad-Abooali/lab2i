@@ -200,6 +200,13 @@
             $page['inc']    = "vendor/new-product";
             $page['cache']  = false;
             break;
+        case "new-offer":
+            if (!isset($_SESSION['M']['vendor'])) header("Location: ".APP_URL."403&y=Vendor permission needed!");
+            $page['vid']    = 'vendor/new-offer';
+            $page['view']   = "vendor/new-offer";
+            $page['inc']    = "vendor/new-offer";
+            $page['cache']  = false;
+            break;
 
 // Client
         case "register":
