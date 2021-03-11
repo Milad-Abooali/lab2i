@@ -22,7 +22,12 @@ include_once $this->PATH."global/header.php";
 
     <main role="main" class="container">
 
-    <?= $_GET['id'] ?>
+        <?php \App\Core\M::print($this->data['request']); ?>
+
+        <?php if (is_vendor) { ?>
+            <a href="new-offer&id=<?= $_GET['id'] ?>">Offer</a>
+        <?php } ?>
+
 
     </main>
 

@@ -50,7 +50,7 @@
                 }
             }
 
-            header("Location: ".APP_URL.'my-shop');
+            header("Location: ".APP_URL.'request&id='.$_POST['id']);
         } else {
             $this->data['error'] = 'Error!';
         }
