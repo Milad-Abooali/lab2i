@@ -37,9 +37,15 @@
             $update['status']=1;
             $update['offer_id']=$offer['id'];
             $update['vendor_id']=$offer['vendor_id'];
-            $output->res = $db->updateId('requests', $offer['request_id'], $update);
+            $update_request = $db->updateId('requests', $offer['request_id'], $update);
+            if ($update_request) {
+                // Creat Invoice
 
 
+                $output->res = 1;
+            } else {
+                $output->e = "Error on request update!";
+            }
 
         }
         echo json_encode($output);
