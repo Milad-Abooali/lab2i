@@ -106,7 +106,7 @@ include_once $this->PATH."global/header.php";
                             <div class="col-md-6">
                                 <label class="labels">Images <sup>Optional</sup></label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image1" name="image[]" accept="image/*">
+                                    <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
                                     <label class="custom-file-label" for="image1">Choose file</label>
                                 </div>
                             </div>
