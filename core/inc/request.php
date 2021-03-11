@@ -15,15 +15,15 @@ use App\Core\M;
     $id = $_GET['id'] ?? 0;
     $this->data['request'] = $db->selectID('requests', $id);
 
-
-    // Categories
-    $categories = $db->selectAll('categories');
-    foreach ($categories as $category) $this->data['categories'][$category['id']] = $category;
+    // Offers
+    $where = 'request_id='.$id;
+    $offers = $db->select('request_offers',$where);
+    if($offers) foreach ($offers as $offer) $this->data['offers'][$offer['id']] = $offer;
 
     // Tags
     $tags = $db->selectAll('tags');
-    foreach ($tags as $tag) $this->data['tags'][$tag['id']] = $tag;
+    if($tags) foreach ($tags as $tag) $this->data['tags'][$tag['id']] = $tag;
 
     // shops
     $vendor_shop = $db->selectAll('vendor_shop');
-    foreach ($vendor_shop as $shop) $this->data['vendor_shop'][$shop['id']] = $shop;
+    if($vendor_shop) foreach ($vendor_shop as $shop) $this->data['vendor_shop'][$shop['id']] = $shop;

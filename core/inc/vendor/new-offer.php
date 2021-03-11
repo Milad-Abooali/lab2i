@@ -10,10 +10,10 @@
     $db = new iSQL(DB_INFO);
 
     if ($_POST ?? false) {
-        $insert['shop_id'] = $_SESSION['M']['vendor']['id'];
-        $insert['title'] = $_POST['category'];
+        $insert['vendor_id'] = $_SESSION['M']['vendor']['id'];
+        $insert['title'] = $_POST['title'];
         $insert['excerpt'] = base64_encode($_POST['excerpt']);
-        $insert['id'] = $_POST['id'];
+        $insert['request_id'] = $_POST['id'];
         $insert['price'] = $_POST['price'];
 
         $this->data['insert_id'] = $db->insert('request_offers', $insert);
