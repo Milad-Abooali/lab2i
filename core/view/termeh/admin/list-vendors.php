@@ -54,16 +54,14 @@ include_once $this->PATH."global/header.php";
                             <td><?= $item['f_name'] ?> <?= $item['l_name'] ?></td>
                             <td><?= $item['address'] ?></td>
                             <td class="text-center">
-                                <!-- Default switch -->
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitches" <?= ($item['status']) ? 'checked' : null ?> >
+                                    <input data-id="<?= $item['id'] ?>" type="checkbox" class="doA-vendorStatus custom-control-input" id="customSwitches" <?= ($item['status']) ? 'checked' : null ?> >
                                     <label class="custom-control-label" for="customSwitches"></label>
                                 </div>
                             </td>
                             <td class="text-center">
-                                <!-- Default switch -->
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitches" <?= ($item['admin']) ? 'checked' : null ?> >
+                                    <input data-id="<?= $item['id'] ?>" type="checkbox" class="doA-vendorAdmin custom-control-input" id="customSwitches" <?= ($item['admin']) ? 'checked' : null ?> >
                                     <label class="custom-control-label" for="customSwitches"></label>
                                 </div>
                             </td>
