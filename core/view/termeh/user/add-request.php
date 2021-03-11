@@ -42,7 +42,7 @@ include_once $this->PATH."global/header.php";
                                 <label class="labels">Title</label>
                                 <input type="text" class="form-control" placeholder="example" name="title" required>
                             </div>
-                            <div class="col-md-4 my-5">
+                            <div class="col-md-4 my-4">
                                 <div class=" ">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="doA-update custom-control-input" id="date" name="date" >
@@ -58,7 +58,7 @@ include_once $this->PATH."global/header.php";
                                     <input type="date" class="date form-control" name="end" disabled>
                                 </div>
                             </div>
-                            <div class="col-md-4 my-5">
+                            <div class="col-md-4 my-4">
                                 <div class=" ">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="doA-update custom-control-input" id="price" name="price" >
@@ -80,7 +80,7 @@ include_once $this->PATH."global/header.php";
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 my-5">
+                            <div class="col-md-4 my-4">
                                 Options
                                 <div class="">
                                     <label class="labels">Quantity</label>
@@ -104,50 +104,10 @@ include_once $this->PATH."global/header.php";
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label class="labels">Category</label>
-                                <input type="text" class="form-control" placeholder="example" name="category" value="<?= $this->data['categories']['title'] ?>" readonly>
-                            </div>
-
-                            <div class="col-md-12 my-5 text-center">
-                                <h5>Media</h5>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="labels">Images <sup>1 image required</sup></label>
+                                <label class="labels">Images <sup>Optional</sup></label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="image1" name="image[]" accept="image/*">
                                     <label class="custom-file-label" for="image1">Choose file</label>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image2" name="image[]" accept="image/*">
-                                    <label class="custom-file-label" for="image2">Choose file</label>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image3" name="image[]" accept="image/*">
-                                    <label class="custom-file-label" for="image3">Choose file</label>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image4" name="image[]" accept="image/*">
-                                    <label class="custom-file-label" for="image4">Choose file</label>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image5" name="image[]" accept="image/*">
-                                    <label class="custom-file-label" for="image5">Choose file</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="labels">Video <sup>Optional</sup></label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="video1" name="video[]" accept="video/*">
-                                    <label class="custom-file-label" for="video1">Choose file</label>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="video2" name="video[]" accept="video/*">
-                                    <label class="custom-file-label" for="video2">Choose file</label>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="video3" name="video[]" accept="video/*">
-                                    <label class="custom-file-label" for="video3">Choose file</label>
                                 </div>
                             </div>
 
