@@ -11,5 +11,5 @@ use App\Core\M;
     // Database connection
     $db = new iSQL(DB_INFO);
 
-    // shops
+    // Users
     $this->data['users'] = $db->selectAll('users');
