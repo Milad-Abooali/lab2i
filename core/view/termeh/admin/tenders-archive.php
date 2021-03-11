@@ -67,7 +67,7 @@ include_once $this->PATH."global/header.php";
                             <td><?php \App\Core\F::status($item['status'],'ico') ?> <?= $item['expire'] ?></td>
                             <td><?php if($item['Vendor_id']) { echo $this->data['vendor_shop'][$item['Vendor_id']]['title']; ?> | <?php $item['offer_id']; } ?></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href="<?= APP_URL ?>buy/<?= $item['id'] ?>">View</a>
+                                <a class="btn btn-sm btn-primary" href="<?= APP_URL ?>request&id=<?= $item['id'] ?>">View</a>
                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
                             </td>
                         </tr>
@@ -90,14 +90,14 @@ include_once $this->PATH."global/header.php";
             $('#ProductsTable').DataTable();
 
 
-            //  Delete Product
+            //  Delete Request
             $('body').on('click','.doA-delete', function(event){
                 var r = confirm("Delete a product!");
                 if (r == true) {
                     let clicked = $(this);
                     let id = clicked.data('id');
                     let data = {
-                        t: 'products',
+                        t: 'requests',
                         id: id
                     }
                     ajaxCall ('core/delete', data, function(response) {

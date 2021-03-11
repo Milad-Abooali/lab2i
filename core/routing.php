@@ -270,6 +270,12 @@
 
 
 // Shared
+        case "request":
+            $page['vid']    = 'request';
+            $page['view']   = "request";
+            $page['inc']    = "request";
+            $page['cache']  = false;
+            break;
         case "buy":
             $page['vid']    = 'buy';
             $page['view']   = "buy";
