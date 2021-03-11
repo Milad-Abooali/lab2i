@@ -248,6 +248,14 @@
             $page['inc']    = "user/my-requests";
             $page['cache']  = false;
             break;
+        case "add-request":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
+            $page['vid']    = 'user/add-request';
+            $page['view']   = "user/add-request";
+            $page['inc']    = "user/add-request";
+            $page['cache']  = false;
+            break;
+
 
 // Shared
         case "buy":
