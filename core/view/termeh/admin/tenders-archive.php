@@ -33,29 +33,11 @@ include_once $this->PATH."global/header.php";
                 <?php include_once $this->PATH."admin/sidebar.php"; ?>
             </div>
             <div class="col-md-9">
-
-
-                Full texts
-                id
-                user_id
-                title
-                start
-                end
-                ask
-                max
-                quantity
-                expire
-                excerpt
-                tags
-                offer_id
-                vendor_id
-                status
-
                 <table id="TendersTable" class="table table-sm table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>user_id</th>
+                            <th>Owner</th>
                             <th>Title</th>
                             <th>Tags</th>
                             <th>Expire</th>
@@ -66,9 +48,10 @@ include_once $this->PATH."global/header.php";
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if($this->data['requests']) foreach ($this->data['requests'] as $item) { ?>
+                    <?php if($this->data['Requests']) foreach ($this->data['Requests'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
+                            <td><?= $item['user_id'] ?></td>
                             <td><?= $item['title'] ?></td>
                             <td>
                                 <?php
@@ -82,13 +65,6 @@ include_once $this->PATH."global/header.php";
                             <td><?= $item['status'] ?></td>
                             <td><?= $item['offer_id'] ?></td>
                             <td><?= $this->data['vendor_shop'][$item['Vendor_id']]['title'] ?></td>
-                            <td>
-                                <?= $item['title'] ?>
-                                <hr>
-                                <img style="width:95px" src="<?= CDN.'upload/products/'.$item['id'].'/0.jpg'; ?>">
-                            </td>
-                            <td><?= $this->data['categories'][$item['category']]['title'] ?></td>
-
                             <td>
                                 <a class="btn btn-sm btn-primary" href="<?= APP_URL ?>buy/<?= $item['id'] ?>">View</a>
                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
