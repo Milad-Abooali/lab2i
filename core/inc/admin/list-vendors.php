@@ -12,4 +12,4 @@ use App\Core\M;
     $db = new iSQL(DB_INFO);
 
     // shops
-    $this->data['vendor_shop'] = $db->selectAll('vendor_shop');
+    $this->data['vendor_shop'] = $db->selectAll('vendors');

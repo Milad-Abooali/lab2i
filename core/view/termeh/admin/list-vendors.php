@@ -43,6 +43,7 @@ include_once $this->PATH."global/header.php";
                             <th>address</th>
                             <th>status</th>
                             <th>admin</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,10 +53,23 @@ include_once $this->PATH."global/header.php";
                             <td><?= $item['email'] ?></td>
                             <td><?= $item['f_name'] ?> <?= $item['l_name'] ?></td>
                             <td><?= $item['address'] ?></td>
-                            <td><?= $item['status'] ?></td>
-                            <td><?= $item['admin'] ?></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href="<?= APP_URL ?>buy/<?= $item['id'] ?>">View</a>
+                                <td class="text-center">
+                                    <!-- Default switch -->
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitches" <?= ($item['status']) ? 'checked' : null ?> >
+                                        <label class="custom-control-label" for="customSwitches"></label>
+                                    </div>
+                                </td>
+                            </td>
+                            <td class="text-center">
+                                <!-- Default switch -->
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitches" <?= ($item['admin']) ? 'checked' : null ?> >
+                                    <label class="custom-control-label" for="customSwitches"></label>
+                                </div>
+                            </td>
+                            <td>
                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
                             </td>
                         </tr>
@@ -83,7 +97,7 @@ include_once $this->PATH."global/header.php";
                 let clicked = $(this);
                 let id = clicked.data('id');
                 let data = {
-                    t: 'products',
+                    t: 'vendors',
                     id: id
                 }
                 ajaxCall ('core/delete', data, function(response) {
