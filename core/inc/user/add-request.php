@@ -29,10 +29,10 @@ use App\Core\M;
         }
         $insert['quantity'] = $_POST['quantity'];
         $insert['expire'] = $_POST['expire'];
-        $insert['description'] = base64_encode($_POST['description']);
+        $insert['excerpt'] = base64_encode($_POST['excerpt']);
         $insert['tags'] = implode(',',$_POST['tags']);
 
-        $this->data['insert_id'] = $db->insert('products', $insert);
+        $this->data['insert_id'] = $db->insert('requests', $insert);
 
 
         if($this->data['insert_id']) {
