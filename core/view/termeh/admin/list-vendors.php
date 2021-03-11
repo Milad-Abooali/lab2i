@@ -3,7 +3,7 @@
 
 $this->data['PAGE']['demo']=0;
 
-$this->data['PAGE']['title'] = 'Admin Lıst Vendors';
+$this->data['PAGE']['title'] = 'Admin List Vendors';
 $this->data['PAGE']['keywords'] = 'test';
 $this->data['PAGE']['description'] = 'test';
 $this->data['PAGE']['robots'] = 1; // Null = Follow
@@ -48,7 +48,7 @@ include_once $this->PATH."global/header.php";
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if($this->data['vendor_shop']) foreach ($this->data['vendor_shop'] as $item) { ?>
+                    <?php if($this->data['vendor']) foreach ($this->data['vendor'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['email'] ?></td>
