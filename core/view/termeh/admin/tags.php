@@ -141,20 +141,24 @@ include_once $this->PATH."global/header.php";
 
             //  Delete tag
             $('body').on('click','.doA-delete', function(event){
-                let clicked = $(this);
-                let id = clicked.data('id');
-                let data = {
-                    id: id
-                }
-                ajaxCall ('tags/delete', data,function(response) {
-                    let obj = JSON.parse(response);
-                    if (obj.res) {
-                        notify('Tag Deleted.','success',false);
-                        clicked.closest("tr").remove();
-                    } else {
-                        notify('Error!','error',false);
+                var r = confirm("Delete a tag!");
+                if (r == true) {
+                    let clicked = $(this);
+                    let id = clicked.data('id');
+                    let data = {
+                        id: id
                     }
-                });
+                    ajaxCall ('tags/delete', data,function(response) {
+                        let obj = JSON.parse(response);
+                        if (obj.res) {
+                            notify('Tag Deleted.','success',false);
+                            clicked.closest("tr").remove();
+                        } else {
+                            notify('Error!','error',false);
+                        }
+                    });
+                }
+
             });
         });
 

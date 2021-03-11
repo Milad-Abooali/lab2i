@@ -182,21 +182,24 @@ include_once $this->PATH."global/header.php";
 
             //  Delete Category
             $('body').on('click','.doA-delete', function(event){
-                let clicked = $(this);
-                let id = clicked.data('id');
-                let data = {
-                    t: 'categories',
-                    id: id
-                }
-                ajaxCall ('core/delete', data, function(response) {
-                    let obj = JSON.parse(response);
-                    if (obj.res) {
-                        notify('Deleted.', 'success', false);
-                        clicked.closest("tr").remove();
-                    } else {
-                        notify('Error!', 'error', false);
+                var r = confirm("Delete a category!");
+                if (r == true) {
+                    let clicked = $(this);
+                    let id = clicked.data('id');
+                    let data = {
+                        t: 'categories',
+                        id: id
                     }
-                });
+                    ajaxCall('core/delete', data, function (response) {
+                        let obj = JSON.parse(response);
+                        if (obj.res) {
+                            notify('Deleted.', 'success', false);
+                            clicked.closest("tr").remove();
+                        } else {
+                            notify('Error!', 'error', false);
+                        }
+                    });
+                }
             });
 
         });
