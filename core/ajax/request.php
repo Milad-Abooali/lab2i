@@ -40,9 +40,13 @@
             $update_request = $db->updateId('requests', $offer['request_id'], $update);
             if ($update_request) {
                 // Creat Invoice
-
-
-                $output->res = 1;
+                $rate = 0.2;
+                $insert['user_id'] = $_SESSION['M']['user']['id'];
+                $insert['request_id'] = $offer['request_id'];
+                $insert['offer_id'] = $offer['id'];
+                $insert['comission_rate'] = $rate;
+                $insert['amount'] = $rate*$offer['price'];
+                $output->res = $db->insert('invoices', $insert);
             } else {
                 $output->e = "Error on request update!";
             }
