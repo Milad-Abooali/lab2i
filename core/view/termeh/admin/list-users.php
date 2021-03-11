@@ -40,39 +40,56 @@ include_once $this->PATH."global/header.php";
                             <th>#</th>
                             <th>Email</th>
                             <th>Name</th>
+                            <th>birthday</th>
+                            <th>interests</th>
+                            <th>job</th>
+                            <th>income</th>
+                            <th>Phone</th>
                             <th>Address</th>
-                            <th>Active</th>
-                            <th>Verify</th>
-                            <th>Admin</th>
+                            <th>reg_date</th>
+                            <th>extra</th>
                             <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if($this->data['vendor_shop']) foreach ($this->data['vendor_shop'] as $item) { ?>
+                    <?php if($this->data['users']) foreach ($this->data['users'] as $item) { ?>
                         <tr>
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['email'] ?></td>
-                            <td><?= $item['f_name'] ?> <?= $item['l_name'] ?></td>
-                            <td><?= $item['address'] ?></td>
+                            <td>
+                                <i class="fa <?= ($item['gender']) ? 'fa-male text-primary' : 'fa-female text-warning' ?>"></i>
+                                <?= $item['f_name'] ?> <?= $item['l_name'] ?></td>
+                            <td><?= $item['birthday'] ?></td>
+                            <td>
+                                <?php
+                                if($item['interests']) {
+                                    $interests = explode(',',$item['interests']);
+                                    foreach ($interests as $interest) echo '<span class="small badge-pill badge-info">'.$interest.'</span><br>';
+                                }
+                                ?>
+                            </td>
+                            <td><?= $item['job'] ?></td>
+                            <td><?= $item['income'] ?></td>
+                            <td><?= $item['Phone'] ?></td>
+                            <td>
+                                <?= $item['country'] ?>
+                                <?= $item['region'] ?>
+                                <?= $item['region'] ?>
+                                <?= $item['address'] ?>
+                                <?= $item['postcode'] ?>
+                            </td>
+                            <td><?= $item['reg_date'] ?></td>
+                            <td>
+                                <?php if ($item['extra']) { ?>
+                                  <button class="doM-extra btn btn-sm btn-info float-right" data-id="<?= $item['id'] ?>">Show</button>
+                                <?php } ?>
+                            </td>
+
                             <td class="text-center">
                                 <div class="custom-control custom-switch">
                                     <input data-id="<?= $item['id'] ?>" type="checkbox" class="doA-vendorStatus custom-control-input" id="status-<?= $item['id'] ?>" <?= ($item['status']) ? 'checked' : null ?> >
-                                    <label class="custom-control-label" for="status-<?= $item['id'] ?>"></label>
+                                    <label class="custom-control-label" for="status-<?= $item['id'] ?>">Active</label>
                                 </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="custom-control custom-switch">
-                                    <input data-t="vendors" data-c="verify" data-id="<?= $item['id'] ?>" type="checkbox" class="doA-update custom-control-input" id="verify-<?= $item['id'] ?>" <?= ($item['verify']) ? 'checked' : null ?> >
-                                    <label class="custom-control-label" for="verify-<?= $item['id'] ?>"></label>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="custom-control custom-switch">
-                                    <input data-t="vendors" data-c="admin" data-id="<?= $item['id'] ?>" type="checkbox" class="doA-update custom-control-input" id="admin-<?= $item['id'] ?>" <?= ($item['admin']) ? 'checked' : null ?> >
-                                    <label class="custom-control-label" for="admin-<?= $item['id'] ?>"></label>
-                                </div>
-                            </td>
-                            <td>
                                 <button class="doA-delete btn btn-sm btn-danger float-right" data-id="<?= $item['id'] ?>">Delete</button>
                             </td>
                         </tr>
@@ -96,13 +113,13 @@ include_once $this->PATH."global/header.php";
 
             //  Vendor Status
             $('body').on('click','.doA-vendorStatus', function(event){
-                var r = confirm("Change vendor status?");
+                var r = confirm("Change user status?");
                 if (r == true) {
                     let clicked = $(this);
                     let id = clicked.data('id');
                     let status = (clicked.is(':checked')) ? 1 : 0;
                     let data = {
-                        t: 'vendors',
+                        t: 'users',
                         id: id,
                         status:status
                     }
@@ -117,37 +134,14 @@ include_once $this->PATH."global/header.php";
                 }
             });
 
-            //  Update
-            $('body').on('click','.doA-update', function(event){
-                let clicked = $(this);
-                let t = clicked.data('t');
-                let c = clicked.data('c');
-                let id = clicked.data('id');
-                let s = (clicked.is(':checked')) ? 1 : 0;
-                let data = {
-                    t: t,
-                    c: c,
-                    id: id,
-                    s:s
-                }
-                ajaxCall ('core/update', data, function(response) {
-                    let obj = JSON.parse(response);
-                    if (obj.res) {
-                        notify('Updated.', 'success', false);
-                    } else {
-                        notify('Error!', 'error', false);
-                    }
-                });
-            });
-
-            //  Delete Vendor
+            //  Delete User
             $('body').on('click','.doA-delete', function(event){
-                var r = confirm("Delete a vendor!");
+                var r = confirm("Delete a user!");
                 if (r == true) {
                         let clicked = $(this);
                     let id = clicked.data('id');
                     let data = {
-                        t: 'vendors',
+                        t: 'users',
                         id: id
                     }
                     ajaxCall ('core/delete', data, function(response) {
