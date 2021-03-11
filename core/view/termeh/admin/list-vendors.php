@@ -53,14 +53,12 @@ include_once $this->PATH."global/header.php";
                             <td><?= $item['email'] ?></td>
                             <td><?= $item['f_name'] ?> <?= $item['l_name'] ?></td>
                             <td><?= $item['address'] ?></td>
-                            <td>
-                                <td class="text-center">
-                                    <!-- Default switch -->
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitches" <?= ($item['status']) ? 'checked' : null ?> >
-                                        <label class="custom-control-label" for="customSwitches"></label>
-                                    </div>
-                                </td>
+                            <td class="text-center">
+                                <!-- Default switch -->
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitches" <?= ($item['status']) ? 'checked' : null ?> >
+                                    <label class="custom-control-label" for="customSwitches"></label>
+                                </div>
                             </td>
                             <td class="text-center">
                                 <!-- Default switch -->
@@ -94,21 +92,24 @@ include_once $this->PATH."global/header.php";
 
             //  Delete Product
             $('body').on('click','.doA-delete', function(event){
-                let clicked = $(this);
-                let id = clicked.data('id');
-                let data = {
-                    t: 'vendors',
-                    id: id
-                }
-                ajaxCall ('core/delete', data, function(response) {
-                    let obj = JSON.parse(response);
-                    if (obj.res) {
-                        notify('Deleted.', 'success', false);
-                        clicked.closest("tr").remove();
-                    } else {
-                        notify('Error!', 'error', false);
+                var r = confirm("Delete a vendor!");
+                if (r == true) {
+                        let clicked = $(this);
+                    let id = clicked.data('id');
+                    let data = {
+                        t: 'vendors',
+                        id: id
                     }
-                });
+                    ajaxCall ('core/delete', data, function(response) {
+                        let obj = JSON.parse(response);
+                        if (obj.res) {
+                            notify('Deleted.', 'success', false);
+                            clicked.closest("tr").remove();
+                        } else {
+                            notify('Error!', 'error', false);
+                        }
+                    });
+                }
             });
 
         });
