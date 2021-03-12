@@ -50,7 +50,6 @@
             } else {
                 $output->e = "Error on request update!";
             }
-
         }
         echo json_encode($output);
     }
