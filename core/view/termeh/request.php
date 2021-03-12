@@ -43,9 +43,9 @@ include_once $this->PATH."global/header.php";
 
                     <?php if ($this->data['request']['invoice_id']) { ?>
                             <?php if ($this->data['invoice']['date_paid']) { ?>
-                                <button class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>">Show Voucher</button>
+                                <button class="doM-voucher btn btn-success" data-id="<?= $offer['id'] ?>">Show Voucher</button>
                             <?php } else { ?>
-                                <a class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>">Pay Invoice</a>
+                                <a href="invoice&id=<? $this->data['invoice']['id'] ?>" class="btn btn-success">Pay Invoice</a>
                             <?php } ?>
                     <?php } ?>
 
@@ -66,10 +66,9 @@ include_once $this->PATH."global/header.php";
         $( document ).ready(function() {
 
             //  Accept
-            $('body').on('click','doA-Accept', function(event){
-                let id = $(this).data('id);
+            $('body').on('click','.doA-Accept', function(event){
+                let id = $(this).data('id');
                 const data = {
-                    request:<?= $_GET['id'] ?>,
                     id:id
                 }
                 ajaxCall ('request/acceptOffer', data,function(response) {
@@ -77,7 +76,7 @@ include_once $this->PATH."global/header.php";
                     if(obj.e) {
                         notify('Error!','error',false);
                     } else {
-                        location.reload();
+                        // location.reload();
                     }
                 });
             });

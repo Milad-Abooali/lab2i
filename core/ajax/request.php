@@ -30,9 +30,7 @@
         $output->e = !(($_POST['id']) ?? false);
         if ($output->e == false) {
             $db = new iSQL(DB_INFO);
-
-            $offer = $db->selectId('request_offer', $_POST['id']);
-
+            $offer = $db->selectId('request_offers', $_POST['id']);
             // Update Request
             $update['status']=1;
             $update['offer_id']=$offer['id'];
@@ -46,10 +44,18 @@
                 $insert['offer_id'] = $offer['id'];
                 $insert['comission_rate'] = $rate;
                 $insert['amount'] = $rate*$offer['price'];
-                $output->res = $db->insert('invoices', $insert);
+                $insert_id = $db->insert('invoices', $insert);
+                if ($insert_id) {
+                    $update=array();
+                    $update['invoice_id']=$insert_id;
+                    $output->res = $db->updateId('requests', $offer['request_id'], $update);
+                } else {
+                    $output->e = "Error on creat invoice!";
+                }
             } else {
                 $output->e = "Error on request update!";
             }
         }
+        $output->db = $db->log();
         echo json_encode($output);
     }
