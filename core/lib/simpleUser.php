@@ -15,14 +15,14 @@ namespace App\Core;
 
 if (!defined('START')) die('__ You just find me! 😹 . . . <a href="javascript:history.back()">Go Back</a>');
 
-class SimpleUser
+class simple_user
 {
 
     public $ERROR;
     private $db, $user=array();
 
     /**
-     * SimpleUser constructor.
+     * simple_user constructor.
      */
     function __construct() {
         $this->db = new iSQL(DB_INFO);

@@ -30,7 +30,7 @@
 
         $output->e = false;
 
-        $user = new SimpleUser();
+        $user = new simple_user();
         $output->res = $user->logout();
 
         echo json_encode($output);
@@ -44,7 +44,7 @@
         $output->e = !(($_POST['password']) ?? false);
 
         if ($output->e == false) {
-            $user = new SimpleUser();
+            $user = new simple_user();
             $output->res = $user->login($_POST['email'],$_POST['password']);
         }
         echo json_encode($output);
@@ -57,7 +57,7 @@
         $output->e = !(($_POST['email']) ?? false);
 
         if ($output->e == false) {
-            $user = new SimpleUser();
+            $user = new simple_user();
             $output->res = $user->recoverPass($_POST['email']);
         }
         echo json_encode($output);
@@ -73,7 +73,7 @@
             $id = $_POST['id'];
             unset($_POST['id']);
             $_POST['interests'] = implode(',',$_POST['interests']);
-            $user = new SimpleUser();
+            $user = new simple_user();
             $output->res = $user->update($id,$_POST);
         }
         echo json_encode($output);
@@ -86,7 +86,7 @@
         $output->e = !(($_POST['i']) ?? false);
 
         if ($output->e == false) {
-            $user = new SimpleUser();
+            $user = new simple_user();
             $output->res = $user->changePass($_POST['i'],$_POST['password']);
         }
         echo json_encode($output);
@@ -113,7 +113,7 @@
             $output->e = ($number ?? false) ? false : 'Password Number';
             $output->e = ($specialChars ?? false) ? false : 'Password SpecialChars';
             if ($output->e == false) {
-                $user = new SimpleUser();
+                $user = new simple_user();
                 $output->res = $user->register($_POST['email'],$_POST['password'],$_POST['fname'],$_POST['lname'],$_POST['phone']);
             }
         }
