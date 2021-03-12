@@ -45,7 +45,7 @@ include_once $this->PATH."global/header.php";
                             <?php if ($this->data['invoice']['date_paid']) { ?>
                                 <button class="doM-voucher btn btn-success" data-id="<?= $offer['id'] ?>">Show Voucher</button>
                             <?php } else { ?>
-                                <a href="invoice&id=<? $this->data['invoice']['id'] ?>" class="btn btn-success">Pay Invoice</a>
+                                <a href="invoice&id=<?= $this->data['invoice']['id'] ?>" class="btn btn-success">Pay Invoice</a>
                             <?php } ?>
                     <?php } ?>
 
