@@ -42,7 +42,11 @@ include_once $this->PATH."global/header.php";
                     <?php } elseif ($this->data['request']['offer_id'] === $offer['id'] ) { ?>
 
                     <?php if ($this->data['request']['invoice_id']) { ?>
-                      <a class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>"></a>
+                            <?php if ($this->data['invoice']['date_paid']) { ?>
+                                <button class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>">Show Voucher</button>
+                            <?php } else { ?>
+                                <a class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>">Pay Invoice</a>
+                            <?php } ?>
                     <?php } ?>
 
                 <?php } ?>
