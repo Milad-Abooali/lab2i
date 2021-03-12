@@ -39,6 +39,7 @@ include_once $this->PATH."global/header.php";
                                     <th>#</th>
                                     <th>Amount</th>
                                     <th>Request</th>
+                                    <th>Offer</th>
                                     <th>Transaction</th>
                                     <th>Date Created</th>
                                     <th>Date Paid</th>
@@ -50,9 +51,10 @@ include_once $this->PATH."global/header.php";
                                 <tr>
                                     <td><?= $item['id'] ?></td>
                                     <td>$ <?= $item['amount'] ?></td>
-                                    <td><a class="btn-link" target="_blank" href="request-<?= $item['request'] ?>"><?= $item['request'] ?></a> <sup><i class="fa fa-external-link text-secondary small"></i></sup></td>
-                                    <td><a class="btn-link"><?= $item['transaction'] ?></a></td>
-                                    <td><?= $item['date_created'] ?></td>
+                                    <td><a class="btn-link" target="_blank" href="request&id=<?= $item['request_id'] ?>"><?= $item['request_id'] ?></a> <sup><i class="fa fa-external-link text-secondary small"></i></sup></td>
+                                    <td><?= $item['offer_id'] ?></td>
+                                    <td><?= $item['transaction_id'] ?></td>
+                                    <td><?= $item['created_at'] ?></td>
                                     <td class="text-success"><?= $item['date_paid'] ?></td>
                                     <td>
                                     <?php if($item['date_paid']){ ?>
