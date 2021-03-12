@@ -35,7 +35,7 @@
                             <?php if($this->data['active']) { ?>
                                 <div class="alert alert-success">Your Account has been active, Now you can enjoy it...
                                 <br>
-                                <a href="../../../../index.php">Try Login</a>
+                                <a href="login">Try Login</a>
                                 </div>
                             <?php } else { ?>
                                 <div class="alert alert-danger">Your Account has been not active, this link is expired/wrong!</div>
@@ -214,14 +214,14 @@ modified so as to make them enforceable and the validity and enforceability of t
                             <div class="form-group ">
                                 <button type="submit" class="btn btn-primary btn-lg col-8 login-button">Register</button>
                                 <small class="mx-3 text-muted border border-secondary rounded-circle p-1">OR</small>
-                                <a class="btn btn-success my-2 my-sm-0" href="../../../../index.php">Login</a>
+                                <a class="btn btn-success my-2 my-sm-0" href="login">Login</a>
                             </div>
                             <hr>
                             <div class="form-group small text-center">
                                 <p>
                                   You can signup as <span class="text-danger">vendor</span> to provide service and products, also create your own shop:
                                 </p>
-                                <a class="btn btn-sm btn-outline-info mx-auto" href="../../../../index.php">SignUp As Vendor</a>
+                                <a class="btn btn-sm btn-outline-info mx-auto" href="v-signup">SignUp As Vendor</a>
                             </div>
                         </form>
                         <?php } ?>
