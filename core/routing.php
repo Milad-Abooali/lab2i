@@ -276,9 +276,9 @@
             break;
         case "invoice":
             if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
-            $page['vid']    = 'invoice';
-            $page['view']   = "invoice";
-            $page['inc']    = "invoice";
+            $page['vid']    = 'user/invoice';
+            $page['view']   = "user/invoice";
+            $page['inc']    = "user/invoice";
             $page['cache']  = false;
             break;
 
