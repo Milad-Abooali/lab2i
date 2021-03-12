@@ -11,9 +11,13 @@ use App\Core\M;
     // Database connection
     $db = new iSQL(DB_INFO);
 
-    // Products
+    // Request
     $id = $_GET['id'] ?? 0;
     $this->data['request'] = $db->selectID('requests', $id);
+
+    if($this->data['request']['invoice_id']){
+        $this->data['invoice'] = $db->selectID('invoices', $this->data['request']['invoice_id']);
+    }
 
     // Offers
     $where = 'request_id='.$id;

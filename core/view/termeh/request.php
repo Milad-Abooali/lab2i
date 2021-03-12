@@ -35,8 +35,18 @@ include_once $this->PATH."global/header.php";
             <div class="card">
                 <?php \App\Core\M::print($offer); ?>
 
-                <?php if ($_SESSION['M']['user']['id'] == $this->data['request']['user_id'] & !$this->data['request']['status']) { ?>
-                  <button class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>">Accept</button>
+                <?php if ($_SESSION['M']['user']['id'] == $this->data['request']['user_id']) { ?>
+
+                    <?php if (!$this->data['request']['status']) { ?>
+                      <button class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>">Accept</button>
+                    <?php } elseif ($this->data['request']['offer_id'] === $offer['id'] ) { ?>
+
+                    <?php if ($this->data['request']['invoice_id']) { ?>
+                      <a class="doA-Accept btn btn-success" data-id="<?= $offer['id'] ?>"></a>
+                    <?php } ?>
+
+                <?php } ?>
+
                 <?php } ?>
             </div>
         <?php } ?>
@@ -60,11 +70,11 @@ include_once $this->PATH."global/header.php";
                 }
                 ajaxCall ('request/acceptOffer', data,function(response) {
                     let obj = JSON.parse(response);
-
-
-                    setTimeout(function(){
-                        $(".noticForm").fadeOut();
-                    }, 1500);
+                    if(obj.e) {
+                        notify('Error!','error',false);
+                    } else {
+                        location.reload();
+                    }
                 });
             });
 
