@@ -58,3 +58,45 @@
         }
         echo json_encode($output);
     }
+
+
+    // Buy
+    function buy() {
+        $output = new stdClass();
+        $output->e = !(($_POST['id']) ?? false);
+        if ($output->e == false) {
+            $db = new iSQL(DB_INFO);
+            $product = $db->selectId('products', $_POST['id']);
+
+            // Add Order Request
+            $order['user_id']= $_SESSION['M']['user']['id'];
+            $order['vendor_id']= $product['shop_id'];
+            $order['product_id']= $product['id'];
+            $order['price']= $product['price'];
+            $order_id = $db->insert('vendor_orders', $order);
+            if ($order_id) {
+                // Creat Invoice
+                $rate = 0.2;
+                $insert['user_id'] = $_SESSION['M']['user']['id'];
+                $insert['request_id'] = $product['id'];
+                $insert['offer_id'] = 0;
+                $insert['comission_rate'] = $rate;
+                $insert['amount'] = $rate*$product['price'];
+                $invoice_id = $db->insert('invoices', $insert);
+                if ($invoice_id) {
+                    $update=array();
+                    $update['invoice_id']=$invoice_id;
+                    if ($db->updateId('vendor_orders', $order_id, $update)) {
+                        $output->res = $invoice_id;
+                    } else {
+                        $output->e = "Error on add invoice!";
+                    }
+                } else {
+                    $output->e = "Error on creat invoice!";
+                }
+            } else {
+                $output->e = "Error on order!";
+            }
+        }
+        echo json_encode($output);
+    }

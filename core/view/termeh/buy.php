@@ -22,6 +22,16 @@ include_once $this->PATH."global/header.php";
 
     <main role="main" class="container">
 
+        <?php \App\Core\M::print($this->data['product']); ?>
+
+        <?php \App\Core\M::print($this->data['category']); ?>
+
+        <?php \App\Core\M::print($this->data['tags']); ?>
+
+
+        <?php if(is_user) { ?>
+            <button class="doA-buy btn btn-primary" data-id="<?= $this->data['product']['id'] ?> ">Buy</button>
+        <?php } ?>
 
 
     </main>
@@ -30,6 +40,21 @@ include_once $this->PATH."global/header.php";
 
         $( document ).ready(function() {
 
+            //  Accept
+            $('body').on('click','.doA-buy', function(event){
+                let id = $(this).data('id');
+                const data = {
+                    id:id
+                }
+                ajaxCall ('request/buy', data,function(response) {
+                    let obj = JSON.parse(response);
+                    if(obj.e) {
+                        notify('Error!','error',false);
+                    } else {
+                        window.location.replace("invoice&id="+obj.res);
+                    }
+                });
+            });
 
         });
 
