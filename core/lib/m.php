@@ -28,7 +28,7 @@
      * @license    http://codebox.ir/license/1_0.txt  Codebox License 1.0
      * @version    1.0
      */
-    class M
+    class m
     {
 
         /**
@@ -59,7 +59,7 @@
             global $app_logs;
             if ($type==1) {
                 $log['Mahan Log'] = $app_logs;
-                M::console($log);
+                m::console($log);
             } elseif (isset($_GET['mLog']) || LOG_FORCE) {
                 echo PHP_EOL."<!-- Log by Mahan -->".PHP_EOL;
                 echo '<style>
@@ -107,7 +107,7 @@
                 foreach ($app_logs as $section_name => $section) {
                     echo "<tr><th>$section_name</th></tr>";
                     echo "<tr><td>";
-                    M::print($section);
+                    m::print($section);
                     echo "</td></tr>";
                 }
                 echo '</table></div>';
@@ -118,7 +118,7 @@
          * Time of process
          */
         public static function pTime() {
-            return M::nf((microtime(true)-START)*1000,'4').' ms';
+            return m::nf((microtime(true)-START)*1000,'4').' ms';
         }
 
         /**
@@ -135,15 +135,15 @@
             $error = ($error) ? ' <b style="color:red">😭</b> ' : ' <b style="color:darkolivegreen">✓</b> ';
             if ($id) {
                 if ($sub) {
-                    (!LOG[$type]) ?: $app_logs[$type][$sub][$id] = '[<b style="color: darkslateblue">'.M::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
+                    (!LOG[$type]) ?: $app_logs[$type][$sub][$id] = '[<b style="color: darkslateblue">'.m::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
                 } else {
-                    (!LOG[$type]) ?: $app_logs[$type][$id] = '[<b style="color: darkslateblue">'.M::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
+                    (!LOG[$type]) ?: $app_logs[$type][$id] = '[<b style="color: darkslateblue">'.m::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
                 }
             } else {
                 if ($sub) {
-                    (!LOG[$type]) ?: $app_logs[$type][$sub][] = '[<b style="color: darkslateblue">'.M::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
+                    (!LOG[$type]) ?: $app_logs[$type][$sub][] = '[<b style="color: darkslateblue">'.m::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
                 } else {
-                    (!LOG[$type]) ?: $app_logs[$type][] = '[<b style="color: darkslateblue">'.M::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
+                    (!LOG[$type]) ?: $app_logs[$type][] = '[<b style="color: darkslateblue">'.m::nf((microtime(true)-START)*1000,'4').' ms</b>] '.$error.$text;
                 }
             }
             return true;

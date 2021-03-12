@@ -40,7 +40,7 @@ include_once $this->PATH."global/header.php";
                             <ul class="list-inline row">
                                 <?php if ($this->data['requests']) foreach ($this->data['requests'] as $item) { ?>
                                     <li class="col-md-6 small mb-3 px-2">
-                                        <?php \App\Core\M::print($item); ?>
+                                        <?php \App\Core\m::print($item); ?>
                                         <a href="request&id=<?= $item['id'] ?>" class="btn btn-primary">Show</a>
                                     </li>
                                 <?php } ?>

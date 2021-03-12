@@ -43,7 +43,7 @@ include_once $this->PATH."global/header.php";
                                         <label class="labels">Country</label>
                                         <select class="selectpicker form-control" placeholder="select country" name="country" data-live-search="true">
                                             <option value="" <?= ($_SESSION['M']['user']['country'] ?? false) ?: 'selected'?> disabled>select country</option>
-                                            <?php foreach (M::countries() as $iso => $country) { ?>
+                                            <?php foreach (m::countries() as $iso => $country) { ?>
                                                 <option value="<?= $iso ?>" <?= ($iso!= ($_SESSION['M']['user']['country'] ?? false)) ?: 'selected' ?>><?= $country ?></option>
                                             <?php } ?>
                                         </select>

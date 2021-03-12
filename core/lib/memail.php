@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * Class mEmail
+     * Class memail
      *
      * Mahan | Email Manager
      *
@@ -17,13 +17,13 @@
 
     if (!defined('START')) die('__ You just find me! 😹 . . . <a href="javascript:history.back()">Go Back</a>');
 
-    class mEmail
+    class memail
     {
 
         private $db,$site_email,$path;
 
         function __construct() {
-            $this->db = new iSQL(DB_INFO);
+            $this->db = new i_sql(DB_INFO);
             $this->site_email = SITE['email'];
             $this->path = APP_ROOT.'core/inc/email-themes/';
         }

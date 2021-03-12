@@ -34,7 +34,7 @@
             <ul class="list-group shadow">
                 <?php if ($this->data['requests_card']) foreach ($this->data['requests_card'] as $item) { ?>
                     <li class="list-group-item small">
-                    <?php \App\Core\M::print($item); ?>
+                    <?php \App\Core\m::print($item); ?>
                     </li>
                 <?php } ?>
             </ul>

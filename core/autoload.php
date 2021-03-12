@@ -24,16 +24,16 @@
          * @return bool
          */
         public static function lib($className) {
-            M::aLog('loader','Call "'.$className.'"',0,'lib');
+            m::aLog('loader','Call "'.$className.'"',0,'lib');
             $file = str_replace('app\core', '', strtolower($className));
             $path = APP_ROOT.'core/lib'.str_replace('\\', '/', $file).'.php';
             if (file_exists($path)) {
                 /** @noinspection PhpIncludeInspection */
                 include $path;
-                M::aLog('loader',"Load <b style='color: #003399'>$path</b>",0,'lib');
+                m::aLog('loader',"Load <b style='color: #003399'>$path</b>",0,'lib');
                 return true;
             } else {
-                M::aLog('loader',"Load <b style='color: #003399'>$path</b>",1,'lib');
+                m::aLog('loader',"Load <b style='color: #003399'>$path</b>",1,'lib');
                 return false;
             }
         }
@@ -44,16 +44,16 @@
          * @return bool
          */
         public static function inc($className) {
-            M::aLog('loader','Call "'.$className.'"',0,'inc');
+            m::aLog('loader','Call "'.$className.'"',0,'inc');
             $file = str_replace('app\core\inc', '', strtolower($className));
             $path = APP_ROOT.'core/inc/core'.str_replace('\\', '/', $file).'.php';
             if (file_exists($path)) {
                 /** @noinspection PhpIncludeInspection */
                 include $path;
-                M::aLog('loader',"Load <b style='color: #003399'>$path</b>",0,'inc');
+                m::aLog('loader',"Load <b style='color: #003399'>$path</b>",0,'inc');
                 return true;
             } else {
-                M::aLog('loader',"Load <b style='color: #003399'>$path</b>",1,'inc');
+                m::aLog('loader',"Load <b style='color: #003399'>$path</b>",1,'inc');
                 return false;
             }
         }

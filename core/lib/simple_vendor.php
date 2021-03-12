@@ -25,7 +25,7 @@ class simple_vendor
      * simple_vendor constructor.
      */
     function __construct() {
-        $this->db = new iSQL(DB_INFO);
+        $this->db = new i_sql(DB_INFO);
     }
 
     /**
@@ -54,7 +54,7 @@ class simple_vendor
         if ($insert_id) {
             $hash_reg = $insert_id.md5($insert_id);
             $link_reg = APP_URL.'v-signup&i='.$insert_data['email'].'&h='.$hash_reg;
-            $mail = new mEmail();
+            $mail = new memail();
             $receivers[] = array(
                 'id' => $insert_id,
                 'email' => $insert_data['email'],
@@ -105,7 +105,7 @@ class simple_vendor
             if (($hash == $hash_reg) && ($this->vendor['status']==0)) {
                 $data['status'] = 1;
                 $this->update($this->vendor['id'], $data);
-                $mail = new mEmail();
+                $mail = new memail();
                 $receivers[] = array(
                     'id' => $this->vendor['id'],
                     'email' => $this->vendor['email'],
@@ -217,7 +217,7 @@ class simple_vendor
             $this->update($this->vendor['id'], $data);
             $hash = md5($this->vendor['email']).md5($this->vendor['id']);
             $link = APP_URL.'v-recoverPassword&i='.$this->vendor['email'].'&h='.$hash;
-            $mail = new mEmail();
+            $mail = new memail();
             $receivers[] = array(
                 'id' => $this->vendor['id'],
                 'email' => $this->vendor['email'],
@@ -251,7 +251,7 @@ class simple_vendor
     {
         if ($this->getVendor($email)) {
             if ($this->updatePass($this->vendor['id'], $new_pass)) {
-                $mail = new mEmail();
+                $mail = new memail();
                 $receivers[] = array(
                     'id' => $this->vendor['id'],
                     'email' => $this->vendor['email'],

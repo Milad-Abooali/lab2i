@@ -28,7 +28,7 @@
     function emailLog() {
         $output = new stdClass();
         $output->e = !(($_POST['id']) ?? false);
-        $db = new iSQL(DB_INFO);
+        $db = new i_sql(DB_INFO);
         $res = $db->selectId('log_email',$_POST['id'],'subject, content');
         $output->res['subject'] = $res['subject'];
         $content = str_replace("\r",'',$res['content']);
@@ -42,7 +42,7 @@
         $output->e = !(($_POST['t']) ?? false);
         $output->e = !(($_POST['id']) ?? false);
         if ($output->e == false) {
-            $db = new iSQL(DB_INFO);
+            $db = new i_sql(DB_INFO);
             $output->res = $db->deleteId($_POST['t'], $_POST['id']);
         }
         echo json_encode($output);
@@ -55,7 +55,7 @@
         $output->e = !(($_POST['c']) ?? false);
         $output->e = !(($_POST['id']) ?? false);
         if ($output->e == false) {
-            $db = new iSQL(DB_INFO);
+            $db = new i_sql(DB_INFO);
             $update[$_POST['c']] = $_POST['s'];
             $output->res = $db->updateId($_POST['t'], $_POST['id'],$update);
         }
@@ -68,7 +68,7 @@
         $output->e = !(($_POST['t']) ?? false);
         $output->e = !(($_POST['id']) ?? false);
         if ($output->e == false) {
-            $db = new iSQL(DB_INFO);
+            $db = new i_sql(DB_INFO);
             $update['status']=$_POST['status'];
             $output->res = $db->updateId($_POST['t'], $_POST['id'],$update);
         }

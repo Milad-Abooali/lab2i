@@ -22,11 +22,11 @@ include_once $this->PATH."global/header.php";
 
     <main role="main" class="container">
 
-        <?php \App\Core\M::print($this->data['product']); ?>
+        <?php \App\Core\m::print($this->data['product']); ?>
 
-        <?php \App\Core\M::print($this->data['category']); ?>
+        <?php \App\Core\m::print($this->data['category']); ?>
 
-        <?php \App\Core\M::print($this->data['tags']); ?>
+        <?php \App\Core\m::print($this->data['tags']); ?>
 
 
         <?php if(is_user) { ?>

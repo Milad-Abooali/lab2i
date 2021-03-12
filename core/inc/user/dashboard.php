@@ -6,7 +6,7 @@
  */
     namespace App\Core;
 
-    $db = new iSQL(DB_INFO);
+    $db = new i_sql(DB_INFO);
 
     if(is_user) {
         $this->data['account_type'] = 'User';

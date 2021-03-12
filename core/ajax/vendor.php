@@ -130,7 +130,7 @@
     function settings (){
         $output = new stdClass();
 
-        $db = new iSQL(DB_INFO);
+        $db = new i_sql(DB_INFO);
 
         if($_POST['id'] ?? false) {
             $output->res = $db->updateId('vendor_shop', $_POST['id'], $_POST);

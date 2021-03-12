@@ -1,8 +1,8 @@
 <?php
 /**
- * Class Language
+ * Class language
  *
- * Mahan | Language Parser
+ * Mahan | language Parser
  *
  * @package    App\Core
  * @author     Milad Abooali <m.abooali@hotmail.com>
@@ -17,12 +17,12 @@
 
     use function file_exists;
 
-    class Language
+    class language
     {
         public $LANG, $PATH, $LOG=array();
 
         /**
-         * Language constructor.
+         * language constructor.
          * @param $lang
          */
         function __construct($lang=null) {

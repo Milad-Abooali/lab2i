@@ -24,7 +24,7 @@ class tags
      * simple_vendor constructor.
      */
     function __construct() {
-        $this->db = new iSQL(DB_INFO);
+        $this->db = new i_sql(DB_INFO);
     }
 
     /**

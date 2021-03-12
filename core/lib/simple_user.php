@@ -25,7 +25,7 @@ class simple_user
      * simple_user constructor.
      */
     function __construct() {
-        $this->db = new iSQL(DB_INFO);
+        $this->db = new i_sql(DB_INFO);
     }
 
     /**
@@ -52,7 +52,7 @@ class simple_user
         if ($insert_id) {
             $hash_reg = $insert_id.md5($insert_id);
             $link_reg = APP_URL.'register&i='.$insert_data['email'].'&h='.$hash_reg;
-            $mail = new mEmail();
+            $mail = new memail();
             $receivers[] = array(
                 'id' => $insert_id,
                 'email' => $insert_data['email'],
@@ -79,7 +79,7 @@ class simple_user
             if (($hash == $hash_reg) && ($this->user['status']==0)) {
                 $data['status'] = 1;
                 $this->update($this->user['id'], $data);
-                $mail = new mEmail();
+                $mail = new memail();
                 $receivers[] = array(
                     'id' => $this->user['id'],
                     'email' => $this->user['email'],
@@ -204,7 +204,7 @@ class simple_user
             $this->update($this->user['id'], $data);
             $hash = md5($this->user['email']).md5($this->user['id']);
             $link = APP_URL.'recoverPassword&i='.$this->user['email'].'&h='.$hash;
-            $mail = new mEmail();
+            $mail = new memail();
             $receivers[] = array(
                 'id' => $this->user['id'],
                 'email' => $this->user['email'],
@@ -238,7 +238,7 @@ class simple_user
     {
         if ($this->getUser($username)) {
             if ($this->updatePass($this->user['id'], $new_pass)) {
-                $mail = new mEmail();
+                $mail = new memail();
                 $receivers[] = array(
                     'id' => $this->user['id'],
                     'email' => $this->user['email'],

@@ -5,11 +5,11 @@
  * Dashboard
  */
 
-use App\Core\iSQL;
+use App\Core\i_sql;
 use App\Core\M;
 
     // Database connection
-    $db = new iSQL(DB_INFO);
+    $db = new i_sql(DB_INFO);
 
     // Tags
     $tags = $db->selectAll('tags');
@@ -64,5 +64,5 @@ use App\Core\M;
             $this->data['error'] = 'Error!';
         }
 
-        M::print($db->log());
+        m::print($db->log());
     }

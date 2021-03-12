@@ -29,7 +29,7 @@
         $output = new stdClass();
         $output->e = !(($_POST['id']) ?? false);
         if ($output->e == false) {
-            $db = new iSQL(DB_INFO);
+            $db = new i_sql(DB_INFO);
             $offer = $db->selectId('request_offers', $_POST['id']);
             // Update Request
             $update['status']=1;
@@ -65,7 +65,7 @@
         $output = new stdClass();
         $output->e = !(($_POST['id']) ?? false);
         if ($output->e == false) {
-            $db = new iSQL(DB_INFO);
+            $db = new i_sql(DB_INFO);
             $product = $db->selectId('products', $_POST['id']);
 
             // Add Order Request

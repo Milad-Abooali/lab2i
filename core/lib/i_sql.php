@@ -1,7 +1,7 @@
 <?php
 
      /**
-     * Class iSQL
+     * Class i_sql
      *
      * Database Adaptor using mysqli for MySQL and MariaDB
      *
@@ -32,7 +32,7 @@
     use function mysqli_query;
     use function mysqli_fetch_array;
 
-    class iSQL
+    class i_sql
     {
         private $hostname, $port , $database , $username , $password , $prefix, $note=array(), $sql=array(), $error=array();
         public  $DATE, $LINK;
@@ -85,7 +85,7 @@
                 $result = mysqli_insert_id($this->LINK);
                 $log .= ' <b style="color:deeppink">#</b> Inserted ID: <b style="color:blue">'.$result.'</b>';
             }
-            M::aLog('database', $log, $error, 'sql');
+            m::aLog('database', $log, $error, 'sql');
             return ($this->error[$sql_number] ?? false) ? false : $result;
         }
 

@@ -7,7 +7,7 @@
  */
     namespace App\Core;
 
-    $db = new iSQL(DB_INFO);
+    $db = new i_sql(DB_INFO);
 
     if ($_POST ?? false) {
         $insert['vendor_id'] = $_SESSION['M']['vendor']['id'];

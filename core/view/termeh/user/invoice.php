@@ -30,11 +30,11 @@ include_once $this->PATH."global/header.php";
                 <div class="col-md-12">
 
 
-                    <?php M::print($this->data['invoice']); ?>
+                    <?php m::print($this->data['invoice']); ?>
 
 
                     <?php if ($this->data['invoice']['transaction_id']) { ?>
-                        <?php M::print($this->data['transaction']); ?>
+                        <?php m::print($this->data['transaction']); ?>
                     <?php } else { ?>
                         <select class="form-control" id="gateway" name="gateway">
                             <option value="1">Paypal</option>

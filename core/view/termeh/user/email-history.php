@@ -39,7 +39,7 @@ include_once $this->PATH."global/header.php";
                                     <th>#</th>
                                     <th>Subject</th>
                                     <th>Sent Date</th>
-                                    <th>View</th>
+                                    <th>view</th>
                                 </tr>
                                 </thead>
                                 <tbody>

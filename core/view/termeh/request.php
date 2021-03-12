@@ -23,7 +23,7 @@ include_once $this->PATH."global/header.php";
     <main role="main" class="container">
 
         Request:
-        <?php \App\Core\M::print($this->data['request']); ?>
+        <?php \App\Core\m::print($this->data['request']); ?>
 
         <?php if (is_vendor) { ?>
             <a class="btn btn-primary" href="new-offer&id=<?= $_GET['id'] ?>">Offer</a>
@@ -33,7 +33,7 @@ include_once $this->PATH."global/header.php";
         Offers:
         <?php if($this->data['offers']) foreach($this->data['offers'] as $offer) { ?>
             <div class="card">
-                <?php \App\Core\M::print($offer); ?>
+                <?php \App\Core\m::print($offer); ?>
 
                 <?php if ($_SESSION['M']['user']['id'] == $this->data['request']['user_id']) { ?>
 

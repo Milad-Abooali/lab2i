@@ -19,11 +19,11 @@
     {
 
         /**
-         * iSQL - Object
-         * @return iSQL
+         * i_sql - Object
+         * @return i_sql
          */
         public static function DB() {
-            return $db = new iSQL(DB_INFO);
+            return $db = new i_sql(DB_INFO);
         }
 
 

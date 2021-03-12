@@ -85,7 +85,7 @@
                 $result = mysqli_insert_id($this->LINK);
                 $log .= ' <b style="color:deeppink">#</b> Inserted ID: <b style="color:blue">'.$result.'</b>';
             }
-            M::aLog('database', $log, $error, 'sql');
+            m::aLog('database', $log, $error, 'sql');
             return (!$result) ? false : $result;
         }
 
@@ -110,13 +110,13 @@
             if ($input) {
                 if (is_array($input)) {
                     foreach ($input as $key => $value) {
-                        M::aLog('database', "Escaped $value", 0, 'note');
+                        m::aLog('database', "Escaped $value", 0, 'note');
                         $key = mysqli_real_escape_string($this->LINK, $key);
                         $value = mysqli_real_escape_string($this->LINK, $value);
                         $escaped[$key] = $value;
                     }
                 } else {
-                    M::aLog('database', "Escaped $input", 0, 'note');
+                    m::aLog('database', "Escaped $input", 0, 'note');
                     $escaped = mysqli_real_escape_string($this->LINK, $input);
                 }
             }
@@ -158,7 +158,7 @@
         public function ver()
         {
             $result = $this->query("SELECT version() as ver")[0]['ver'];
-            M::aLog('database', "version: $result", 0, 'note');
+            m::aLog('database', "version: $result", 0, 'note');
             return $result;
         }
 
@@ -170,7 +170,7 @@
         public function setTable($table)
         {
             $this->TABLE = $this->prefix . $this->escape($table);
-            M::aLog('database', "Set table: '$table'", 0, 'note');
+            m::aLog('database', "Set table: '$table'", 0, 'note');
             return ($this->TABLE) ? true : false;
         }
 

@@ -44,7 +44,7 @@ include_once $this->PATH."global/header.php";
                                                     <div class="float-right small text-muted" data-toggle="tooltip" data-placement="top" title="Request ID">
                                                         #<?= $item['id'] ?>
                                                     </div>
-                                                    <div class="float-left small text-muted" data-toggle="tooltip" data-placement="top" title="Views">
+                                                    <div class="float-left small text-muted" data-toggle="tooltip" data-placement="top" title="views">
                                                         <i class="fa fa-eye"></i> <?= $item['views'] ?>
                                                     </div>
                                                 </div>

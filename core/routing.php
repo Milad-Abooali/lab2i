@@ -327,9 +327,9 @@
             $page['cache']  = false;
         break;
         default:        // Not Found
-            $page['vid']        = false;        // Page View ID/Name
+            $page['vid']        = false;        // Page view ID/Name
             $page['upon']       = null;         // Page Upon File
             $page['inc']        = null;         // Page Inc File
-            $page['view']       = 'error/404';  // Page View File
+            $page['view']       = 'error/404';  // Page view File
             $page['cache']      = false;        // Page Cache Overwrite
     }
