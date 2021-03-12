@@ -51,6 +51,19 @@ include_once $this->PATH."global/header.php";
 
         $( document ).ready(function() {
 
+            //  Accept
+            $('body').on('click','doA-Accept', function(event){
+                event.preventDefault();
+                const data = $(this).serialize();
+                const classA = $(this).attr('action');
+                ajaxCall (classA, data,function(response) {
+                    let obj = JSON.parse(response);
+                    $('form#update').append('<p class="alert alert-success noticForm"><i class="text-success fa fa-check"></i> Account updated</p>');
+                    setTimeout(function(){
+                        $(".noticForm").fadeOut();
+                    }, 1500);
+                });
+            });
 
         });
 
