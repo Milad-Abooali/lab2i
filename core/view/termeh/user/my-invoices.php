@@ -58,7 +58,7 @@ include_once $this->PATH."global/header.php";
                                     <?php if($item['date_paid']){ ?>
                                         <span class="btn btn-sm btn-block btn-outline-success disabled">Paid</span>
                                     <?php } else { ?>
-                                        <a href="invoice-<?= $item['id'] ?>" class="btn btn-sm btn-block btn-primary">Pay Now</a>
+                                        <a href="invoice&id=<?= $item['id'] ?>" class="btn btn-sm btn-block btn-primary">Pay Now</a>
                                     <?php } ?>
                                     </td>
                                 </tr>
