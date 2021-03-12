@@ -21,7 +21,7 @@ class tags
     private $db, $table_tags='tags';
 
     /**
-     * SimpleVendor constructor.
+     * simple_vendor constructor.
      */
     function __construct() {
         $this->db = new iSQL(DB_INFO);

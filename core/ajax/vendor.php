@@ -30,7 +30,7 @@
 
         $output->e = false;
 
-        $vendor = new SimpleVendor();
+        $vendor = new simple_vendor();
         $output->res = $vendor->signout();
 
         echo json_encode($output);
@@ -44,7 +44,7 @@
         $output->e = !(($_POST['password']) ?? false);
 
         if ($output->e == false) {
-            $vendor = new SimpleVendor();
+            $vendor = new simple_vendor();
             $output->res = $vendor->signin($_POST['email'],$_POST['password']);
         }
         echo json_encode($output);
@@ -57,7 +57,7 @@
         $output->e = !(($_POST['email']) ?? false);
 
         if ($output->e == false) {
-            $vendor = new SimpleVendor();
+            $vendor = new simple_vendor();
             $output->res = $vendor->recoverPass($_POST['email']);
         }
         echo json_encode($output);
@@ -70,7 +70,7 @@
         $output->e = !(($_POST['i']) ?? false);
 
         if ($output->e == false) {
-            $vendor = new SimpleVendor();
+            $vendor = new simple_vendor();
             $output->res = $vendor->changePass($_POST['i'],$_POST['password']);
         }
         echo json_encode($output);
@@ -98,7 +98,7 @@
             $output->e = ($number ?? false) ? false : 'Password Number';
             $output->e = ($specialChars ?? false) ? false : 'Password SpecialChars';
             if ($output->e == false) {
-                $vendor = new SimpleVendor();
+                $vendor = new simple_vendor();
                 $map_data = $_POST['lat'].','.$_POST['lng'];
                 $output->res = $vendor->signup($_POST['email'],$_POST['password'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$map_data,$_POST['address'],$extra);
             }
@@ -119,7 +119,7 @@
 
         if ($output->e == false) {
             if ($output->e == false) {
-                $vendor = new SimpleVendor();
+                $vendor = new simple_vendor();
                 $output->res = $vendor->update($_POST['id'], $_POST['email'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['address']);
             }
         }

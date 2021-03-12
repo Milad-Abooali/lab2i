@@ -11,6 +11,6 @@
 
     if ($hash && $email){
         $this->data['activate'] = true;
-        $vendor = new App\Core\SimpleVendor();
+        $vendor = new App\Core\simple_vendor();
         $this->data['active'] = $vendor->activate($email, $hash);
     }
