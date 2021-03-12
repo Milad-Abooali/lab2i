@@ -76,7 +76,7 @@ include_once $this->PATH."global/header.php";
                     if(obj.e) {
                         notify('Error!','error',false);
                     } else {
-                        // location.reload();
+                        location.reload();
                     }
                 });
             });
