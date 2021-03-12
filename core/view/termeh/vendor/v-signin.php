@@ -56,7 +56,7 @@
 
                             <div class="form-group">
                                 <p class="small text-muted">
-                                   * If you forgot your password, click <a href="v-recover-password" class="">here</a>.
+                                   * If you forgot your password, click <a href="v-recoverPassword" class="">here</a>.
                                 </p>
                             </div>
                         </form>
