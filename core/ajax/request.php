@@ -56,6 +56,5 @@
                 $output->e = "Error on request update!";
             }
         }
-        $output->db = $db->log();
         echo json_encode($output);
     }
