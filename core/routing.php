@@ -274,6 +274,14 @@
             $page['inc']    = "user/add-request";
             $page['cache']  = false;
             break;
+        case "invoice":
+            if (!isset($_SESSION['M']['user'])) header("Location: ".APP_URL."403&y=User permission needed!");
+            $page['vid']    = 'invoice';
+            $page['view']   = "invoice";
+            $page['inc']    = "invoice";
+            $page['cache']  = false;
+            break;
+
 
 
 // Shared
