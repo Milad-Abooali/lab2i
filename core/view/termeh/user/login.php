@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <p class="small text-muted">
-                                   * If you forgot your password, click <a href="recover-password" class="">here</a>.
+                                   * If you forgot your password, click <a href="recoverPassword" class="">here</a>.
                                 </p>
                             </div>
                         </form>
