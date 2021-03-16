@@ -37,12 +37,12 @@
     define("APP_ROOT", $_SERVER['DOCUMENT_ROOT'].'lab2i/');
 
 /**
- * Static files - CDN
+ * Site Settings
  */
     define("SITE", [
       "name"      => "Bid 2 Enjoy",
       "lang"      => "EN",
-      "them"      => "termeh",
+      "theme"      => "termeh",
       "email"      => "info@bid2enjoy.com"
     ]);
 

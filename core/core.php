@@ -81,7 +81,7 @@
         }
     } else {
         include_once ('routing.php');
-        $VIEW = new view($page);
+        $VIEW = new view($page,SITE['theme']);
         $VIEW->loadPage();
     }
     m::aLog('core','End');
