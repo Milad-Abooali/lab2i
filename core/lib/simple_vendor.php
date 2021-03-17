@@ -228,6 +228,7 @@ class simple_vendor
             );
             $subject = 'Password Recovery Request on '.SITE['name'];
             $mail->send($receivers, $subject, 'recovery-pass-link');
+            $this->logout();
             return true;
        } else {
            return false;
